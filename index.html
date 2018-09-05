@@ -2,14 +2,27 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-CN,en,default">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -22,6 +35,9 @@
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
+
+
+  <meta name="google-site-verification" content="google9da7538369cddbcb.html" />
 
 
 
@@ -43,73 +59,28 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
 
 
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/custom/favicon.ico?v=6.4.1">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/custom/favicon.ico?v=6.4.1">
 
 
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/images/custom/favicon.ico?v=5.1.0" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/custom/favicon.ico?v=6.4.1">
 
 
 
 
 
 
-<meta name="description" content="一名不知所措的IT从业者">
-<meta name="keywords" content="html,js,jquery,node.js,开发者,编程,运维,运维开发">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Change The World">
-<meta property="og:url" content="http://www.zhangxiaoheng.cn/index.html">
-<meta property="og:site_name" content="Change The World">
-<meta property="og:description" content="一名不知所措的IT从业者">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Change The World">
-<meta name="twitter:description" content="一名不知所措的IT从业者">
+
 
 
 
@@ -117,14 +88,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    scheme: 'Gemini',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -136,12 +107,37 @@
 </script>
 
 
+  
+
+
+
+
+  <meta name="description" content="一名不知所措的IT从业者">
+<meta name="keywords" content="html,js,jquery,node.js,fibjs,开发者,编程,运维,运维开发">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Change The World">
+<meta property="og:url" content="http://www.zhangxiaoheng.cn/index.html">
+<meta property="og:site_name" content="Change The World">
+<meta property="og:description" content="一名不知所措的IT从业者">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Change The World">
+<meta name="twitter:description" content="一名不知所措的IT从业者">
+
+
+
+
+
 
   <link rel="canonical" href="http://www.zhangxiaoheng.cn/"/>
 
 
 
-
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>Change The World</title>
   
@@ -149,19 +145,50 @@
 
 
 
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121888655-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121888655-1');
+</script>
 
 
 
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
-
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -169,8 +196,7 @@
   
 
   <div class="container sidebar-position-left 
-   page-home 
- ">
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -179,19 +205,21 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Change The World</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
-        <p class="site-subtitle">沉默是一种力量</p>
+        <h1 class="site-subtitle" itemprop="description">沉默是一种力量</h1>
       
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -199,65 +227,58 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home menu-item-active">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
 
       
+      
     </ul>
+  
+
   
 
   
@@ -265,12 +286,34 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+  
+  
+  
+    
+      
+    
+    <a href="https://github.com/zzhtom" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
+    
+      </a>
+    
+
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -283,12 +326,18 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2017/08/14/javascript-regexp/">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/08/02/BasicSortingAlgorithm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
       <meta itemprop="image" content="/images/custom/ava.jpg">
     </span>
 
@@ -301,13 +350,23 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/14/javascript-regexp/" itemprop="url">javascript正则篇</a></h1>
+                <a class="post-title-link" href="/2018/08/02/BasicSortingAlgorithm/" itemprop="url">
+                  基本排序算法
+                </a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -315,13 +374,474 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-14T20:22:45+08:00">
-                2017-08-14
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-02 09:28:56" itemprop="dateCreated datePublished" datetime="2018-08-02T09:28:56+08:00">2018-08-02</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-22 21:27:48" itemprop="dateModified" datetime="2018-08-22T21:27:48+08:00">2018-08-22</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<blockquote>
+<p>学习笔记,以下代码部分拷贝的维基百科，见链接</p>
+</blockquote>
+<h2>时间复杂度</h2>
+<blockquote>
+<p>    在计算机科学中，算法的<strong>时间复杂度</strong>是一个函数，它定性描述该算法的运行<strong>时间</strong>。 这是一个代表算法输入值的字符串的长度的函数。 <strong>时间复杂度</strong>常用大O符号表述，不包括这个函数的低阶项和首项系数。 使用这种方式时，<strong>时间复杂度</strong>可被称为是渐近的，亦即考察输入值大小趋近无穷时的情况。</p>
+</blockquote>
+<p><strong>公式：</strong><br>
+$$<br>
+\lim_{n\rightarrow+\infty} 	\frac{T(n)}{f(n)} = C(C为不为零的常数)<br>
+$$<br>
+C一般是算法中最大的语句频度，是最内层循环语句的执行次数。</p>
+<h2>基本排序算法</h2>
+<p><img src="https://upload-images.jianshu.io/upload_images/1156494-ab4cecff133d87b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="sort"></p>
+<p>图片from: <a href="https://www.jianshu.com/p/7d037c332a9d" target="_blank" rel="noopener">数据结构常见的八大排序算法</a></p>
+<h3>直接插入排序</h3>
+<blockquote>
+<p>    是一种简单直观的<a href="https://www.wikiwand.com/zh-hans/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">排序算法</a>。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。插入排序在实现上，通常采用in-place排序（即只需用到**O(1)**的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//JavaScript</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">straightInsertSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; len; i++)&#123; <span class="comment">//第一个元素无需排序</span></span><br><span class="line">        <span class="keyword">let</span> j = i - <span class="number">1</span>,</span><br><span class="line">            value = arr[i];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(j&gt;=<span class="number">0</span> &amp;&amp; arr[j] &gt; value)&#123;</span><br><span class="line">            arr[j+<span class="number">1</span>] = arr[j];</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        arr[j+<span class="number">1</span>] = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3>希尔算法</h3>
+<blockquote>
+<p>在插入直接排序的基础上使用分组</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//JavaScript</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shellSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> step = <span class="built_in">Math</span>.floor(len / <span class="number">2</span>); step &gt; <span class="number">0</span>; step = <span class="built_in">Math</span>.floor(step / <span class="number">2</span>))&#123;</span><br><span class="line">         <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">let</span> j = i - step,</span><br><span class="line">                value = arr[i];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(j&gt;=<span class="number">0</span> &amp;&amp; arr[j] &gt; value)&#123;</span><br><span class="line">                arr[j+step] = arr[j];</span><br><span class="line">                j -= step;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            arr[j+step] = value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3>选择排序</h3>
+<blockquote>
+<p>    （Selection sort）是一种简单直观的<a href="https://www.wikiwand.com/zh-hans/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">排序算法</a>。它的工作原理如下。首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
+</blockquote>
+<p><strong>图示：</strong></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Selection_sort_animation.gif" alt="selectsort"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//script</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="built_in">Array</span>.isArray(arr)) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; len - <span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">let</span> min = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; len; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[min] &gt; arr[j])</span><br><span class="line">                min = j;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">      <span class="keyword">let</span> temp = arr[min];</span><br><span class="line">		arr[min] = arr[i];</span><br><span class="line">		arr[i] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3>堆排序</h3>
+<blockquote>
+<p>    <strong>堆排序</strong>（英语：Heapsort）是指利用<a href="https://www.wikiwand.com/zh-cn/%E5%A0%86_(%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)" target="_blank" rel="noopener">堆</a>这种数据结构所设计的一种<a href="https://www.wikiwand.com/zh-cn/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">排序算法</a>。堆积是一个近似<a href="https://www.wikiwand.com/zh-cn/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91" target="_blank" rel="noopener">完全二叉树</a>的结构，并同时满足<strong>堆积的性质</strong>：即子结点的键值或索引总是小于（或者大于）它的父节点。</p>
+</blockquote>
+<p><strong>图示：</strong></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Sorting_heapsort_anim.gif" alt="img"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">heapSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> arr = arr.slice(<span class="number">0</span>);</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">swap</span>(<span class="params">i, j</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> tmp = arr[i];</span><br><span class="line">		arr[i] = arr[j];</span><br><span class="line">		arr[j] = tmp;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">max_heapify</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">		<span class="comment">//建立父節點指標和子節點指標</span></span><br><span class="line">		<span class="keyword">var</span> dad = start;</span><br><span class="line">		<span class="keyword">var</span> son = dad * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (son &gt;= end)<span class="comment">//若子節點指標超過範圍直接跳出函數</span></span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		<span class="keyword">if</span> (son + <span class="number">1</span> &lt; end &amp;&amp; arr[son] &lt; arr[son + <span class="number">1</span>])<span class="comment">//先比較兩個子節點大小，選擇最大的</span></span><br><span class="line">			son++;</span><br><span class="line">		<span class="keyword">if</span> (arr[dad] &lt;= arr[son]) &#123;<span class="comment">//如果父節點小於子節點時，交換父子內容再繼續子節點和孫節點比較</span></span><br><span class="line">			swap(dad, son);</span><br><span class="line">			max_heapify(son, end);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> len = arr.length;</span><br><span class="line">	<span class="comment">//初始化，i從最後一個父節點開始調整</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="built_in">Math</span>.floor(len / <span class="number">2</span>) - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">		max_heapify(i, len);</span><br><span class="line">	<span class="comment">//先將第一個元素和已排好元素前一位做交換，再從新調整，直到排序完畢</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = len - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">		swap(<span class="number">0</span>, i);</span><br><span class="line">		max_heapify(<span class="number">0</span>, i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3>冒泡排序</h3>
+<blockquote>
+<p>    冒泡排序（英语：Bubble Sort）是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢「浮」到数列的顶端。</p>
+</blockquote>
+<p><strong>图示：</strong></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Bubble_sort_animation.gif" alt="bubblesort"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> i, j, temp,</span><br><span class="line">        length = arr.length;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; length - <span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; length - <span class="number">1</span> - i; j++)&#123;</span><br><span class="line">                        <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                temp = arr[j];</span><br><span class="line">                arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://jsbin.com/cewalig/edit?js,console" target="_blank" rel="noopener">运行源码</a></p>
+<h2>参考</h2>
+<ol>
+<li><a href="https://www.wikiwand.com/zh-hans/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6" target="_blank" rel="noopener">时间复杂度wikiwand</a></li>
+<li><a href="https://www.wikiwand.com/zh-cn/%E5%A0%86%E6%8E%92%E5%BA%8F#/JavaScript" target="_blank" rel="noopener">堆排序</a></li>
+<li><a href="https://www.wikiwand.com/zh-hans/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F" target="_blank" rel="noopener">插入排序</a></li>
+<li><a href="https://www.wikiwand.com/zh-hans/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F" target="_blank" rel="noopener">选择排序</a></li>
+<li><a href="https://www.wikiwand.com/zh-cn/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F" target="_blank" rel="noopener">冒泡排序</a></li>
+<li><a href="http://www.docin.com/p-1285598520.html" target="_blank" rel="noopener">豆丁</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/07/06/onlyoffice/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/06/onlyoffice/" itemprop="url">
+                  install onlyOffice in docker
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-06 10:46:11" itemprop="dateCreated datePublished" datetime="2018-07-06T10:46:11+08:00">2018-07-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-22 21:27:48" itemprop="dateModified" datetime="2018-08-22T21:27:48+08:00">2018-08-22</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<blockquote>
+<p>    本文主要记录onlyoffice安装的过程，在安装过程中可能不会遇到问题，但是也可能会遇到各种各样的问题，如果有错误，那肯定是你错了,下文中主要是集成安装，服务包含Mysql Server、Mail Server、Community Server以及Document Server,欢迎批评指正</p>
+</blockquote>
+<p>题外话：由于本人机器很菜，Mail Server使用Mysql Server时，没跑起来…</p>
+<h2>介绍 &amp;&amp; FAQ</h2>
+<h4><strong>onlyOffice是什么？</strong></h4>
+<p>    ONLYOFFICE是一个用于业务协作，文档和项目管理的多功能门户。它允许您组织业务任务和里程碑，存储和共享您的公司或个人文档，使用社交网络工具，如博客和论坛，以及通过公司IM与您的团队成员进行沟通。</p>
+<h4><strong>onlyOffice适用于谁？</strong></h4>
+<p>    ONLYOFFICE适用于寻求有效的业务流程管理平台的中小型公司。</p>
+<h4><strong>在云中托管我的门户网站是否安全？</strong></h4>
+<p>    您的门户网站由以下Web服务提供支持：Amazon EC2，Amazon S3和Amazon RDS。亚马逊网络服务（AWS）在全球数千名开发人员使用的云中提供可靠的基础架构。此外，您可以随时备份存储在门户网站上的数据。因此，您可以确保您的数据安全且受到保护。</p>
+<h4><strong>我可以通过手机访问我的门户吗？</strong></h4>
+<p>    目前正在开发位于.com域区域中的门户的移动应用程序。 .org域区域门户和服务器解决方案的移动版本不可用。 现在可以下载适用于iOS的移动ONLYOFFICE Documents应用程序。它允许您查看和编辑.com门户中存储的文本文档，创建新文档，管理和共享它们。</p>
+<h4><strong>我们想自己维护ONLYOFFICE。那可能吗？</strong></h4>
+<p>    是。可以下载和编译源代码。此后，您可以将其部署在您自己的服务器上。源代码在SourceForge上列出，并在GNU Affero通用公共许可条款下分发。有关更多详细信息，请参阅服务器版本常见问题部分。</p>
+<h4><strong>我无法在门户网站的可用列表中找到我的语言。我该怎么做才能参与翻译？</strong></h4>
+<p>    目前，门户网站的界面有21种语言版本，它也被翻译成二十多种语言，但如果您的母语尚未列出，您可以为ONLYOFFICE翻译做出贡献。请阅读如何成为ONLYOFFICE翻译？</p>
+<p>    发送您的请求并访问我们的ONLYOFFICE在线翻译系统的指南。 您也可以直接发送电子邮件至documentation@onlyoffice.com</p>
+<h4><strong>我有一个问题，这里没有涉及。我该怎么联系你？</strong></h4>
+<p>    我们不断改进ONLYOFFICE，为您的业务需求提供高效的解决方案。因此，欢迎您提供反馈和建议。请发送电子邮件至support@onlyoffice.com告诉我们ONLYOFFICE如何为您服务。</p>
+<p>注：以上为译文，详情请参考<a href="faq">FAQ</a></p>
+<h2>安装onlyOffice in Docker</h2>
+<h3>创建onlyoffice网络</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker network create --driver bridge onlyoffice</span><br></pre></td></tr></table></figure>
+<h3>安装MySQL数据库</h3>
+<p><strong>创建外部挂目录[可选]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/mysql/conf.d"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/mysql/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/mysql/initdb"</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>创建MySQL服务器Docker容器。创建配置文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"[mysqld]</span></span><br><span class="line"><span class="string">sql_mode = 'NO_ENGINE_SUBSTITUTION'</span></span><br><span class="line"><span class="string">max_connections = 1000</span></span><br><span class="line"><span class="string">max_allowed_packet = 1048576000</span></span><br><span class="line"><span class="string">group_concat_max_len = 2048</span></span><br><span class="line"><span class="string">log-error = /var/log/mysql/error.log"</span> &gt; /app/onlyoffice/mysql/conf.d/onlyoffice.cnf</span><br></pre></td></tr></table></figure>
+<p><strong>创建SQL脚本用于生成用户以及赋予对应的权限。 ONLYOFFICE社区服务器需要onlyoffice_user，ONLYOFFICE邮件服务器需要mail_admin</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"CREATE USER 'onlyoffice_user'@'localhost' IDENTIFIED BY 'onlyoffice_pass';</span></span><br><span class="line"><span class="string">CREATE USER 'mail_admin'@'localhost' IDENTIFIED BY 'Isadmin123';</span></span><br><span class="line"><span class="string">GRANT ALL PRIVILEGES ON * . * TO 'root'@'%' IDENTIFIED BY 'my-secret-pw';</span></span><br><span class="line"><span class="string">GRANT ALL PRIVILEGES ON * . * TO 'onlyoffice_user'@'%' IDENTIFIED BY 'onlyoffice_pass';</span></span><br><span class="line"><span class="string">GRANT ALL PRIVILEGES ON * . * TO 'mail_admin'@'%' IDENTIFIED BY 'Isadmin123';</span></span><br><span class="line"><span class="string">FLUSH PRIVILEGES;"</span> &gt; /app/onlyoffice/mysql/initdb/setup.sql</span><br></pre></td></tr></table></figure>
+<p>注：为了方面安装，直接使用了默认密码，以上密码是可修改的，以及指定可访问数据库的主机</p>
+<h4><strong>创建MySQL容器设置MySQL版本到5.7</strong></h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --net onlyoffice -i -t -d --restart=always --name onlyoffice-mysql-server \</span><br><span class="line"> -v /app/onlyoffice/mysql/conf.d:/etc/mysql/conf.d \</span><br><span class="line"> -v /app/onlyoffice/mysql/data:/var/lib/mysql \</span><br><span class="line"> -v /app/onlyoffice/mysql/initdb:/docker-entrypoint-initdb.d \</span><br><span class="line"> -e MYSQL_ROOT_PASSWORD=my-secret-pw \</span><br><span class="line"> -e MYSQL_DATABASE=onlyoffice \</span><br><span class="line"> mysql:5.7</span><br></pre></td></tr></table></figure>
+<p>-v: 挂载本地目录</p>
+<p>-e: 设置环境变量</p>
+<p><strong>可挂载目录[volumes]：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">    - ./config/mysql/conf.d:/etc/mysql/conf.d </span><br><span class="line">    - ./config/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d</span><br><span class="line">    - mysql_data:/var/lib/mysql</span><br></pre></td></tr></table></figure>
+<h3>安装Document Server</h3>
+<p><strong>创建外部挂目录[可选]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/logs"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/lib"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/db"</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --net onlyoffice -i -t -d --restart=always --name onlyoffice-document-server \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/logs:/var/<span class="built_in">log</span>/onlyoffice  \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data  \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/lib:/var/lib/onlyoffice \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/db:/var/lib/postgresql \</span><br><span class="line">    onlyoffice/documentserver</span><br></pre></td></tr></table></figure>
+<p><strong>可挂载目录：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">volumes:</span><br><span class="line">    - document_data:/var/www/onlyoffice/Data</span><br><span class="line">    - document_log:/var/<span class="built_in">log</span>/onlyoffice</span><br><span class="line">    - ./document_fonts:/usr/share/fonts/truetype/custom</span><br><span class="line">    - document_forgotten:/var/lib/onlyoffice/documentserver/App_Data/cache/files/forgotten</span><br></pre></td></tr></table></figure>
+<h3>安装Mail Server</h3>
+<p><strong>创建外部挂目录[可选]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/MailServer/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/MailServer/data/certs"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/MailServer/logs"</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --init --net onlyoffice --privileged -i -t -d --restart=always --name onlyoffice-mail-server -p 25:25 -p 143:143 -p 587:587 \</span><br><span class="line"> -v /app/onlyoffice/MailServer/data:/var/vmail \</span><br><span class="line"> -v /app/onlyoffice/MailServer/data/certs:/etc/pki/tls/mailserver \</span><br><span class="line"> -v /app/onlyoffice/MailServer/logs:/var/<span class="built_in">log</span> \</span><br><span class="line"> -h yourdomain.com \</span><br><span class="line"> onlyoffice/mailserver</span><br></pre></td></tr></table></figure>
+<p>指定数据库, 添加如下参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-e MYSQL_SERVER=onlyoffice-mysql-server \</span><br><span class="line">-e MYSQL_SERVER_PORT=3306 \</span><br><span class="line">-e MYSQL_ROOT_USER=root \</span><br><span class="line">-e MYSQL_ROOT_PASSWD=my-secret-pw \</span><br><span class="line">-e MYSQL_SERVER_DB_NAME=onlyoffice_mailserver \</span><br></pre></td></tr></table></figure>
+<p>注：<a href="http://yourdomain.com" target="_blank" rel="noopener">yourdomain.com</a> 更换您的Mail Server的域名</p>
+<p><strong>可选参数：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">    - MYSQL_SERVER=onlyoffice-mysql-server</span><br><span class="line">    - MYSQL_SERVER_PORT=3306</span><br><span class="line">    - MYSQL_ROOT_USER=onlyoffice_mailserver_user</span><br><span class="line">    - MYSQL_ROOT_PASSWD=onlyoffice_mailserver_user_pass</span><br><span class="line">    - MYSQL_SERVER_DB_NAME=onlyoffice_mailserver</span><br></pre></td></tr></table></figure>
+<h3>安装Community Server</h3>
+<p><strong>创建外部挂目录[可选]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/CommunityServer/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/CommunityServer/mysql"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/CommunityServer/logs"</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --net onlyoffice -i -t -d --restart=always --name onlyoffice-community-server -p 80:80 -p 443:443 -p 5222:5222 \</span><br><span class="line"> -e MYSQL_SERVER_ROOT_PASSWORD=my-secret-pw \</span><br><span class="line"> -e MYSQL_SERVER_DB_NAME=onlyoffice \</span><br><span class="line"> -e MYSQL_SERVER_HOST=onlyoffice-mysql-server \</span><br><span class="line"> -e MYSQL_SERVER_USER=onlyoffice_user \</span><br><span class="line"> -e MYSQL_SERVER_PASS=onlyoffice_pass \</span><br><span class="line"> -e DOCUMENT_SERVER_PORT_80_TCP_ADDR=onlyoffice-document-server \</span><br><span class="line"> -e MAIL_SERVER_DB_HOST=onlyoffice-mail-server \</span><br><span class="line"> -v /app/onlyoffice/CommunityServer/data:/var/www/onlyoffice/Data \</span><br><span class="line"> -v /app/onlyoffice/CommunityServer/logs:/var/<span class="built_in">log</span>/onlyoffice \</span><br><span class="line"> -v /app/onlyoffice/CommunityServer/mysql:/var/lib/mysql \</span><br><span class="line"> onlyoffice/communityserver</span><br></pre></td></tr></table></figure>
+<p>-p: 指定端口映射</p>
+<p>上面使用的时默认的邮箱安装，否则需指定邮箱服务器的数据库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --net onlyoffice -i -t -d --restart=always --name onlyoffice-community-server -p 80:80 -p 443:443 -p 5222:5222 \</span><br><span class="line"> -e MYSQL_SERVER_ROOT_PASSWORD=my-secret-pw \</span><br><span class="line"> -e MYSQL_SERVER_DB_NAME=onlyoffice \</span><br><span class="line"> -e MYSQL_SERVER_HOST=onlyoffice-mysql-server \</span><br><span class="line"> -e MYSQL_SERVER_USER=onlyoffice_user \</span><br><span class="line"> -e MYSQL_SERVER_PASS=onlyoffice_pass \</span><br><span class="line"> </span><br><span class="line"> -e DOCUMENT_SERVER_PORT_80_TCP_ADDR=onlyoffice-document-server \</span><br><span class="line"> </span><br><span class="line"> -e MAIL_SERVER_API_HOST=<span class="variable">$&#123;MAIL_SERVER_IP&#125;</span> \</span><br><span class="line"> -e MAIL_SERVER_DB_HOST=onlyoffice-mysql-server \</span><br><span class="line"> -e MAIL_SERVER_DB_NAME=onlyoffice_mailserver \</span><br><span class="line"> -e MAIL_SERVER_DB_PORT=3306 \</span><br><span class="line"> -e MAIL_SERVER_DB_USER=root \</span><br><span class="line"> -e MAIL_SERVER_DB_PASS=my-secret-pw \</span><br><span class="line"> </span><br><span class="line"> -v /app/onlyoffice/CommunityServer/data:/var/www/onlyoffice/Data \</span><br><span class="line"> -v /app/onlyoffice/CommunityServer/logs:/var/<span class="built_in">log</span>/onlyoffice \</span><br><span class="line"> onlyoffice/communityserver</span><br></pre></td></tr></table></figure>
+<p><strong>可选参数：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">    - DOCUMENT_SERVER_PORT_80_TCP_ADDR=onlyoffice-document-server</span><br><span class="line">    - MYSQL_SERVER_ROOT_PASSWORD=my-secret-pw</span><br><span class="line">    - MYSQL_SERVER_DB_NAME=onlyoffice </span><br><span class="line">    - MYSQL_SERVER_HOST=onlyoffice-mysql-server </span><br><span class="line">    - MYSQL_SERVER_USER=onlyoffice_user</span><br><span class="line">    - MYSQL_SERVER_PASS=onlyoffice_pass </span><br><span class="line">    - MAIL_SERVER_API_PORT=8081</span><br><span class="line">    - MAIL_SERVER_API_HOST=onlyoffice-mail-server</span><br><span class="line">    - MAIL_SERVER_DB_HOST=onlyoffice-mysql-server</span><br><span class="line">    - MAIL_SERVER_DB_PORT=3306</span><br><span class="line">    - MAIL_SERVER_DB_NAME=onlyoffice_mailserver</span><br><span class="line">    - MAIL_SERVER_DB_USER=onlyoffice_mailserver_user</span><br><span class="line">    - MAIL_SERVER_DB_PASS=onlyoffice_mailserver_user_pass</span><br></pre></td></tr></table></figure>
+<p><strong>依赖服务：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">depends_on:</span><br><span class="line">    - onlyoffice-mysql-server</span><br><span class="line">    - onlyoffice-document-server</span><br><span class="line">    - onlyoffice-mail-server</span><br></pre></td></tr></table></figure>
+<p><strong>挂载目录：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">volumes:</span><br><span class="line">    - community_data:/var/www/onlyoffice/Data</span><br><span class="line">    - community_log:/var/<span class="built_in">log</span>/onlyoffice</span><br><span class="line">    - document_data:/var/www/onlyoffice/DocumentServerData</span><br><span class="line">    - ./certs:/var/www/onlyoffice/Data/certs</span><br></pre></td></tr></table></figure>
+<p>通过下面的命令获取对应服务器的ip地址，如：获取<strong>Mail Server</strong>ip地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect -f <span class="string">'&#123;&#123;range .NetworkSettings.Networks&#125;&#125;&#123;&#123;.IPAddress&#125;&#125;&#123;&#123;end&#125;&#125;'</span> onlyoffice-mail-server</span><br></pre></td></tr></table></figure>
+<p>以上步骤正确完成之后，就可以开始您的onlyOffice之旅了， <a href="https//localhost">点击开始</a></p>
+<p>注： 如果不指定数据库则使用自身的数据库</p>
+<h3>备份</h3>
+<p>请阅读 <a href="https://helpcenter.onlyoffice.com/tipstricks/data-backup-restore.aspx" target="_blank" rel="noopener">Data backup</a>，付费用户享有的权利🙃, 当然也可以手动备份</p>
+<h2>参考</h2>
+<p><a href="https://github.com/ONLYOFFICE/Docker-CommunityServer" target="_blank" rel="noopener">Docker-CommunityServer</a></p>
+<p><a href="https://helpcenter.onlyoffice.com/server/docker/community/install-integrated.aspx" target="_blank" rel="noopener">Installing all three servers (Community Server, Document Server, Mail Server) integrated</a></p>
+<p><a id="faq"><a href="https://helpcenter.onlyoffice.com/faq/faq.aspx" target="_blank" rel="noopener">General Questions FAQ</a></a></p>
+<p><a href="http://yishidian.net/%E5%A6%82%E4%BD%95%E5%9C%A8ubuntu-1404%E4%B8%8A%E5%AE%89%E8%A3%9Donlyoffice%E7%B5%84%E7%B9%94%E6%82%A8%E7%9A%84%E5%9C%98%E9%9A%8A%E5%90%88%E4%BD%9C" target="_blank" rel="noopener">如何在Ubuntu 14.04上安裝ONLYOFFICE組織您的團隊合作</a></p>
+<p><a href="https://github.com/ONLYOFFICE/Docker-CommunityServer/blob/master/docker-compose.yml#L26" target="_blank" rel="noopener">docker-compose.yml</a></p>
+<p><a href="https://dev.mysql.com/doc/refman/5.7/en/communication-errors.html" target="_blank" rel="noopener">abort connection</a></p>
+<p><a href="https://bugs.mysql.com/bug.php?id=76661" target="_blank" rel="noopener">Mysql bug #76661</a></p>
+<p><a href="https://bugs.mysql.com/bug.php?id=81899" target="_blank" rel="noopener">Mysql #81899</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/06/23/prototype-chain/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/23/prototype-chain/" itemprop="url">
+                  简单了解原型链
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-23 08:23:41" itemprop="dateCreated datePublished" datetime="2018-06-23T08:23:41+08:00">2018-06-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-22 21:27:48" itemprop="dateModified" datetime="2018-08-22T21:27:48+08:00">2018-08-22</time>
+              
             
           </span>
 
@@ -337,11 +857,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">编程</span></a></span>
 
                 
                 
@@ -366,6 +882,824 @@
       </header>
     
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>不要慨叹生活的痛苦！慨叹是弱者。——高尔基</p>
+</blockquote>
+<h4>温故知新</h4>
+<ul>
+<li>构造函数才有原型<code>prototype</code></li>
+<li>原型也是对象，由<code>Object</code>创建</li>
+<li>每个对象都有<code>__proto__</code>属性，指向它的原型对象<code>prototype</code></li>
+<li><code>Object</code>的原型为<code>null</code></li>
+<li>构造函数也是对象</li>
+<li>所有的构造函数都是<code>Function</code>创建的</li>
+<li>原型对象中的构造函数(<code>constructor</code>)指向当前构造函数</li>
+</ul>
+<p>注：<code>null</code>对象除外</p>
+<h4>图解</h4>
+<ol>
+<li><strong>简单的继承原型链图</strong></li>
+</ol>
+<p><img src="https://wx4.sinaimg.cn/large/7ed42f5cly1fqguw4y1zej20ge0e8wes.jpg" alt="继承与原型链"></p>
+<ol start="2">
+<li>
+<p><strong>经典原型链图</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4740192-f3276363e4b5341b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509" alt=""></p>
+</li>
+</ol>
+<h4>拆解图</h4>
+<p><img src="https://docs.google.com/drawings/d/e/2PACX-1vSzUFGozCQizNXU8FkI4Q9ooA4s1uVY4EfDzDDLqhTtKGbNG7n5ZlMx8BVDc6tBnGAXdDqBJbSgzYDk/pub?w=801&amp;h=649" alt="原型链拆解图"></p>
+<p>声明：文中图片均来自网络，如有错误烦请邮件告知小弟</p>
+<h2>附录</h2>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/proto" target="_blank" rel="noopener">Object</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain" target="_blank" rel="noopener">继承与原型链</a></p>
+<p><a href="https://alanstorm.com/tracing-javascripts-prototype-chain/" target="_blank" rel="noopener">Tracing Javascript’s Prototype Chain</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/06/10/parameterReplacement-shell/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/10/parameterReplacement-shell/" itemprop="url">
+                  shell参数替换
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-10 12:08:05" itemprop="dateCreated datePublished" datetime="2018-06-10T12:08:05+08:00">2018-06-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-22 21:27:48" itemprop="dateModified" datetime="2018-08-22T21:27:48+08:00">2018-08-22</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">编程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>学习并记录shell脚本中参数替换的几种替换格式</p>
+</blockquote>
+<h5>格式一</h5>
+<ul>
+<li>
+<p>${parameter-default} – 如果变量parameter没被声明, 那么就使用默认值.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">default="默认值"</span><br><span class="line">echo $&#123;parameter-$&#123;default&#125;&#125; #parameter 未声明</span><br><span class="line"><span class="meta">#</span> 输出：默认值</span><br><span class="line">parameter=</span><br><span class="line">echo $&#123;parameter-$&#123;default&#125;&#125; #parameter 已声明</span><br><span class="line"><span class="meta">#</span>输出：</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>${parameter:-default} – 如果变量parameter没被设置, 那么就使用默认值.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">default="默认值"</span><br><span class="line">echo $&#123;parameter:-$&#123;default&#125;&#125; #parameter 未声明</span><br><span class="line"><span class="meta">#</span> 输出：默认值</span><br><span class="line">parameter=</span><br><span class="line">echo $&#123;parameter:-$&#123;default&#125;&#125; #parameter 已声明</span><br><span class="line"><span class="meta">#</span>输出：默认值</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5>格式二</h5>
+<ul>
+<li>
+<p>${parameter=default} – 如果变量parameter没声明, 那么就把它的值设为default.</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">default="默认值"</span><br><span class="line">echo $&#123;parameter=$&#123;default&#125;&#125; #parameter 未声明</span><br><span class="line"><span class="meta">#</span> 输出：默认值</span><br><span class="line">parameter=</span><br><span class="line">echo $&#123;parameter=$&#123;default&#125;&#125; #parameter 已声明</span><br><span class="line"><span class="meta">#</span>输出：</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>${parameter:=default} – 如果变量parameter没设置, 那么就把它的值设为default.</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">default="默认值"</span><br><span class="line">echo $&#123;parameter:=$&#123;default&#125;&#125; #parameter 未声明</span><br><span class="line"><span class="meta">#</span> 输出：默认值</span><br><span class="line">parameter=</span><br><span class="line">echo $&#123;parameter:=$&#123;default&#125;&#125; #parameter 已声明</span><br><span class="line"><span class="meta">#</span>输出：默认值</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5>格式三</h5>
+<ul>
+<li>
+<p>${parameter+default} – 如果变量parameter被声明了, 那么就使用default, 否则就使用 null字符串.</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">default="默认值"</span><br><span class="line">echo $&#123;parameter+$&#123;default&#125;&#125; #parameter 未声明</span><br><span class="line"><span class="meta">#</span> 输出：</span><br><span class="line">parameter=</span><br><span class="line">echo $&#123;parameter+$&#123;default&#125;&#125; #parameter 已声明</span><br><span class="line"><span class="meta">#</span>输出：默认值</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>${parameter:+default} – 如果变量parameter被设置了, 那么就使用default, 否则就使用 null字符串.</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">default="默认值"</span><br><span class="line">echo $&#123;parameter:+$&#123;default&#125;&#125; #parameter 未声明</span><br><span class="line"><span class="meta">#</span> 输出：</span><br><span class="line">parameter=</span><br><span class="line">echo $&#123;parameter:+$&#123;default&#125;&#125; #parameter 已声明</span><br><span class="line"><span class="meta">#</span>输出：</span><br><span class="line">parameter= '被赋值'</span><br><span class="line">echo $&#123;parameter:+$&#123;default&#125;&#125; #parameter 已赋值</span><br><span class="line"><span class="meta">#</span>输出：默认值</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5>格式四</h5>
+<ul>
+<li>
+<p>${parameter?default} – 如果parameter已经被声明, 那么就使用设置的值, 否则打印default 错误消息.</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">default="默认值"</span><br><span class="line">echo $&#123;parameter?$&#123;default&#125;&#125; #parameter 未声明</span><br><span class="line"><span class="meta">#</span> 输出：</span><br><span class="line">parameter=</span><br><span class="line">echo $&#123;parameter?$&#123;default&#125;&#125; #parameter 已声明</span><br><span class="line"><span class="meta">#</span>输出：</span><br><span class="line">parameter= '被赋值'</span><br><span class="line">echo $&#123;parameter?$&#123;default&#125;&#125; #parameter 已赋值</span><br><span class="line"><span class="meta">#</span>输出：默认值</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">parameter=</span><br><span class="line">echo $&#123;parameter?$&#123;default&#125;&#125; #parameter 已声明</span><br><span class="line"><span class="meta">#</span>输出：</span><br><span class="line">parameter= '被赋值'</span><br><span class="line">echo $&#123;parameter?$&#123;default&#125;&#125; #parameter 已赋值</span><br><span class="line"><span class="meta">#</span>输出：被赋值</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>
+<p>${parameter:?default} – 如果parameter已经被设置, 那么就使用设置的值, 否则打印 default错误消息.</p>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">default="默认值"</span><br><span class="line">echo $&#123;parameter:?$&#123;default&#125;&#125; #parameter 未声明</span><br><span class="line"><span class="meta">#</span> 输出：默认值 (报错)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">parameter=</span><br><span class="line">echo $&#123;parameter:?$&#123;default&#125;&#125; #parameter 已声明</span><br><span class="line"><span class="meta">#</span>输出：默认值 (报错)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">parameter= '被赋值'</span><br><span class="line">echo $&#123;parameter:?$&#123;default&#125;&#125; #parameter 已赋值</span><br><span class="line"><span class="meta">#</span>输出：被赋值</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/05/20/分享shell脚本篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/20/分享shell脚本篇/" itemprop="url">
+                  shell脚本篇
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-20 18:52:33" itemprop="dateCreated datePublished" datetime="2018-05-20T18:52:33+08:00">2018-05-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-22 21:27:48" itemprop="dateModified" datetime="2018-08-22T21:27:48+08:00">2018-08-22</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">编程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<blockquote>
+<p>分享一个简单的项目管理脚本，有待于补充，欢迎指正</p>
+</blockquote>
+<h2>前提说明</h2>
+<p>    本文使用的部署工具使用的是<a href="http://pm2.keymetrics.io/" target="_blank" rel="noopener">pm2</a>，项目存储在<a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>, 因此脚本主要做的的事情就是从GitHub上拉取最新的代码进行本地部署，项目服务的启动、关闭、重启、重载配置文件（pm2）</p>
+<h2>脚本功能</h2>
+<ul>
+<li>启动服务</li>
+<li>关闭服务</li>
+<li>重启服务</li>
+<li>重载配置文件</li>
+<li>更新项目</li>
+<li>帮助说明</li>
+</ul>
+<h2>脚本内容</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">myapp_path=~/projectPath  # 项目路径</span><br><span class="line">cd $&#123;myapp_path&#125;</span><br><span class="line">pid=$(ps -ef |grep node|grep -v grep|awk '&#123;print $2&#125;') # 获取项目进程号</span><br><span class="line">start()&#123;</span><br><span class="line">    if [ -z $&#123;pid&#125; ]</span><br><span class="line">        then</span><br><span class="line">	    pm2 start pm2.json</span><br><span class="line">	else</span><br><span class="line">	    echo -e "\E[1;32;40mAPP now at starting......"; tput sgr0</span><br><span class="line">    fi	</span><br><span class="line">&#125;</span><br><span class="line">stop()&#123;</span><br><span class="line">    if [ -z $&#123;pid&#125; ]</span><br><span class="line">        then</span><br><span class="line">	    echo -e "\E[1;31;40mAPP have been stop."; tput sgr0</span><br><span class="line">        else</span><br><span class="line">	    pm2 stop pm2.json</span><br><span class="line">    fi</span><br><span class="line">&#125;</span><br><span class="line">restart()&#123;</span><br><span class="line">    pm2 restart pm2.json</span><br><span class="line">&#125;</span><br><span class="line">reload()&#123;</span><br><span class="line">    pm2 reload pm2.json</span><br><span class="line">&#125;</span><br><span class="line">refresh()&#123;</span><br><span class="line">    git pull</span><br><span class="line">    npm run compile</span><br><span class="line">    restart</span><br><span class="line">&#125;</span><br><span class="line">help()&#123;</span><br><span class="line">cat&lt;&lt;EOF</span><br><span class="line">			USE GUIDE</span><br><span class="line"></span><br><span class="line">		1.启动</span><br><span class="line"><span class="meta">			$</span><span class="bash"> myapp start</span></span><br><span class="line">		2.关闭</span><br><span class="line"><span class="meta">			$</span><span class="bash"> myapp stop</span></span><br><span class="line">		3.重启</span><br><span class="line"><span class="meta">			$</span><span class="bash"> myapp restart</span></span><br><span class="line">		4.重载配置文件</span><br><span class="line"><span class="meta">			$</span><span class="bash"> myapp reload</span></span><br><span class="line">		5.更新项目</span><br><span class="line"><span class="meta">			$</span><span class="bash"> myapp refresh</span></span><br><span class="line"></span><br><span class="line">EOF</span><br><span class="line">&#125;</span><br><span class="line">main()&#123;</span><br><span class="line">    if [ $# -ne 1 ];then</span><br><span class="line">        help</span><br><span class="line">	exit 1</span><br><span class="line">    fi</span><br><span class="line">    case $1 in</span><br><span class="line">        "start")</span><br><span class="line">	    start</span><br><span class="line">	;;	</span><br><span class="line">	"stop")</span><br><span class="line">	    stop</span><br><span class="line">	;;</span><br><span class="line">	"restart")</span><br><span class="line">	    restart</span><br><span class="line">	;;</span><br><span class="line">	"refresh")</span><br><span class="line">	    refresh</span><br><span class="line">	;;</span><br><span class="line">	"reload")</span><br><span class="line">	    reload</span><br><span class="line">	;;</span><br><span class="line">	*)</span><br><span class="line">	    help</span><br><span class="line">	;;</span><br><span class="line">    esac</span><br><span class="line">&#125;</span><br><span class="line">main $@</span><br></pre></td></tr></table></figure>
+<h2>总结</h2>
+<p>    通过shell编写一些脚本，可以减少我们工作当中经常重复的工作，对于运维工作者是一种必不可少的技能了，当然本文展示的知识一些简单的操作，如果需要更加自动化部署项目，我们可以考虑使用GitHub上的webhook功能</p>
+<h2>附录</h2>
+<p><a href="https://jenkins.io/" target="_blank" rel="noopener">jenkins</a></p>
+<p><a href="http://www.walle-web.io/" target="_blank" rel="noopener">瓦力上线部署</a></p>
+<p><a href="https://www.wikiwand.com/en/Comparison_of_continuous_integration_software" target="_blank" rel="noopener">Comparison of continuous integration software</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/05/12/session-cookie/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/12/session-cookie/" itemprop="url">
+                  session、cookie 篇
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-12 12:21:31" itemprop="dateCreated datePublished" datetime="2018-05-12T12:21:31+08:00">2018-05-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-22 21:27:48" itemprop="dateModified" datetime="2018-08-22T21:27:48+08:00">2018-08-22</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>    内容主要用于自己对资料的整理以及日后查阅，无任何其他目的，对于内容有不正确的地方还请邮箱联系小弟，在此先谢过。</p>
+</blockquote>
+<hr>
+<h2>session、cookie出现的原因</h2>
+<p>​    http无状态的协议，什么是无状态呢，是指http没有记忆的功能。如果没有状态的情况下，需要每次链接都传送大量数据，比如说在购物的时候，如果没有cookie和session每浏览加入购物车一次都得重新登陆。<br>
+为了解决这一问题，两种用于保持HTTP连接状态的技术就应运而生了，一个是Cookie，而另一个则是Session。</p>
+<h2>cookie?</h2>
+<blockquote>
+<p>This document defines the HTTP Cookie and Set-Cookie header fields.These header fields can be used by HTTP servers to store state (called cookies) at HTTP user agents, letting the servers maintain a stateful session over the mostly stateless HTTP protocol.  Although cookies have many historical infelicities that degrade their security and privacy, the Cookie and Set-Cookie header fields are widely used on the Internet.  This document obsoletes RFC 2965.</p>
+</blockquote>
+<p>​    HTTP Cookie（也叫Web Cookie或浏览器Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。</p>
+<p>​    通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie使基于无状态的HTTP协议记录稳定的状态信息成为了可能。</p>
+<h3>解决问题？</h3>
+<p>Cookie主要用于以下三个方面：</p>
+<ul>
+<li>会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）</li>
+<li>个性化设置（如用户自定义设置、主题等）</li>
+<li>浏览器行为跟踪（如跟踪分析用户行为等）</li>
+</ul>
+<p>​    Cookie曾一度用于客户端数据的存储，因当时并没有其它合适的存储办法而作为唯一的存储手段，但现在随着现代浏览器开始支持各种各样的存储方式，Cookie渐渐被淘汰。由于服务器指定Cookie后，浏览器的每次请求都会携带Cookie数据，会带来额外的性能开销（尤其是在移动环境下）。新的浏览器API已经允许开发者直接将数据存储到本地，如使用 Web storage API （本地存储和会话存储）或 IndexedDB 。</p>
+<p><em>注： 客户端维护会话状态</em></p>
+<h2>session?</h2>
+<p><strong>session定义(来源API文档)</strong></p>
+<blockquote>
+<p>Provides a way to identify a user across more than one page request or visit to a Web site and to store information about that user.</p>
+</blockquote>
+<p>【译文】：为用户识别多个页面请求或访问Web站点，并存储有关该用户的信息提供一种方法。</p>
+<p>​    是指一类用来在客户端与服务器端之间保持状态的解决方案。 有时候Session也用来指这种解决方案的存储结构或服务器端的一种存储会话的机制</p>
+<h3>运行机制</h3>
+<p>​    当程序需要为某个客户端的请求创建一个session的时候，服务器首先检查这个客户端的请求里是否已包含了一个session标识 - 称为session id，如果已包含一个session id则说明以前已经为此客户端创建过session，服务器就按照session id把这个session检索出来使用（如果检索不到，可能会新建一个），如果客户端请求不包含session id，则为此客户端创建一个session并且生成一个与此session相关联的session id，session id的值应该是一个既不会重复，又不容易被找到规律以仿造的字符串，这个session id将被在本次响应中返回给客户端保存。</p>
+<h3>解决问题？</h3>
+<p>    会话状态管理(session用于在用户身份验证后跟踪用户行为轨迹)</p>
+<p>持久性方式：文件、数据库、客户端cookie</p>
+<p><em>注： 服务端维护会话状态</em></p>
+<h3>小总结[session]</h3>
+<ol>
+<li>浏览器会话期间： 一系列的请求响应事务</li>
+<li>session机制：是指一类用来在客户端与服务器之间保持状态的解决方案</li>
+<li>session：有时候session也用来指这种解决方案的存储结构，如“把xxx保存在session里</li>
+<li>HttpSession：由于各种用于web开发的语言在一定程度上都提供了对这种解决方案的支持，所以在某种特定语言的语境下，session也被用来指代该语言的解决方案，比如经常把Java里提供的javax.servlet.http.HttpSession简称为session</li>
+</ol>
+<h2>cookie 与 session 的关系</h2>
+<ol>
+<li>session技术基于cookie没有cookie,session也无法完成</li>
+<li>浏览器在第一次访问服务器时，服务器发现没有携带sessionId,会自动创建session对象。并将创建的cookie对象保存sessionId发送给浏览器。</li>
+<li>在浏览器发送请求时，带有cookieid的session</li>
+</ol>
+<h2>参考</h2>
+<p><a href="https://tools.ietf.org/html/rfc6265#page-13" target="_blank" rel="noopener"> HTTP State Management Mechanism </a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies" target="_blank" rel="noopener">HTTP cookies</a></p>
+<p><a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank" rel="noopener">Cookies - Information that websites store on your computer</a></p>
+<p><a href="http://justsee.iteye.com/blog/1570652" target="_blank" rel="noopener">Session机制详解</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/Cookie" target="_blank" rel="noopener">Cookie</a></p>
+<h2>附录</h2>
+<h3>cookie分类</h3>
+<h4>会话期Cookie</h4>
+<p>    会话期Cookie是最简单的Cookie：浏览器关闭之后它会被自动删除，也就是说它仅在会话期内有效。会话期Cookie不需要指定过期时间（<code>Expires</code>）或者有效期（Max-Age）。需要注意的是，有些浏览器提供了会话恢复功能，这种情况下即使关闭了浏览器，会话期Cookie也会被保留下来，就好像浏览器从来没有关闭一样。</p>
+<h4>持久性Cookie</h4>
+<p>    和关闭浏览器便失效的会话期Cookie不同，持久性Cookie可以指定一个特定的过期时间（<code>Expires</code>）或有效期（<code>Max-Age</code>）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;</span><br></pre></td></tr></table></figure>
+<p><strong>提示:</strong> 当Cookie的过期时间被设定时，设定的日期和时间只与客户端相关，而不是服务端。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2017/08/14/javascript-regexp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/14/javascript-regexp/" itemprop="url">
+                  javascript正则篇
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-08-14 20:22:45 / 修改时间：22:22:50" itemprop="dateCreated datePublished" datetime="2017-08-14T20:22:45+08:00">2017-08-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -384,9 +1718,9 @@
 <ul>
 <li>
 <p><code>new RegExp(pattern,option);</code></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">pattern: 字符串，指定了正则表达式的模式用于匹配字符串</div><div class="line">option: 可选值，主要有 g、i、 m</div><div class="line">============</div><div class="line">g: 全局匹配 </div><div class="line">i: 忽略大小写</div><div class="line">m: 多行匹配</div><div class="line">============</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pattern: 字符串，指定了正则表达式的模式用于匹配字符串</span><br><span class="line">option: 可选值，主要有 g、i、 m</span><br><span class="line">============</span><br><span class="line">g: 全局匹配 </span><br><span class="line">i: 忽略大小写</span><br><span class="line">m: 多行匹配</span><br><span class="line">============</span><br></pre></td></tr></table></figure>
 <p>    一眼看上去很容易理解，构造一个新的实例对象，按照我们正常的思路创建了一个正则表达式。它返回一个新的 RegExp 对象，具有指定的模式和标志，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var reg = new RegExp(’\\d&#123;2&#125;’,’g’);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var reg = new RegExp(’\\d&#123;2&#125;’,’g’);</span><br></pre></td></tr></table></figure>
 <p>可<code>看</code>而知：<br>
 优点： 容易理解<br>
 缺点： 😷（机智如我）</p>
@@ -396,7 +1730,7 @@
 <ul>
 <li>
 <p><code>perl</code> 风格表示:</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/pattern/option #没错，就这么多</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/pattern/option #没错，就这么多</span><br></pre></td></tr></table></figure>
 <p>再次可<code>看</code>而知：<br>
 优点： 写起来非常简单<br>
 缺点： 😵 （已瞎）</p>
@@ -668,17 +2002,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -692,6 +2026,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -704,12 +2042,18 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2017/07/22/showmacbook/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
       <meta itemprop="image" content="/images/custom/ava.jpg">
     </span>
 
@@ -722,13 +2066,23 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/22/showmacbook/" itemprop="url">拆开它</a></h1>
+                <a class="post-title-link" href="/2017/07/22/showmacbook/" itemprop="url">
+                  拆开它
+                </a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -736,13 +2090,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-22T15:35:54+08:00">
-                2017-07-22
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-07-22 15:35:54" itemprop="dateCreated datePublished" datetime="2017-07-22T15:35:54+08:00">2017-07-22</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-23 09:36:59" itemprop="dateModified" datetime="2018-08-23T09:36:59+08:00">2018-08-23</time>
+              
             
           </span>
 
@@ -758,11 +2129,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/computer/" itemprop="url" rel="index">
-                    <span itemprop="name">computer</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/computer/" itemprop="url" rel="index"><span itemprop="name">computer</span></a></span>
 
                 
                 
@@ -787,6 +2154,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -796,8 +2166,8 @@
         
           
             <h2>上篇</h2>
-<p>    最近小弟做了一个艰难的决定 ☺ ，接下来的即将面临着一段相对艰难的日子。不用多疑，因为买了人生中的第一台macbook pro,凭心而讲这个决定其实很早之前就已经萌生了，记得当时正在学习<a href="https://developer.apple.com/swift/" title="swift" target="_blank" rel="external">swift</a>（Apple新出来的开发语言，也不怎么新了），也就是在2016年10月份左右，当时刚毕业没有多久，在第一家公司需要Apple应用开发人员，顺势便开始了我的Apple之路。<br>
-    当时因为身上并没有什么闲钱（吃喝还是可以的），想买一台mac，⊙﹏⊙‖∣ 只是想想而已，但是脚步并未有放弃，我把自己的<a href="http://www.gateway.com/gw/zh/CN/content/home" title="gateway官网" target="_blank" rel="external">gateway</a>笔记本装了一个黑苹果，哎！装上是可以的但让人头痛的是合适的驱动太难找了，目前我的黑苹果无线网卡驱动，电池驱动还没有着落…<br>
+<p>    最近小弟做了一个艰难的决定 ☺ ，接下来的即将面临着一段相对艰难的日子。不用多疑，因为买了人生中的第一台macbook pro,凭心而讲这个决定其实很早之前就已经萌生了，记得当时正在学习<a href="https://developer.apple.com/swift/" title="swift" target="_blank" rel="noopener">swift</a>（Apple新出来的开发语言，也不怎么新了），也就是在2016年10月份左右，当时刚毕业没有多久，在第一家公司需要Apple应用开发人员，顺势便开始了我的Apple之路。<br>
+    当时因为身上并没有什么闲钱（吃喝还是可以的），想买一台mac，⊙﹏⊙‖∣ 只是想想而已，但是脚步并未有放弃，我把自己的<a href="http://www.gateway.com/gw/zh/CN/content/home" title="gateway官网" target="_blank" rel="noopener">gateway</a>笔记本装了一个黑苹果，哎！装上是可以的但让人头痛的是合适的驱动太难找了，目前我的黑苹果无线网卡驱动，电池驱动还没有着落…<br>
 <img src="/2017/07/22/showmacbook/hpg.png" alt="微博记录"><br>
     抒情就此打住，下面就来看看今天（2017年7月22日）刚买到的macbook pro吧，在此感谢弟兄们的推荐以及苹果的叶子客服给与的讲解与解惑，更是要感谢快递小哥在炎炎的夏日能够准时的送达，你们辛苦了，都不容易相互尊重，相互理解。</p>
 <h2>下篇</h2>
@@ -837,7 +2207,7 @@
 逼格满满有木有</p>
 </li>
 <li>
-<p>最后主界面压脚<br>
+<p>最后主界面闪过<br>
 <img src="/2017/07/22/showmacbook/dlm.jpg" alt="庐山第五面"></p>
 </li>
 </ul>
@@ -849,17 +2219,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -873,6 +2243,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -885,12 +2259,18 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2017/07/09/life20170709/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
       <meta itemprop="image" content="/images/custom/ava.jpg">
     </span>
 
@@ -903,13 +2283,23 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/09/life20170709/" itemprop="url">星期的一天</a></h1>
+                <a class="post-title-link" href="/2017/07/09/life20170709/" itemprop="url">
+                  星期的一天
+                </a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -917,13 +2307,18 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-09T20:53:41+08:00">
-                2017-07-09
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-07-09 20:53:41 / 修改时间：21:54:21" itemprop="dateCreated datePublished" datetime="2017-07-09T20:53:41+08:00">2017-07-09</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -946,6 +2341,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -983,17 +2381,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1007,6 +2405,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1019,12 +2421,18 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2017/06/26/shell-seconds/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
       <meta itemprop="image" content="/images/custom/ava.jpg">
     </span>
 
@@ -1037,13 +2445,23 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/26/shell-seconds/" itemprop="url">内置变量SECONDS小记</a></h1>
+                <a class="post-title-link" href="/2017/06/26/shell-seconds/" itemprop="url">
+                  内置变量SECONDS小记
+                </a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1051,13 +2469,18 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-26T20:13:15+08:00">
-                2017-06-26
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-06-26 20:13:15 / 修改时间：22:14:18" itemprop="dateCreated datePublished" datetime="2017-06-26T20:13:15+08:00">2017-06-26</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -1080,6 +2503,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1097,7 +2523,7 @@
 <h2>SECONDS</h2>
 <p>是一个shell脚本的内置环境变量，通过这个变量可以获取到行<code>shell</code>脚本运行的时间，【以秒为单位】:<br>
 一言不合先来个示例以表尊敬:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash  </span></div><div class="line">cat ＜＜eof   </div><div class="line">		this is a simple example:</div><div class="line">		this will shows the script running <span class="built_in">times</span></div><div class="line">		thank you <span class="built_in">read</span> the blog.</div><div class="line">eof</div><div class="line">sleep 5</div><div class="line"><span class="built_in">echo</span> -E <span class="string">'\E[1,31,40m'</span> <span class="string">"The shell script file <span class="variable">$(basename $0)</span> Running time is <span class="variable">$SECONDS</span>"</span> tput sgr0</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash  </span></span><br><span class="line">cat ＜＜eof   </span><br><span class="line">		this is a simple example:</span><br><span class="line">		this will shows the script running <span class="built_in">times</span></span><br><span class="line">		thank you <span class="built_in">read</span> the blog.</span><br><span class="line">eof</span><br><span class="line">sleep 5</span><br><span class="line"><span class="built_in">echo</span> -E <span class="string">'\E[1,31,40m'</span> <span class="string">"The shell script file <span class="variable">$(basename $0)</span> Running time is <span class="variable">$SECONDS</span>"</span> tput sgr0</span><br></pre></td></tr></table></figure>
 <p>俗话说得好，字不如表，表不如图，怎能不来张图呢：<br>
 <img src="/2017/06/26/shell-seconds/2017-06-26_22-08-41.png" alt="result"><br>
 这个变量也是蛮给力的最起码省去你的几行代码，好了本篇就到这里落笔了，哦是关机了<br>
@@ -1109,17 +2535,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1133,185 +2559,10 @@
         <div class="post-eof"></div>
       
     </footer>
-  </article>
-
-
-    
-      
-
-  
-
+  </div>
   
   
   
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2017/03/26/blog-study/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/custom/ava.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Change The World">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/03/26/blog-study/" itemprop="url">blog搭建小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-26T12:55:15+08:00">
-                2017-03-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>    在IT界混下去没有blog怎么能行呢？<br>
-以上纯属玩笑，因为有了<code>blog</code>可以记录下平时生活的点点滴滴也可以分享下相关技术心得更可以记录工作中遇到的问题。多说不宜，那就开始步入整体吧，此次<code>blog</code>搭建主要是采用 <code>hexo + githup</code>, 下面就 <code>follow me</code> 一起按照步骤开始开启blog之旅吧。</p>
-</blockquote>
-<h3>准备工作</h3>
-<ol>
-<li>如果你想对外可以访问，首先申请<a href="https://github.com/" title="github" target="_blank" rel="external"><code>github</code></a>帐号</li>
-<li>新建仓库，命名格式: <code>用户名.githup.io</code> 点击完成，如下图:</li>
-</ol>
-<p><img src="/2017/03/26/blog-study/io.png" alt="仓库名称"></p>
-<p>目前完成了万里长征的第一步,<code>go on...</code></p>
-<h3>安装<code>blog</code>环境‌</h3>
-<ul>
-<li>安装<a href="https://nodejs.org/en/" title="NODE.JS" target="_blank" rel="external"><code>node.js</code>官网</a>，<a href="http://nodejs.cn/download/" title="node.js" target="_blank" rel="external">中文网</a>，用于生成静态页面</li>
-</ul>
-<ol start="2">
-<li>安装<a href="https://git-scm.com/" title="git" target="_blank" rel="external"><code>git</code></a>,网盘（windows）<a href="http://pan.baidu.com/s/1pKXcpi7" title="git" target="_blank" rel="external">安装包</a>,安装git主要是把hexo生成的blog站点提交到github</li>
-<li>全局安装 <code>hexo</code></li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo --save</div></pre></td></tr></table></figure>
-<ol start="4">
-<li>新建站点文件夹（以下没有特别说明均在此文件夹下执行），进行初始化</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div></pre></td></tr></table></figure>
-<ol start="5">
-<li>生成<code>blog</code>静态页面</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate （或 hexo g）</div></pre></td></tr></table></figure>
-<ol start="6">
-<li>本地启动，进行预览</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server （或 hexo s）</div></pre></td></tr></table></figure>
-<p><code>blog</code>站点预览地址：<a href="http://localhost:4000" title="预览" target="_blank" rel="external">http://localhost:4000</a></p>
-<h3>配置<code>Github</code></h3>
-<ul>
-<li>修改站点文件夹下的<code>_config.yml</code>文件，找到<code>deploy</code>位置，修改如下：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy: </div><div class="line">  <span class="built_in">type</span>: git </div><div class="line">  repository: https://github.com/zzhtom/zzhtom.github.io.git  </div><div class="line">  branch: master</div></pre></td></tr></table></figure>
-<ul>
-<li>安装<code>git</code>部署的插件</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
-<ul>
-<li>部署到<code>github</code></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy (或 hexo d)</div></pre></td></tr></table></figure>
-<ul>
-<li><code>hexo</code> 常用命令</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">hexo clean                清理生成的blog页面    </div><div class="line">hexo generate             生成静态页面  </div><div class="line">hexo deploy               部署页面到github  </div><div class="line">hexo new <span class="string">"postName"</span>       新建文章  </div><div class="line">hexo new page <span class="string">"pageName"</span>  新建页面  </div><div class="line">hexo server               开启本地服务  </div><div class="line">hexo <span class="built_in">help</span>                 查看帮助  </div><div class="line">hexo version              查看Hexo的版本</div></pre></td></tr></table></figure>
-<h3>配置域名访问</h3>
-<ul>
-<li>注册域名，如<a href="https://wanwang.aliyun.com/" title="阿里云" target="_blank" rel="external">阿里云</a>、<a href="https://dnspod.qcloud.com/?from=qcloudHome" title="腾讯云" target="_blank" rel="external">腾讯云</a></li>
-<li>进行域名解析设置</li>
-</ul>
-<p><img src="/2017/03/26/blog-study/anly.png" alt="域名解析"></p>
-<ul>
-<li>进行<code>ip</code>指向，<code>ip</code>为<code>github</code>访问路径的解析<code>ip</code>,如下图：</li>
-</ul>
-<p><img src="/2017/03/26/blog-study/ip.png" alt="ip地址"></p>
-<ul>
-<li>进行域名指向，指向域名即为 <code>用户名.github.io</code></li>
-</ul>
-<h3>网站推荐</h3>
-<p><a href="https://hexo.io/" title="hexo" target="_blank" rel="external"><code>hexo</code>官网</a><br>
-<a href="http://theme-next.iissnan.com/" title="next" target="_blank" rel="external"><code>Next</code>主题</a><br>
-<a href="http://baixin.io/2015/08/HEXO%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="blog" target="_blank" rel="external">博客推荐</a><br>
-本人<a href="http://www.zhangxiaoheng.cn" title="blog"><code>blog</code></a> <a href="http://www.zhangxiaoheng.cn" title="blog">www.zhangxiaoheng.cn</a> 欢迎来访</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </article>
 
 
@@ -1319,12 +2570,13 @@
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -1347,95 +2599,136 @@
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/custom/ava.jpg"
-               alt="Tom" />
-          <p class="site-author-name" itemprop="name">Tom</p>
-           
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/custom/ava.jpg"
+                alt="Tom" />
+            
+              <p class="site-author-name" itemprop="name">Tom</p>
               <p class="site-description motion-element" itemprop="description">一名不知所措的IT从业者</p>
+          </div>
+
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:xiaoheng.zh@gmail.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/113809036652138215181" target="_blank" title="Google" rel="external nofollow"><i class="fa fa-fw fa-google"></i>Google</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/xiaoheng_zhang" target="_blank" title="Twitter" rel="external nofollow"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/tom.zhang.313371" target="_blank" title="FB Page" rel="external nofollow"><i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://stackoverflow.com/users/9628832/xiaoheng-zhang" target="_blank" title="StackOverflow" rel="external nofollow"><i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/zzhtom" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/2958802633" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.jianshu.com/u/806a589bd7f0" target="_blank" title="简书">
-                  
-                    <i class="fa fa-fw fa-book"></i>
-                  
-                  简书
-                </a>
-              </span>
-            
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -1452,30 +2745,43 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Tom</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" rel="external nofollow" href="https://theme-next.org">NexT.Gemini</a> v6.4.1</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -1488,6 +2794,11 @@
       </div>
     
 
+    
+	
+    
+
+    
   </div>
 
   
@@ -1506,6 +2817,13 @@
 
 
 
+
+
+
+  
+
+
+
   
 
 
@@ -1519,94 +2837,144 @@
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
-
-  
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
 
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
 
-
-
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
 
 
-	
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
 
 
 
 
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
 
   
     
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   
 
 
-
-
-
   
-
-
-
-
-
-
-  
-
-
-
-
-
   
 
   

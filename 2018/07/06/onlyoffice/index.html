@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN,en,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="google9da7538369cddbcb.html" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/custom/favicon.ico?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/custom/favicon.ico?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/custom/favicon.ico?v=6.4.1">
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本文主要记录onlyoffice安装的过程，在安装过程中可能不会遇到问题，但是也可能会遇到各种各样的问题，如果有错误，那肯定是你错了,下文中主要是集成安装，服务包含Mysql Server、Mail Server、Community Server以及Document Server,欢迎批评指正  题外话：由于本人机器很菜，Mail Server使用Mysql Server时，没跑起来…">
+<meta name="keywords" content="office">
+<meta property="og:type" content="article">
+<meta property="og:title" content="install onlyOffice in docker">
+<meta property="og:url" content="http://www.zhangxiaoheng.cn/2018/07/06/onlyoffice/index.html">
+<meta property="og:site_name" content="Change The World">
+<meta property="og:description" content="本文主要记录onlyoffice安装的过程，在安装过程中可能不会遇到问题，但是也可能会遇到各种各样的问题，如果有错误，那肯定是你错了,下文中主要是集成安装，服务包含Mysql Server、Mail Server、Community Server以及Document Server,欢迎批评指正  题外话：由于本人机器很菜，Mail Server使用Mysql Server时，没跑起来…">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-22T13:27:48.759Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="install onlyOffice in docker">
+<meta name="twitter:description" content="本文主要记录onlyoffice安装的过程，在安装过程中可能不会遇到问题，但是也可能会遇到各种各样的问题，如果有错误，那肯定是你错了,下文中主要是集成安装，服务包含Mysql Server、Mail Server、Community Server以及Document Server,欢迎批评指正  题外话：由于本人机器很菜，Mail Server使用Mysql Server时，没跑起来…">
+
+
+
+
+
+
+  <link rel="canonical" href="http://www.zhangxiaoheng.cn/2018/07/06/onlyoffice/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>install onlyOffice in docker | Change The World</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121888655-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121888655-1');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Change The World</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">沉默是一种力量</h1>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+    
+      
+    
+    <a href="https://github.com/zzhtom" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
+    
+      </a>
+    
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/07/06/onlyoffice/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">install onlyOffice in docker
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-06 10:46:11" itemprop="dateCreated datePublished" datetime="2018-07-06T10:46:11+08:00">2018-07-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-22 21:27:48" itemprop="dateModified" datetime="2018-08-22T21:27:48+08:00">2018-08-22</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<blockquote>
+<p>    本文主要记录onlyoffice安装的过程，在安装过程中可能不会遇到问题，但是也可能会遇到各种各样的问题，如果有错误，那肯定是你错了,下文中主要是集成安装，服务包含Mysql Server、Mail Server、Community Server以及Document Server,欢迎批评指正</p>
+</blockquote>
+<p>题外话：由于本人机器很菜，Mail Server使用Mysql Server时，没跑起来…</p>
+<h2>介绍 &amp;&amp; FAQ</h2>
+<h4><strong>onlyOffice是什么？</strong></h4>
+<p>    ONLYOFFICE是一个用于业务协作，文档和项目管理的多功能门户。它允许您组织业务任务和里程碑，存储和共享您的公司或个人文档，使用社交网络工具，如博客和论坛，以及通过公司IM与您的团队成员进行沟通。</p>
+<h4><strong>onlyOffice适用于谁？</strong></h4>
+<p>    ONLYOFFICE适用于寻求有效的业务流程管理平台的中小型公司。</p>
+<h4><strong>在云中托管我的门户网站是否安全？</strong></h4>
+<p>    您的门户网站由以下Web服务提供支持：Amazon EC2，Amazon S3和Amazon RDS。亚马逊网络服务（AWS）在全球数千名开发人员使用的云中提供可靠的基础架构。此外，您可以随时备份存储在门户网站上的数据。因此，您可以确保您的数据安全且受到保护。</p>
+<h4><strong>我可以通过手机访问我的门户吗？</strong></h4>
+<p>    目前正在开发位于.com域区域中的门户的移动应用程序。 .org域区域门户和服务器解决方案的移动版本不可用。 现在可以下载适用于iOS的移动ONLYOFFICE Documents应用程序。它允许您查看和编辑.com门户中存储的文本文档，创建新文档，管理和共享它们。</p>
+<h4><strong>我们想自己维护ONLYOFFICE。那可能吗？</strong></h4>
+<p>    是。可以下载和编译源代码。此后，您可以将其部署在您自己的服务器上。源代码在SourceForge上列出，并在GNU Affero通用公共许可条款下分发。有关更多详细信息，请参阅服务器版本常见问题部分。</p>
+<h4><strong>我无法在门户网站的可用列表中找到我的语言。我该怎么做才能参与翻译？</strong></h4>
+<p>    目前，门户网站的界面有21种语言版本，它也被翻译成二十多种语言，但如果您的母语尚未列出，您可以为ONLYOFFICE翻译做出贡献。请阅读如何成为ONLYOFFICE翻译？</p>
+<p>    发送您的请求并访问我们的ONLYOFFICE在线翻译系统的指南。 您也可以直接发送电子邮件至documentation@onlyoffice.com</p>
+<h4><strong>我有一个问题，这里没有涉及。我该怎么联系你？</strong></h4>
+<p>    我们不断改进ONLYOFFICE，为您的业务需求提供高效的解决方案。因此，欢迎您提供反馈和建议。请发送电子邮件至support@onlyoffice.com告诉我们ONLYOFFICE如何为您服务。</p>
+<p>注：以上为译文，详情请参考<a href="faq">FAQ</a></p>
+<h2>安装onlyOffice in Docker</h2>
+<h3>创建onlyoffice网络</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker network create --driver bridge onlyoffice</span><br></pre></td></tr></table></figure>
+<h3>安装MySQL数据库</h3>
+<p><strong>创建外部挂目录[可选]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/mysql/conf.d"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/mysql/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/mysql/initdb"</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>创建MySQL服务器Docker容器。创建配置文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"[mysqld]</span></span><br><span class="line"><span class="string">sql_mode = 'NO_ENGINE_SUBSTITUTION'</span></span><br><span class="line"><span class="string">max_connections = 1000</span></span><br><span class="line"><span class="string">max_allowed_packet = 1048576000</span></span><br><span class="line"><span class="string">group_concat_max_len = 2048</span></span><br><span class="line"><span class="string">log-error = /var/log/mysql/error.log"</span> &gt; /app/onlyoffice/mysql/conf.d/onlyoffice.cnf</span><br></pre></td></tr></table></figure>
+<p><strong>创建SQL脚本用于生成用户以及赋予对应的权限。 ONLYOFFICE社区服务器需要onlyoffice_user，ONLYOFFICE邮件服务器需要mail_admin</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"CREATE USER 'onlyoffice_user'@'localhost' IDENTIFIED BY 'onlyoffice_pass';</span></span><br><span class="line"><span class="string">CREATE USER 'mail_admin'@'localhost' IDENTIFIED BY 'Isadmin123';</span></span><br><span class="line"><span class="string">GRANT ALL PRIVILEGES ON * . * TO 'root'@'%' IDENTIFIED BY 'my-secret-pw';</span></span><br><span class="line"><span class="string">GRANT ALL PRIVILEGES ON * . * TO 'onlyoffice_user'@'%' IDENTIFIED BY 'onlyoffice_pass';</span></span><br><span class="line"><span class="string">GRANT ALL PRIVILEGES ON * . * TO 'mail_admin'@'%' IDENTIFIED BY 'Isadmin123';</span></span><br><span class="line"><span class="string">FLUSH PRIVILEGES;"</span> &gt; /app/onlyoffice/mysql/initdb/setup.sql</span><br></pre></td></tr></table></figure>
+<p>注：为了方面安装，直接使用了默认密码，以上密码是可修改的，以及指定可访问数据库的主机</p>
+<h4><strong>创建MySQL容器设置MySQL版本到5.7</strong></h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --net onlyoffice -i -t -d --restart=always --name onlyoffice-mysql-server \</span><br><span class="line"> -v /app/onlyoffice/mysql/conf.d:/etc/mysql/conf.d \</span><br><span class="line"> -v /app/onlyoffice/mysql/data:/var/lib/mysql \</span><br><span class="line"> -v /app/onlyoffice/mysql/initdb:/docker-entrypoint-initdb.d \</span><br><span class="line"> -e MYSQL_ROOT_PASSWORD=my-secret-pw \</span><br><span class="line"> -e MYSQL_DATABASE=onlyoffice \</span><br><span class="line"> mysql:5.7</span><br></pre></td></tr></table></figure>
+<p>-v: 挂载本地目录</p>
+<p>-e: 设置环境变量</p>
+<p><strong>可挂载目录[volumes]：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">    - ./config/mysql/conf.d:/etc/mysql/conf.d </span><br><span class="line">    - ./config/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d</span><br><span class="line">    - mysql_data:/var/lib/mysql</span><br></pre></td></tr></table></figure>
+<h3>安装Document Server</h3>
+<p><strong>创建外部挂目录[可选]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/logs"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/lib"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/db"</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --net onlyoffice -i -t -d --restart=always --name onlyoffice-document-server \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/logs:/var/<span class="built_in">log</span>/onlyoffice  \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data  \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/lib:/var/lib/onlyoffice \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/db:/var/lib/postgresql \</span><br><span class="line">    onlyoffice/documentserver</span><br></pre></td></tr></table></figure>
+<p><strong>可挂载目录：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">volumes:</span><br><span class="line">    - document_data:/var/www/onlyoffice/Data</span><br><span class="line">    - document_log:/var/<span class="built_in">log</span>/onlyoffice</span><br><span class="line">    - ./document_fonts:/usr/share/fonts/truetype/custom</span><br><span class="line">    - document_forgotten:/var/lib/onlyoffice/documentserver/App_Data/cache/files/forgotten</span><br></pre></td></tr></table></figure>
+<h3>安装Mail Server</h3>
+<p><strong>创建外部挂目录[可选]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/MailServer/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/MailServer/data/certs"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/MailServer/logs"</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --init --net onlyoffice --privileged -i -t -d --restart=always --name onlyoffice-mail-server -p 25:25 -p 143:143 -p 587:587 \</span><br><span class="line"> -v /app/onlyoffice/MailServer/data:/var/vmail \</span><br><span class="line"> -v /app/onlyoffice/MailServer/data/certs:/etc/pki/tls/mailserver \</span><br><span class="line"> -v /app/onlyoffice/MailServer/logs:/var/<span class="built_in">log</span> \</span><br><span class="line"> -h yourdomain.com \</span><br><span class="line"> onlyoffice/mailserver</span><br></pre></td></tr></table></figure>
+<p>指定数据库, 添加如下参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-e MYSQL_SERVER=onlyoffice-mysql-server \</span><br><span class="line">-e MYSQL_SERVER_PORT=3306 \</span><br><span class="line">-e MYSQL_ROOT_USER=root \</span><br><span class="line">-e MYSQL_ROOT_PASSWD=my-secret-pw \</span><br><span class="line">-e MYSQL_SERVER_DB_NAME=onlyoffice_mailserver \</span><br></pre></td></tr></table></figure>
+<p>注：<a href="http://yourdomain.com" target="_blank" rel="noopener">yourdomain.com</a> 更换您的Mail Server的域名</p>
+<p><strong>可选参数：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">    - MYSQL_SERVER=onlyoffice-mysql-server</span><br><span class="line">    - MYSQL_SERVER_PORT=3306</span><br><span class="line">    - MYSQL_ROOT_USER=onlyoffice_mailserver_user</span><br><span class="line">    - MYSQL_ROOT_PASSWD=onlyoffice_mailserver_user_pass</span><br><span class="line">    - MYSQL_SERVER_DB_NAME=onlyoffice_mailserver</span><br></pre></td></tr></table></figure>
+<h3>安装Community Server</h3>
+<p><strong>创建外部挂目录[可选]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/CommunityServer/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/CommunityServer/mysql"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/CommunityServer/logs"</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --net onlyoffice -i -t -d --restart=always --name onlyoffice-community-server -p 80:80 -p 443:443 -p 5222:5222 \</span><br><span class="line"> -e MYSQL_SERVER_ROOT_PASSWORD=my-secret-pw \</span><br><span class="line"> -e MYSQL_SERVER_DB_NAME=onlyoffice \</span><br><span class="line"> -e MYSQL_SERVER_HOST=onlyoffice-mysql-server \</span><br><span class="line"> -e MYSQL_SERVER_USER=onlyoffice_user \</span><br><span class="line"> -e MYSQL_SERVER_PASS=onlyoffice_pass \</span><br><span class="line"> -e DOCUMENT_SERVER_PORT_80_TCP_ADDR=onlyoffice-document-server \</span><br><span class="line"> -e MAIL_SERVER_DB_HOST=onlyoffice-mail-server \</span><br><span class="line"> -v /app/onlyoffice/CommunityServer/data:/var/www/onlyoffice/Data \</span><br><span class="line"> -v /app/onlyoffice/CommunityServer/logs:/var/<span class="built_in">log</span>/onlyoffice \</span><br><span class="line"> -v /app/onlyoffice/CommunityServer/mysql:/var/lib/mysql \</span><br><span class="line"> onlyoffice/communityserver</span><br></pre></td></tr></table></figure>
+<p>-p: 指定端口映射</p>
+<p>上面使用的时默认的邮箱安装，否则需指定邮箱服务器的数据库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --net onlyoffice -i -t -d --restart=always --name onlyoffice-community-server -p 80:80 -p 443:443 -p 5222:5222 \</span><br><span class="line"> -e MYSQL_SERVER_ROOT_PASSWORD=my-secret-pw \</span><br><span class="line"> -e MYSQL_SERVER_DB_NAME=onlyoffice \</span><br><span class="line"> -e MYSQL_SERVER_HOST=onlyoffice-mysql-server \</span><br><span class="line"> -e MYSQL_SERVER_USER=onlyoffice_user \</span><br><span class="line"> -e MYSQL_SERVER_PASS=onlyoffice_pass \</span><br><span class="line"> </span><br><span class="line"> -e DOCUMENT_SERVER_PORT_80_TCP_ADDR=onlyoffice-document-server \</span><br><span class="line"> </span><br><span class="line"> -e MAIL_SERVER_API_HOST=<span class="variable">$&#123;MAIL_SERVER_IP&#125;</span> \</span><br><span class="line"> -e MAIL_SERVER_DB_HOST=onlyoffice-mysql-server \</span><br><span class="line"> -e MAIL_SERVER_DB_NAME=onlyoffice_mailserver \</span><br><span class="line"> -e MAIL_SERVER_DB_PORT=3306 \</span><br><span class="line"> -e MAIL_SERVER_DB_USER=root \</span><br><span class="line"> -e MAIL_SERVER_DB_PASS=my-secret-pw \</span><br><span class="line"> </span><br><span class="line"> -v /app/onlyoffice/CommunityServer/data:/var/www/onlyoffice/Data \</span><br><span class="line"> -v /app/onlyoffice/CommunityServer/logs:/var/<span class="built_in">log</span>/onlyoffice \</span><br><span class="line"> onlyoffice/communityserver</span><br></pre></td></tr></table></figure>
+<p><strong>可选参数：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">    - DOCUMENT_SERVER_PORT_80_TCP_ADDR=onlyoffice-document-server</span><br><span class="line">    - MYSQL_SERVER_ROOT_PASSWORD=my-secret-pw</span><br><span class="line">    - MYSQL_SERVER_DB_NAME=onlyoffice </span><br><span class="line">    - MYSQL_SERVER_HOST=onlyoffice-mysql-server </span><br><span class="line">    - MYSQL_SERVER_USER=onlyoffice_user</span><br><span class="line">    - MYSQL_SERVER_PASS=onlyoffice_pass </span><br><span class="line">    - MAIL_SERVER_API_PORT=8081</span><br><span class="line">    - MAIL_SERVER_API_HOST=onlyoffice-mail-server</span><br><span class="line">    - MAIL_SERVER_DB_HOST=onlyoffice-mysql-server</span><br><span class="line">    - MAIL_SERVER_DB_PORT=3306</span><br><span class="line">    - MAIL_SERVER_DB_NAME=onlyoffice_mailserver</span><br><span class="line">    - MAIL_SERVER_DB_USER=onlyoffice_mailserver_user</span><br><span class="line">    - MAIL_SERVER_DB_PASS=onlyoffice_mailserver_user_pass</span><br></pre></td></tr></table></figure>
+<p><strong>依赖服务：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">depends_on:</span><br><span class="line">    - onlyoffice-mysql-server</span><br><span class="line">    - onlyoffice-document-server</span><br><span class="line">    - onlyoffice-mail-server</span><br></pre></td></tr></table></figure>
+<p><strong>挂载目录：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">volumes:</span><br><span class="line">    - community_data:/var/www/onlyoffice/Data</span><br><span class="line">    - community_log:/var/<span class="built_in">log</span>/onlyoffice</span><br><span class="line">    - document_data:/var/www/onlyoffice/DocumentServerData</span><br><span class="line">    - ./certs:/var/www/onlyoffice/Data/certs</span><br></pre></td></tr></table></figure>
+<p>通过下面的命令获取对应服务器的ip地址，如：获取<strong>Mail Server</strong>ip地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect -f <span class="string">'&#123;&#123;range .NetworkSettings.Networks&#125;&#125;&#123;&#123;.IPAddress&#125;&#125;&#123;&#123;end&#125;&#125;'</span> onlyoffice-mail-server</span><br></pre></td></tr></table></figure>
+<p>以上步骤正确完成之后，就可以开始您的onlyOffice之旅了， <a href="https//localhost">点击开始</a></p>
+<p>注： 如果不指定数据库则使用自身的数据库</p>
+<h3>备份</h3>
+<p>请阅读 <a href="https://helpcenter.onlyoffice.com/tipstricks/data-backup-restore.aspx" target="_blank" rel="noopener">Data backup</a>，付费用户享有的权利🙃, 当然也可以手动备份</p>
+<h2>参考</h2>
+<p><a href="https://github.com/ONLYOFFICE/Docker-CommunityServer" target="_blank" rel="noopener">Docker-CommunityServer</a></p>
+<p><a href="https://helpcenter.onlyoffice.com/server/docker/community/install-integrated.aspx" target="_blank" rel="noopener">Installing all three servers (Community Server, Document Server, Mail Server) integrated</a></p>
+<p><a id="faq"><a href="https://helpcenter.onlyoffice.com/faq/faq.aspx" target="_blank" rel="noopener">General Questions FAQ</a></a></p>
+<p><a href="http://yishidian.net/%E5%A6%82%E4%BD%95%E5%9C%A8ubuntu-1404%E4%B8%8A%E5%AE%89%E8%A3%9Donlyoffice%E7%B5%84%E7%B9%94%E6%82%A8%E7%9A%84%E5%9C%98%E9%9A%8A%E5%90%88%E4%BD%9C" target="_blank" rel="noopener">如何在Ubuntu 14.04上安裝ONLYOFFICE組織您的團隊合作</a></p>
+<p><a href="https://github.com/ONLYOFFICE/Docker-CommunityServer/blob/master/docker-compose.yml#L26" target="_blank" rel="noopener">docker-compose.yml</a></p>
+<p><a href="https://dev.mysql.com/doc/refman/5.7/en/communication-errors.html" target="_blank" rel="noopener">abort connection</a></p>
+<p><a href="https://bugs.mysql.com/bug.php?id=76661" target="_blank" rel="noopener">Mysql bug #76661</a></p>
+<p><a href="https://bugs.mysql.com/bug.php?id=81899" target="_blank" rel="noopener">Mysql #81899</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>没有别的意思</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/custom/wechat.png" alt="Tom 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/custom/alipay.jpg" alt="Tom 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/office/" rel="tag"># office</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/23/prototype-chain/" rel="next" title="简单了解原型链">
+                <i class="fa fa-chevron-left"></i> 简单了解原型链
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/02/BasicSortingAlgorithm/" rel="prev" title="基本排序算法">
+                基本排序算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/custom/ava.jpg"
+                alt="Tom" />
+            
+              <p class="site-author-name" itemprop="name">Tom</p>
+              <p class="site-description motion-element" itemprop="description">一名不知所措的IT从业者</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:xiaoheng.zh@gmail.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/113809036652138215181" target="_blank" title="Google" rel="external nofollow"><i class="fa fa-fw fa-google"></i>Google</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/xiaoheng_zhang" target="_blank" title="Twitter" rel="external nofollow"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/tom.zhang.313371" target="_blank" title="FB Page" rel="external nofollow"><i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://stackoverflow.com/users/9628832/xiaoheng-zhang" target="_blank" title="StackOverflow" rel="external nofollow"><i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">介绍 &amp;&amp; FAQ</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.1.</span> <span class="nav-text">onlyOffice是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.2.</span> <span class="nav-text">onlyOffice适用于谁？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.3.</span> <span class="nav-text">在云中托管我的门户网站是否安全？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.4.</span> <span class="nav-text">我可以通过手机访问我的门户吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.5.</span> <span class="nav-text">我们想自己维护ONLYOFFICE。那可能吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.6.</span> <span class="nav-text">我无法在门户网站的可用列表中找到我的语言。我该怎么做才能参与翻译？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.7.</span> <span class="nav-text">我有一个问题，这里没有涉及。我该怎么联系你？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">安装onlyOffice in Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">创建onlyoffice网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">安装MySQL数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.</span> <span class="nav-text">创建MySQL容器设置MySQL版本到5.7</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">安装Document Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.</span> <span class="nav-text">安装Mail Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.</span> <span class="nav-text">安装Community Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.6.</span> <span class="nav-text">备份</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tom</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" rel="external nofollow" href="https://theme-next.org">NexT.Gemini</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
