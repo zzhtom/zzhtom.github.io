@@ -1983,7 +1983,7 @@ pre .javascript .function {
   -ms-transition: -ms-transform 1s ease-out;
   transition: transform 1s ease-out;
 }
-img:hover {
+.site-author-image:hover {
   -webkit-transform: rotateZ(360deg);
   -moz-transform: rotateZ(360deg);
   -ms-transform: rotate(360deg);
@@ -2075,7 +2075,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b8a38e;
+  background: #24d040;
 }
 .links-of-blogroll {
   font-size: 13px;
