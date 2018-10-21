@@ -333,6 +333,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/10/21/Vue-CLI-3-使用百度地图/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/21/Vue-CLI-3-使用百度地图/" itemprop="url">
+                  Vue CLI 3 使用百度地图
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-21 09:44:12 / 修改时间：10:35:08" itemprop="dateCreated datePublished" datetime="2018-10-21T09:44:12+08:00">2018-10-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前提说明"><a class="header-anchor" href="#前提说明"></a>前提说明</h2>
+<p>Vue CLI 3 创建项目，目录大致如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">├── [ 512]  public</span><br><span class="line">│   ├── [2.2K]  favicon.ico</span><br><span class="line">│   └── [ 812]  index.html</span><br><span class="line">├── [ 512]  src</span><br><span class="line">│   ├── [ 709]  App.vue</span><br><span class="line">│   ├── [ 512]  assets</span><br><span class="line">│   ├── [ 512]  components</span><br><span class="line">│   ├── [ 277]  main.js</span><br><span class="line">│   ├── [1.2K]  router.js</span><br><span class="line">│   └── [ 512]  views</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>在项目根目录手动创建<code>vue.config.js webpack</code>配置文件,现在目录如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">├── [ 512]  public</span><br><span class="line">│   ├── [2.2K]  favicon.ico</span><br><span class="line">│   └── [ 812]  index.html</span><br><span class="line">├── [ 512]  src</span><br><span class="line">│   ├── [ 709]  App.vue</span><br><span class="line">│   ├── [ 512]  assets</span><br><span class="line">│   ├── [ 512]  components</span><br><span class="line">│   ├── [ 277]  main.js</span><br><span class="line">│   ├── [1.2K]  router.js</span><br><span class="line">│   └── [ 512]  views</span><br><span class="line">├── [1.6k]  vue.config.js</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><code>vue.config.js</code>内容大致如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  configureWebpack: &#123;</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// OR</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  configureWebpack: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="具体操作"><a class="header-anchor" href="#具体操作"></a>具体操作</h2>
+<p>在文件<code>@/public/index.html</code><sup>[1]</sup>中引入百度<code>javascript</code>文件，如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ... --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"https://api.map.baidu.com/api?v=2.0&amp;ak=您的秘钥"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>修改<code>vue.config.js</code>内容，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  configureWebpack: &#123;</span><br><span class="line">      externals: &#123;</span><br><span class="line">          <span class="string">"BMap"</span>: <span class="string">"BMap"</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// OR</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  configureWebpack: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">     config.externals = &#123;</span><br><span class="line">        <span class="string">"BMap"</span>: <span class="string">"BMap"</span></span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完成以上操作后，就可以在需要的地方引入<code>BMap</code>模块了，示例如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"map"</span> <span class="attr">class</span>=<span class="string">"map"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">import</span> BMap <span class="keyword">from</span> <span class="string">'BMap'</span> </span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">        methods: &#123;</span></span><br><span class="line"><span class="undefined">            initMap()&#123;</span></span><br><span class="line"><span class="javascript">                <span class="comment">// 百度地图API功能</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> map = <span class="keyword">new</span> BMap.Map(<span class="string">"map"</span>);          </span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> point = <span class="keyword">new</span> BMap.Point(<span class="number">118.750801</span>, <span class="number">31.944156</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">                map.centerAndZoom(point, 15);</span></span><br><span class="line"><span class="javascript">                map.enableScrollWheelZoom(<span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> marker = <span class="keyword">new</span> BMap.Marker(point); <span class="comment">// 创建标注    </span></span></span><br><span class="line"><span class="undefined">                map.addOverlay(marker);  </span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        mounted()&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">this</span>.initMap();</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"scss"</span> <span class="attr">scoped</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    // ...</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>[^1]: @代表项目根目录</p>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<p><a href="https://cli.vuejs.org/zh/guide/webpack.html" target="_blank" rel="noopener">Vue CLI 3 webpack 相关</a></p>
+<p><a href="https://webpack.js.org/configuration/externals/" target="_blank" rel="noopener">webpack externals</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/08/02/BasicSortingAlgorithm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -435,7 +592,7 @@
 <blockquote>
 <p>学习笔记,以下代码部分拷贝的维基百科，见链接</p>
 </blockquote>
-<h2>时间复杂度</h2>
+<h2 id="时间复杂度"><a class="header-anchor" href="#时间复杂度"></a>时间复杂度</h2>
 <blockquote>
 <p>    在计算机科学中，算法的<strong>时间复杂度</strong>是一个函数，它定性描述该算法的运行<strong>时间</strong>。 这是一个代表算法输入值的字符串的长度的函数。 <strong>时间复杂度</strong>常用大O符号表述，不包括这个函数的低阶项和首项系数。 使用这种方式时，<strong>时间复杂度</strong>可被称为是渐近的，亦即考察输入值大小趋近无穷时的情况。</p>
 </blockquote>
@@ -444,34 +601,34 @@ $$<br>
 \lim_{n\rightarrow+\infty} 	\frac{T(n)}{f(n)} = C(C为不为零的常数)<br>
 $$<br>
 C一般是算法中最大的语句频度，是最内层循环语句的执行次数。</p>
-<h2>基本排序算法</h2>
+<h2 id="基本排序算法"><a class="header-anchor" href="#基本排序算法"></a>基本排序算法</h2>
 <p><img src="https://upload-images.jianshu.io/upload_images/1156494-ab4cecff133d87b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="sort"></p>
 <p>图片from: <a href="https://www.jianshu.com/p/7d037c332a9d" target="_blank" rel="noopener">数据结构常见的八大排序算法</a></p>
-<h3>直接插入排序</h3>
+<h3 id="直接插入排序"><a class="header-anchor" href="#直接插入排序"></a>直接插入排序</h3>
 <blockquote>
 <p>    是一种简单直观的<a href="https://www.wikiwand.com/zh-hans/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">排序算法</a>。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。插入排序在实现上，通常采用in-place排序（即只需用到**O(1)**的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//JavaScript</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">straightInsertSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; len; i++)&#123; <span class="comment">//第一个元素无需排序</span></span><br><span class="line">        <span class="keyword">let</span> j = i - <span class="number">1</span>,</span><br><span class="line">            value = arr[i];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(j&gt;=<span class="number">0</span> &amp;&amp; arr[j] &gt; value)&#123;</span><br><span class="line">            arr[j+<span class="number">1</span>] = arr[j];</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        arr[j+<span class="number">1</span>] = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3>希尔算法</h3>
+<h3 id="希尔算法"><a class="header-anchor" href="#希尔算法"></a>希尔算法</h3>
 <blockquote>
 <p>在插入直接排序的基础上使用分组</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//JavaScript</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shellSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> step = <span class="built_in">Math</span>.floor(len / <span class="number">2</span>); step &gt; <span class="number">0</span>; step = <span class="built_in">Math</span>.floor(step / <span class="number">2</span>))&#123;</span><br><span class="line">         <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">let</span> j = i - step,</span><br><span class="line">                value = arr[i];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(j&gt;=<span class="number">0</span> &amp;&amp; arr[j] &gt; value)&#123;</span><br><span class="line">                arr[j+step] = arr[j];</span><br><span class="line">                j -= step;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            arr[j+step] = value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3>选择排序</h3>
+<h3 id="选择排序"><a class="header-anchor" href="#选择排序"></a>选择排序</h3>
 <blockquote>
 <p>    （Selection sort）是一种简单直观的<a href="https://www.wikiwand.com/zh-hans/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">排序算法</a>。它的工作原理如下。首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
 </blockquote>
 <p><strong>图示：</strong></p>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Selection_sort_animation.gif" alt="selectsort"></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//script</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="built_in">Array</span>.isArray(arr)) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; len - <span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">let</span> min = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; len; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[min] &gt; arr[j])</span><br><span class="line">                min = j;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">      <span class="keyword">let</span> temp = arr[min];</span><br><span class="line">		arr[min] = arr[i];</span><br><span class="line">		arr[i] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3>堆排序</h3>
+<h3 id="堆排序"><a class="header-anchor" href="#堆排序"></a>堆排序</h3>
 <blockquote>
 <p>    <strong>堆排序</strong>（英语：Heapsort）是指利用<a href="https://www.wikiwand.com/zh-cn/%E5%A0%86_(%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)" target="_blank" rel="noopener">堆</a>这种数据结构所设计的一种<a href="https://www.wikiwand.com/zh-cn/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">排序算法</a>。堆积是一个近似<a href="https://www.wikiwand.com/zh-cn/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91" target="_blank" rel="noopener">完全二叉树</a>的结构，并同时满足<strong>堆积的性质</strong>：即子结点的键值或索引总是小于（或者大于）它的父节点。</p>
 </blockquote>
 <p><strong>图示：</strong></p>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Sorting_heapsort_anim.gif" alt="img"></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">heapSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> arr = arr.slice(<span class="number">0</span>);</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">swap</span>(<span class="params">i, j</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> tmp = arr[i];</span><br><span class="line">		arr[i] = arr[j];</span><br><span class="line">		arr[j] = tmp;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">max_heapify</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">		<span class="comment">//建立父節點指標和子節點指標</span></span><br><span class="line">		<span class="keyword">var</span> dad = start;</span><br><span class="line">		<span class="keyword">var</span> son = dad * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (son &gt;= end)<span class="comment">//若子節點指標超過範圍直接跳出函數</span></span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		<span class="keyword">if</span> (son + <span class="number">1</span> &lt; end &amp;&amp; arr[son] &lt; arr[son + <span class="number">1</span>])<span class="comment">//先比較兩個子節點大小，選擇最大的</span></span><br><span class="line">			son++;</span><br><span class="line">		<span class="keyword">if</span> (arr[dad] &lt;= arr[son]) &#123;<span class="comment">//如果父節點小於子節點時，交換父子內容再繼續子節點和孫節點比較</span></span><br><span class="line">			swap(dad, son);</span><br><span class="line">			max_heapify(son, end);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> len = arr.length;</span><br><span class="line">	<span class="comment">//初始化，i從最後一個父節點開始調整</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="built_in">Math</span>.floor(len / <span class="number">2</span>) - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">		max_heapify(i, len);</span><br><span class="line">	<span class="comment">//先將第一個元素和已排好元素前一位做交換，再從新調整，直到排序完畢</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = len - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">		swap(<span class="number">0</span>, i);</span><br><span class="line">		max_heapify(<span class="number">0</span>, i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3>冒泡排序</h3>
+<h3 id="冒泡排序"><a class="header-anchor" href="#冒泡排序"></a>冒泡排序</h3>
 <blockquote>
 <p>    冒泡排序（英语：Bubble Sort）是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢「浮」到数列的顶端。</p>
 </blockquote>
@@ -479,7 +636,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Bubble_sort_animation.gif" alt="bubblesort"></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> i, j, temp,</span><br><span class="line">        length = arr.length;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; length - <span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; length - <span class="number">1</span> - i; j++)&#123;</span><br><span class="line">                        <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                temp = arr[j];</span><br><span class="line">                arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p><a href="https://jsbin.com/cewalig/edit?js,console" target="_blank" rel="noopener">运行源码</a></p>
-<h2>参考</h2>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
 <ol>
 <li><a href="https://www.wikiwand.com/zh-hans/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6" target="_blank" rel="noopener">时间复杂度wikiwand</a></li>
 <li><a href="https://www.wikiwand.com/zh-cn/%E5%A0%86%E6%8E%92%E5%BA%8F#/JavaScript" target="_blank" rel="noopener">堆排序</a></li>
@@ -644,27 +801,27 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 <p>    本文主要记录onlyoffice安装的过程，在安装过程中可能不会遇到问题，但是也可能会遇到各种各样的问题，如果有错误，那肯定是你错了,下文中主要是集成安装，服务包含Mysql Server、Mail Server、Community Server以及Document Server,欢迎批评指正</p>
 </blockquote>
 <p>题外话：由于本人机器很菜，Mail Server使用Mysql Server时，没跑起来…</p>
-<h2>介绍 &amp;&amp; FAQ</h2>
-<h4><strong>onlyOffice是什么？</strong></h4>
+<h2 id="介绍-faq"><a class="header-anchor" href="#介绍-faq"></a>介绍 &amp;&amp; FAQ</h2>
+<h4 id="onlyoffice是什么？"><a class="header-anchor" href="#onlyoffice是什么？"></a><strong>onlyOffice是什么？</strong></h4>
 <p>    ONLYOFFICE是一个用于业务协作，文档和项目管理的多功能门户。它允许您组织业务任务和里程碑，存储和共享您的公司或个人文档，使用社交网络工具，如博客和论坛，以及通过公司IM与您的团队成员进行沟通。</p>
-<h4><strong>onlyOffice适用于谁？</strong></h4>
+<h4 id="onlyoffice适用于谁？"><a class="header-anchor" href="#onlyoffice适用于谁？"></a><strong>onlyOffice适用于谁？</strong></h4>
 <p>    ONLYOFFICE适用于寻求有效的业务流程管理平台的中小型公司。</p>
-<h4><strong>在云中托管我的门户网站是否安全？</strong></h4>
+<h4 id="在云中托管我的门户网站是否安全？"><a class="header-anchor" href="#在云中托管我的门户网站是否安全？"></a><strong>在云中托管我的门户网站是否安全？</strong></h4>
 <p>    您的门户网站由以下Web服务提供支持：Amazon EC2，Amazon S3和Amazon RDS。亚马逊网络服务（AWS）在全球数千名开发人员使用的云中提供可靠的基础架构。此外，您可以随时备份存储在门户网站上的数据。因此，您可以确保您的数据安全且受到保护。</p>
-<h4><strong>我可以通过手机访问我的门户吗？</strong></h4>
+<h4 id="我可以通过手机访问我的门户吗？"><a class="header-anchor" href="#我可以通过手机访问我的门户吗？"></a><strong>我可以通过手机访问我的门户吗？</strong></h4>
 <p>    目前正在开发位于.com域区域中的门户的移动应用程序。 .org域区域门户和服务器解决方案的移动版本不可用。 现在可以下载适用于iOS的移动ONLYOFFICE Documents应用程序。它允许您查看和编辑.com门户中存储的文本文档，创建新文档，管理和共享它们。</p>
-<h4><strong>我们想自己维护ONLYOFFICE。那可能吗？</strong></h4>
+<h4 id="我们想自己维护onlyoffice-那可能吗？"><a class="header-anchor" href="#我们想自己维护onlyoffice-那可能吗？"></a><strong>我们想自己维护ONLYOFFICE。那可能吗？</strong></h4>
 <p>    是。可以下载和编译源代码。此后，您可以将其部署在您自己的服务器上。源代码在SourceForge上列出，并在GNU Affero通用公共许可条款下分发。有关更多详细信息，请参阅服务器版本常见问题部分。</p>
-<h4><strong>我无法在门户网站的可用列表中找到我的语言。我该怎么做才能参与翻译？</strong></h4>
+<h4 id="我无法在门户网站的可用列表中找到我的语言-我该怎么做才能参与翻译？"><a class="header-anchor" href="#我无法在门户网站的可用列表中找到我的语言-我该怎么做才能参与翻译？"></a><strong>我无法在门户网站的可用列表中找到我的语言。我该怎么做才能参与翻译？</strong></h4>
 <p>    目前，门户网站的界面有21种语言版本，它也被翻译成二十多种语言，但如果您的母语尚未列出，您可以为ONLYOFFICE翻译做出贡献。请阅读如何成为ONLYOFFICE翻译？</p>
 <p>    发送您的请求并访问我们的ONLYOFFICE在线翻译系统的指南。 您也可以直接发送电子邮件至documentation@onlyoffice.com</p>
-<h4><strong>我有一个问题，这里没有涉及。我该怎么联系你？</strong></h4>
+<h4 id="我有一个问题-这里没有涉及-我该怎么联系你？"><a class="header-anchor" href="#我有一个问题-这里没有涉及-我该怎么联系你？"></a><strong>我有一个问题，这里没有涉及。我该怎么联系你？</strong></h4>
 <p>    我们不断改进ONLYOFFICE，为您的业务需求提供高效的解决方案。因此，欢迎您提供反馈和建议。请发送电子邮件至support@onlyoffice.com告诉我们ONLYOFFICE如何为您服务。</p>
 <p>注：以上为译文，详情请参考<a href="faq">FAQ</a></p>
-<h2>安装onlyOffice in Docker</h2>
-<h3>创建onlyoffice网络</h3>
+<h2 id="安装onlyoffice-in-docker"><a class="header-anchor" href="#安装onlyoffice-in-docker"></a>安装onlyOffice in Docker</h2>
+<h3 id="创建onlyoffice网络"><a class="header-anchor" href="#创建onlyoffice网络"></a>创建onlyoffice网络</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker network create --driver bridge onlyoffice</span><br></pre></td></tr></table></figure>
-<h3>安装MySQL数据库</h3>
+<h3 id="安装mysql数据库"><a class="header-anchor" href="#安装mysql数据库"></a>安装MySQL数据库</h3>
 <p><strong>创建外部挂目录[可选]</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/mysql/conf.d"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/mysql/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/mysql/initdb"</span>;</span><br></pre></td></tr></table></figure>
 <p><strong>创建MySQL服务器Docker容器。创建配置文件</strong></p>
@@ -672,20 +829,20 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 <p><strong>创建SQL脚本用于生成用户以及赋予对应的权限。 ONLYOFFICE社区服务器需要onlyoffice_user，ONLYOFFICE邮件服务器需要mail_admin</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"CREATE USER 'onlyoffice_user'@'localhost' IDENTIFIED BY 'onlyoffice_pass';</span></span><br><span class="line"><span class="string">CREATE USER 'mail_admin'@'localhost' IDENTIFIED BY 'Isadmin123';</span></span><br><span class="line"><span class="string">GRANT ALL PRIVILEGES ON * . * TO 'root'@'%' IDENTIFIED BY 'my-secret-pw';</span></span><br><span class="line"><span class="string">GRANT ALL PRIVILEGES ON * . * TO 'onlyoffice_user'@'%' IDENTIFIED BY 'onlyoffice_pass';</span></span><br><span class="line"><span class="string">GRANT ALL PRIVILEGES ON * . * TO 'mail_admin'@'%' IDENTIFIED BY 'Isadmin123';</span></span><br><span class="line"><span class="string">FLUSH PRIVILEGES;"</span> &gt; /app/onlyoffice/mysql/initdb/setup.sql</span><br></pre></td></tr></table></figure>
 <p>注：为了方面安装，直接使用了默认密码，以上密码是可修改的，以及指定可访问数据库的主机</p>
-<h4><strong>创建MySQL容器设置MySQL版本到5.7</strong></h4>
+<h4 id="创建mysql容器设置mysql版本到5-7"><a class="header-anchor" href="#创建mysql容器设置mysql版本到5-7"></a><strong>创建MySQL容器设置MySQL版本到5.7</strong></h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --net onlyoffice -i -t -d --restart=always --name onlyoffice-mysql-server \</span><br><span class="line"> -v /app/onlyoffice/mysql/conf.d:/etc/mysql/conf.d \</span><br><span class="line"> -v /app/onlyoffice/mysql/data:/var/lib/mysql \</span><br><span class="line"> -v /app/onlyoffice/mysql/initdb:/docker-entrypoint-initdb.d \</span><br><span class="line"> -e MYSQL_ROOT_PASSWORD=my-secret-pw \</span><br><span class="line"> -e MYSQL_DATABASE=onlyoffice \</span><br><span class="line"> mysql:5.7</span><br></pre></td></tr></table></figure>
 <p>-v: 挂载本地目录</p>
 <p>-e: 设置环境变量</p>
 <p><strong>可挂载目录[volumes]：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">    - ./config/mysql/conf.d:/etc/mysql/conf.d </span><br><span class="line">    - ./config/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d</span><br><span class="line">    - mysql_data:/var/lib/mysql</span><br></pre></td></tr></table></figure>
-<h3>安装Document Server</h3>
+<h3 id="安装document-server"><a class="header-anchor" href="#安装document-server"></a>安装Document Server</h3>
 <p><strong>创建外部挂目录[可选]</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/logs"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/lib"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/db"</span>;</span><br></pre></td></tr></table></figure>
 <p><strong>安装</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --net onlyoffice -i -t -d --restart=always --name onlyoffice-document-server \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/logs:/var/<span class="built_in">log</span>/onlyoffice  \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data  \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/lib:/var/lib/onlyoffice \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/db:/var/lib/postgresql \</span><br><span class="line">    onlyoffice/documentserver</span><br></pre></td></tr></table></figure>
 <p><strong>可挂载目录：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">volumes:</span><br><span class="line">    - document_data:/var/www/onlyoffice/Data</span><br><span class="line">    - document_log:/var/<span class="built_in">log</span>/onlyoffice</span><br><span class="line">    - ./document_fonts:/usr/share/fonts/truetype/custom</span><br><span class="line">    - document_forgotten:/var/lib/onlyoffice/documentserver/App_Data/cache/files/forgotten</span><br></pre></td></tr></table></figure>
-<h3>安装Mail Server</h3>
+<h3 id="安装mail-server"><a class="header-anchor" href="#安装mail-server"></a>安装Mail Server</h3>
 <p><strong>创建外部挂目录[可选]</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/MailServer/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/MailServer/data/certs"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/MailServer/logs"</span>;</span><br></pre></td></tr></table></figure>
 <p><strong>安装</strong></p>
@@ -695,7 +852,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 <p>注：<a href="http://yourdomain.com" target="_blank" rel="noopener">yourdomain.com</a> 更换您的Mail Server的域名</p>
 <p><strong>可选参数：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">    - MYSQL_SERVER=onlyoffice-mysql-server</span><br><span class="line">    - MYSQL_SERVER_PORT=3306</span><br><span class="line">    - MYSQL_ROOT_USER=onlyoffice_mailserver_user</span><br><span class="line">    - MYSQL_ROOT_PASSWD=onlyoffice_mailserver_user_pass</span><br><span class="line">    - MYSQL_SERVER_DB_NAME=onlyoffice_mailserver</span><br></pre></td></tr></table></figure>
-<h3>安装Community Server</h3>
+<h3 id="安装community-server"><a class="header-anchor" href="#安装community-server"></a>安装Community Server</h3>
 <p><strong>创建外部挂目录[可选]</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/CommunityServer/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/CommunityServer/mysql"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/CommunityServer/logs"</span>;</span><br></pre></td></tr></table></figure>
 <p><strong>安装</strong></p>
@@ -713,9 +870,9 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect -f <span class="string">'&#123;&#123;range .NetworkSettings.Networks&#125;&#125;&#123;&#123;.IPAddress&#125;&#125;&#123;&#123;end&#125;&#125;'</span> onlyoffice-mail-server</span><br></pre></td></tr></table></figure>
 <p>以上步骤正确完成之后，就可以开始您的onlyOffice之旅了， <a href="https//localhost">点击开始</a></p>
 <p>注： 如果不指定数据库则使用自身的数据库</p>
-<h3>备份</h3>
+<h3 id="备份"><a class="header-anchor" href="#备份"></a>备份</h3>
 <p>请阅读 <a href="https://helpcenter.onlyoffice.com/tipstricks/data-backup-restore.aspx" target="_blank" rel="noopener">Data backup</a>，付费用户享有的权利🙃, 当然也可以手动备份</p>
-<h2>参考</h2>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
 <p><a href="https://github.com/ONLYOFFICE/Docker-CommunityServer" target="_blank" rel="noopener">Docker-CommunityServer</a></p>
 <p><a href="https://helpcenter.onlyoffice.com/server/docker/community/install-integrated.aspx" target="_blank" rel="noopener">Installing all three servers (Community Server, Document Server, Mail Server) integrated</a></p>
 <p><a id="faq"><a href="https://helpcenter.onlyoffice.com/faq/faq.aspx" target="_blank" rel="noopener">General Questions FAQ</a></a></p>
@@ -896,7 +1053,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
             <blockquote>
 <p>不要慨叹生活的痛苦！慨叹是弱者。——高尔基</p>
 </blockquote>
-<h4>温故知新</h4>
+<h4 id="温故知新"><a class="header-anchor" href="#温故知新"></a>温故知新</h4>
 <ul>
 <li>构造函数才有原型<code>prototype</code></li>
 <li>原型也是对象，由<code>Object</code>创建</li>
@@ -907,7 +1064,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 <li>原型对象中的构造函数(<code>constructor</code>)指向当前构造函数</li>
 </ul>
 <p>注：<code>null</code>对象除外</p>
-<h4>图解</h4>
+<h4 id="图解"><a class="header-anchor" href="#图解"></a>图解</h4>
 <ol>
 <li><strong>简单的继承原型链图</strong></li>
 </ol>
@@ -918,10 +1075,10 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 <p><img src="https://upload-images.jianshu.io/upload_images/4740192-f3276363e4b5341b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509" alt=""></p>
 </li>
 </ol>
-<h4>拆解图</h4>
+<h4 id="拆解图"><a class="header-anchor" href="#拆解图"></a>拆解图</h4>
 <p><img src="https://docs.google.com/drawings/d/e/2PACX-1vSzUFGozCQizNXU8FkI4Q9ooA4s1uVY4EfDzDDLqhTtKGbNG7n5ZlMx8BVDc6tBnGAXdDqBJbSgzYDk/pub?w=801&amp;h=649" alt="原型链拆解图"></p>
 <p>声明：文中图片均来自网络，如有错误烦请邮件告知小弟</p>
-<h2>附录</h2>
+<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/proto" target="_blank" rel="noopener">Object</a></p>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain" target="_blank" rel="noopener">继承与原型链</a></p>
 <p><a href="https://alanstorm.com/tracing-javascripts-prototype-chain/" target="_blank" rel="noopener">Tracing Javascript’s Prototype Chain</a></p>
@@ -1097,7 +1254,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
             <blockquote>
 <p>学习并记录shell脚本中参数替换的几种替换格式</p>
 </blockquote>
-<h5>格式一</h5>
+<h5 id="格式一"><a class="header-anchor" href="#格式一"></a>格式一</h5>
 <ul>
 <li>
 <p>${parameter-default} – 如果变量parameter没被声明, 那么就使用默认值.</p>
@@ -1108,7 +1265,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">default="默认值"</span><br><span class="line">echo $&#123;parameter:-$&#123;default&#125;&#125; #parameter 未声明</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出：默认值</span></span><br><span class="line">parameter=</span><br><span class="line">echo $&#123;parameter:-$&#123;default&#125;&#125; #parameter 已声明</span><br><span class="line"><span class="meta">#</span><span class="bash">输出：默认值</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5>格式二</h5>
+<h5 id="格式二"><a class="header-anchor" href="#格式二"></a>格式二</h5>
 <ul>
 <li>
 <p>${parameter=default} – 如果变量parameter没声明, 那么就把它的值设为default.</p>
@@ -1119,7 +1276,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">default="默认值"</span><br><span class="line">echo $&#123;parameter:=$&#123;default&#125;&#125; #parameter 未声明</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出：默认值</span></span><br><span class="line">parameter=</span><br><span class="line">echo $&#123;parameter:=$&#123;default&#125;&#125; #parameter 已声明</span><br><span class="line"><span class="meta">#</span><span class="bash">输出：默认值</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5>格式三</h5>
+<h5 id="格式三"><a class="header-anchor" href="#格式三"></a>格式三</h5>
 <ul>
 <li>
 <p>${parameter+default} – 如果变量parameter被声明了, 那么就使用default, 否则就使用 null字符串.</p>
@@ -1130,7 +1287,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">default="默认值"</span><br><span class="line">echo $&#123;parameter:+$&#123;default&#125;&#125; #parameter 未声明</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出：</span></span><br><span class="line">parameter=</span><br><span class="line">echo $&#123;parameter:+$&#123;default&#125;&#125; #parameter 已声明</span><br><span class="line"><span class="meta">#</span><span class="bash">输出：</span></span><br><span class="line">parameter= '被赋值'</span><br><span class="line">echo $&#123;parameter:+$&#123;default&#125;&#125; #parameter 已赋值</span><br><span class="line"><span class="meta">#</span><span class="bash">输出：默认值</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5>格式四</h5>
+<h5 id="格式四"><a class="header-anchor" href="#格式四"></a>格式四</h5>
 <ul>
 <li>
 <p>${parameter?default} – 如果parameter已经被声明, 那么就使用设置的值, 否则打印default 错误消息.</p>
@@ -1319,9 +1476,9 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 <blockquote>
 <p>分享一个简单的项目管理脚本，有待于补充，欢迎指正</p>
 </blockquote>
-<h2>前提说明</h2>
+<h2 id="前提说明"><a class="header-anchor" href="#前提说明"></a>前提说明</h2>
 <p>    本文使用的部署工具使用的是<a href="http://pm2.keymetrics.io/" target="_blank" rel="noopener">pm2</a>，项目存储在<a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>, 因此脚本主要做的的事情就是从GitHub上拉取最新的代码进行本地部署，项目服务的启动、关闭、重启、重载配置文件（pm2）</p>
-<h2>脚本功能</h2>
+<h2 id="脚本功能"><a class="header-anchor" href="#脚本功能"></a>脚本功能</h2>
 <ul>
 <li>启动服务</li>
 <li>关闭服务</li>
@@ -1330,11 +1487,11 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 <li>更新项目</li>
 <li>帮助说明</li>
 </ul>
-<h2>脚本内容</h2>
+<h2 id="脚本内容"><a class="header-anchor" href="#脚本内容"></a>脚本内容</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">myapp_path=~/projectPath  # 项目路径</span><br><span class="line">cd $&#123;myapp_path&#125;</span><br><span class="line">pid=$(ps -ef |grep node|grep -v grep|awk '&#123;print $2&#125;') # 获取项目进程号</span><br><span class="line">start()&#123;</span><br><span class="line">    if [ -z $&#123;pid&#125; ]</span><br><span class="line">        then</span><br><span class="line">	    pm2 start pm2.json</span><br><span class="line">	else</span><br><span class="line">	    echo -e "\E[1;32;40mAPP now at starting......"; tput sgr0</span><br><span class="line">    fi	</span><br><span class="line">&#125;</span><br><span class="line">stop()&#123;</span><br><span class="line">    if [ -z $&#123;pid&#125; ]</span><br><span class="line">        then</span><br><span class="line">	    echo -e "\E[1;31;40mAPP have been stop."; tput sgr0</span><br><span class="line">        else</span><br><span class="line">	    pm2 stop pm2.json</span><br><span class="line">    fi</span><br><span class="line">&#125;</span><br><span class="line">restart()&#123;</span><br><span class="line">    pm2 restart pm2.json</span><br><span class="line">&#125;</span><br><span class="line">reload()&#123;</span><br><span class="line">    pm2 reload pm2.json</span><br><span class="line">&#125;</span><br><span class="line">refresh()&#123;</span><br><span class="line">    git pull</span><br><span class="line">    npm run compile</span><br><span class="line">    restart</span><br><span class="line">&#125;</span><br><span class="line">help()&#123;</span><br><span class="line">cat&lt;&lt;EOF</span><br><span class="line">			USE GUIDE</span><br><span class="line"></span><br><span class="line">		1.启动</span><br><span class="line"><span class="meta">			$</span><span class="bash"> myapp start</span></span><br><span class="line">		2.关闭</span><br><span class="line"><span class="meta">			$</span><span class="bash"> myapp stop</span></span><br><span class="line">		3.重启</span><br><span class="line"><span class="meta">			$</span><span class="bash"> myapp restart</span></span><br><span class="line">		4.重载配置文件</span><br><span class="line"><span class="meta">			$</span><span class="bash"> myapp reload</span></span><br><span class="line">		5.更新项目</span><br><span class="line"><span class="meta">			$</span><span class="bash"> myapp refresh</span></span><br><span class="line"></span><br><span class="line">EOF</span><br><span class="line">&#125;</span><br><span class="line">main()&#123;</span><br><span class="line">    if [ $# -ne 1 ];then</span><br><span class="line">        help</span><br><span class="line">	exit 1</span><br><span class="line">    fi</span><br><span class="line">    case $1 in</span><br><span class="line">        "start")</span><br><span class="line">	    start</span><br><span class="line">	;;	</span><br><span class="line">	"stop")</span><br><span class="line">	    stop</span><br><span class="line">	;;</span><br><span class="line">	"restart")</span><br><span class="line">	    restart</span><br><span class="line">	;;</span><br><span class="line">	"refresh")</span><br><span class="line">	    refresh</span><br><span class="line">	;;</span><br><span class="line">	"reload")</span><br><span class="line">	    reload</span><br><span class="line">	;;</span><br><span class="line">	*)</span><br><span class="line">	    help</span><br><span class="line">	;;</span><br><span class="line">    esac</span><br><span class="line">&#125;</span><br><span class="line">main $@</span><br></pre></td></tr></table></figure>
-<h2>总结</h2>
+<h2 id="总结"><a class="header-anchor" href="#总结"></a>总结</h2>
 <p>    通过shell编写一些脚本，可以减少我们工作当中经常重复的工作，对于运维工作者是一种必不可少的技能了，当然本文展示的知识一些简单的操作，如果需要更加自动化部署项目，我们可以考虑使用GitHub上的webhook功能</p>
-<h2>附录</h2>
+<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
 <p><a href="https://jenkins.io/" target="_blank" rel="noopener">jenkins</a></p>
 <p><a href="http://www.walle-web.io/" target="_blank" rel="noopener">瓦力上线部署</a></p>
 <p><a href="https://www.wikiwand.com/en/Comparison_of_continuous_integration_software" target="_blank" rel="noopener">Comparison of continuous integration software</a></p>
@@ -1493,16 +1650,16 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 <p>    内容主要用于自己对资料的整理以及日后查阅，无任何其他目的，对于内容有不正确的地方还请邮箱联系小弟，在此先谢过。</p>
 </blockquote>
 <hr>
-<h2>session、cookie出现的原因</h2>
+<h2 id="session-cookie出现的原因"><a class="header-anchor" href="#session-cookie出现的原因"></a>session、cookie出现的原因</h2>
 <p>​    http无状态的协议，什么是无状态呢，是指http没有记忆的功能。如果没有状态的情况下，需要每次链接都传送大量数据，比如说在购物的时候，如果没有cookie和session每浏览加入购物车一次都得重新登陆。<br>
 为了解决这一问题，两种用于保持HTTP连接状态的技术就应运而生了，一个是Cookie，而另一个则是Session。</p>
-<h2>cookie?</h2>
+<h2 id="cookie"><a class="header-anchor" href="#cookie"></a>cookie?</h2>
 <blockquote>
 <p>This document defines the HTTP Cookie and Set-Cookie header fields.These header fields can be used by HTTP servers to store state (called cookies) at HTTP user agents, letting the servers maintain a stateful session over the mostly stateless HTTP protocol.  Although cookies have many historical infelicities that degrade their security and privacy, the Cookie and Set-Cookie header fields are widely used on the Internet.  This document obsoletes RFC 2965.</p>
 </blockquote>
 <p>​    HTTP Cookie（也叫Web Cookie或浏览器Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。</p>
 <p>​    通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie使基于无状态的HTTP协议记录稳定的状态信息成为了可能。</p>
-<h3>解决问题？</h3>
+<h3 id="解决问题？"><a class="header-anchor" href="#解决问题？"></a>解决问题？</h3>
 <p>Cookie主要用于以下三个方面：</p>
 <ul>
 <li>会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）</li>
@@ -1511,43 +1668,43 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 </ul>
 <p>​    Cookie曾一度用于客户端数据的存储，因当时并没有其它合适的存储办法而作为唯一的存储手段，但现在随着现代浏览器开始支持各种各样的存储方式，Cookie渐渐被淘汰。由于服务器指定Cookie后，浏览器的每次请求都会携带Cookie数据，会带来额外的性能开销（尤其是在移动环境下）。新的浏览器API已经允许开发者直接将数据存储到本地，如使用 Web storage API （本地存储和会话存储）或 IndexedDB 。</p>
 <p><em>注： 客户端维护会话状态</em></p>
-<h2>session?</h2>
+<h2 id="session"><a class="header-anchor" href="#session"></a>session?</h2>
 <p><strong>session定义(来源API文档)</strong></p>
 <blockquote>
 <p>Provides a way to identify a user across more than one page request or visit to a Web site and to store information about that user.</p>
 </blockquote>
 <p>【译文】：为用户识别多个页面请求或访问Web站点，并存储有关该用户的信息提供一种方法。</p>
 <p>​    是指一类用来在客户端与服务器端之间保持状态的解决方案。 有时候Session也用来指这种解决方案的存储结构或服务器端的一种存储会话的机制</p>
-<h3>运行机制</h3>
+<h3 id="运行机制"><a class="header-anchor" href="#运行机制"></a>运行机制</h3>
 <p>​    当程序需要为某个客户端的请求创建一个session的时候，服务器首先检查这个客户端的请求里是否已包含了一个session标识 - 称为session id，如果已包含一个session id则说明以前已经为此客户端创建过session，服务器就按照session id把这个session检索出来使用（如果检索不到，可能会新建一个），如果客户端请求不包含session id，则为此客户端创建一个session并且生成一个与此session相关联的session id，session id的值应该是一个既不会重复，又不容易被找到规律以仿造的字符串，这个session id将被在本次响应中返回给客户端保存。</p>
-<h3>解决问题？</h3>
+<h3 id="解决问题？-v2"><a class="header-anchor" href="#解决问题？-v2"></a>解决问题？</h3>
 <p>    会话状态管理(session用于在用户身份验证后跟踪用户行为轨迹)</p>
 <p>持久性方式：文件、数据库、客户端cookie</p>
 <p><em>注： 服务端维护会话状态</em></p>
-<h3>小总结[session]</h3>
+<h3 id="小总结-session"><a class="header-anchor" href="#小总结-session"></a>小总结[session]</h3>
 <ol>
 <li>浏览器会话期间： 一系列的请求响应事务</li>
 <li>session机制：是指一类用来在客户端与服务器之间保持状态的解决方案</li>
 <li>session：有时候session也用来指这种解决方案的存储结构，如“把xxx保存在session里</li>
 <li>HttpSession：由于各种用于web开发的语言在一定程度上都提供了对这种解决方案的支持，所以在某种特定语言的语境下，session也被用来指代该语言的解决方案，比如经常把Java里提供的javax.servlet.http.HttpSession简称为session</li>
 </ol>
-<h2>cookie 与 session 的关系</h2>
+<h2 id="cookie-与-session-的关系"><a class="header-anchor" href="#cookie-与-session-的关系"></a>cookie 与 session 的关系</h2>
 <ol>
 <li>session技术基于cookie没有cookie,session也无法完成</li>
 <li>浏览器在第一次访问服务器时，服务器发现没有携带sessionId,会自动创建session对象。并将创建的cookie对象保存sessionId发送给浏览器。</li>
 <li>在浏览器发送请求时，带有cookieid的session</li>
 </ol>
-<h2>参考</h2>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
 <p><a href="https://tools.ietf.org/html/rfc6265#page-13" target="_blank" rel="noopener"> HTTP State Management Mechanism </a></p>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies" target="_blank" rel="noopener">HTTP cookies</a></p>
 <p><a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank" rel="noopener">Cookies - Information that websites store on your computer</a></p>
 <p><a href="http://justsee.iteye.com/blog/1570652" target="_blank" rel="noopener">Session机制详解</a></p>
 <p><a href="https://zh.wikipedia.org/wiki/Cookie" target="_blank" rel="noopener">Cookie</a></p>
-<h2>附录</h2>
-<h3>cookie分类</h3>
-<h4>会话期Cookie</h4>
+<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
+<h3 id="cookie分类"><a class="header-anchor" href="#cookie分类"></a>cookie分类</h3>
+<h4 id="会话期cookie"><a class="header-anchor" href="#会话期cookie"></a>会话期Cookie</h4>
 <p>    会话期Cookie是最简单的Cookie：浏览器关闭之后它会被自动删除，也就是说它仅在会话期内有效。会话期Cookie不需要指定过期时间（<code>Expires</code>）或者有效期（Max-Age）。需要注意的是，有些浏览器提供了会话恢复功能，这种情况下即使关闭了浏览器，会话期Cookie也会被保留下来，就好像浏览器从来没有关闭一样。</p>
-<h4>持久性Cookie</h4>
+<h4 id="持久性cookie"><a class="header-anchor" href="#持久性cookie"></a>持久性Cookie</h4>
 <p>    和关闭浏览器便失效的会话期Cookie不同，持久性Cookie可以指定一个特定的过期时间（<code>Expires</code>）或有效期（<code>Max-Age</code>）。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;</span><br></pre></td></tr></table></figure>
 <p><strong>提示:</strong> 当Cookie的过期时间被设定时，设定的日期和时间只与客户端相关，而不是服务端。</p>
@@ -1725,7 +1882,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 </blockquote>
 <p><red><em>注：正则表达式就是对字符串的操作</em></red></p>
 <hr>
-<h2>正则表达式语法</h2>
+<h2 id="正则表达式语法"><a class="header-anchor" href="#正则表达式语法"></a>正则表达式语法</h2>
 <p>    创建正则表达式有两种表达方式，一种就是非常规范的 <code>new</code> 方式，另一种就是Perl风格的表达式。说不上谁好谁坏，各有各的优缺点。 就看您的喜好了🤔</p>
 <ul>
 <li>
@@ -1749,7 +1906,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 </li>
 </ul>
 <hr>
-<h2>修饰符</h2>
+<h2 id="修饰符"><a class="header-anchor" href="#修饰符"></a>修饰符</h2>
 <table>
 <thead>
 <tr>
@@ -1773,7 +1930,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 </tbody>
 </table>
 <p><red><em>注:m  使用时，只有匹配字符串中包含\n，并且正则表达式中包含^或$行首行尾，m 修饰符才会生效</em></red></p>
-<h2>‌中括号[ ]</h2>
+<h2 id="中括号"><a class="header-anchor" href="#中括号"></a>‌中括号[ ]</h2>
 <table>
 <thead>
 <tr>
@@ -1808,7 +1965,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 </tr>
 </tbody>
 </table>
-<h2>‌元字符</h2>
+<h2 id="元字符"><a class="header-anchor" href="#元字符"></a>‌元字符</h2>
 <table>
 <thead>
 <tr>
@@ -1891,7 +2048,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 </tr>
 </tbody>
 </table>
-<h2>‌量词</h2>
+<h2 id="量词"><a class="header-anchor" href="#量词"></a>‌量词</h2>
 <table>
 <thead>
 <tr>
@@ -1942,7 +2099,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 </tr>
 </tbody>
 </table>
-<h2>‌<code>regexp</code>方法</h2>
+<h2 id="regexp方法"><a class="header-anchor" href="#regexp方法"></a>‌<code>regexp</code>方法</h2>
 <table>
 <thead>
 <tr>
@@ -1965,7 +2122,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 </tr>
 </tbody>
 </table>
-<h2>‌<code>string</code>支持正则的方法</h2>
+<h2 id="string支持正则的方法"><a class="header-anchor" href="#string支持正则的方法"></a>‌<code>string</code>支持正则的方法</h2>
 <table>
 <thead>
 <tr>
@@ -1992,7 +2149,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 </tr>
 </tbody>
 </table>
-<h2>示例展示</h2>
+<h2 id="示例展示"><a class="header-anchor" href="#示例展示"></a>示例展示</h2>
 <table>
 <thead>
 <tr>
@@ -2177,12 +2334,12 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
       
         
           
-            <h2>上篇</h2>
+            <h2 id="上篇"><a class="header-anchor" href="#上篇"></a>上篇</h2>
 <p>    最近小弟做了一个艰难的决定 ☺ ，接下来的即将面临着一段相对艰难的日子。不用多疑，因为买了人生中的第一台macbook pro,凭心而讲这个决定其实很早之前就已经萌生了，记得当时正在学习<a href="https://developer.apple.com/swift/" title="swift" target="_blank" rel="noopener">swift</a>（Apple新出来的开发语言，也不怎么新了），也就是在2016年10月份左右，当时刚毕业没有多久，在第一家公司需要Apple应用开发人员，顺势便开始了我的Apple之路。<br>
     当时因为身上并没有什么闲钱（吃喝还是可以的），想买一台mac，⊙﹏⊙‖∣ 只是想想而已，但是脚步并未有放弃，我把自己的<a href="http://www.gateway.com/gw/zh/CN/content/home" title="gateway官网" target="_blank" rel="noopener">gateway</a>笔记本装了一个黑苹果，哎！装上是可以的但让人头痛的是合适的驱动太难找了，目前我的黑苹果无线网卡驱动，电池驱动还没有着落…<br>
 <img src="/2017/07/22/showmacbook/hpg.png" alt="微博记录"><br>
     抒情就此打住，下面就来看看今天（2017年7月22日）刚买到的macbook pro吧，在此感谢弟兄们的推荐以及苹果的叶子客服给与的讲解与解惑，更是要感谢快递小哥在炎炎的夏日能够准时的送达，你们辛苦了，都不容易相互尊重，相互理解。</p>
-<h2>下篇</h2>
+<h2 id="下篇"><a class="header-anchor" href="#下篇"></a>下篇</h2>
 <p>    下面我们开始上图了，步入正规<sub>拆开它</sub></p>
 <ul>
 <li>
@@ -2223,7 +2380,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 <img src="/2017/07/22/showmacbook/dlm.jpg" alt="庐山第五面"></p>
 </li>
 </ul>
-<h2>结束</h2>
+<h2 id="结束"><a class="header-anchor" href="#结束"></a>结束</h2>
 <p>梦想 奋斗 坚持</p>
 
           
@@ -2365,7 +2522,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
         
           
             <p><strong><code>水一篇...</code></strong></p>
-<h2>上午</h2>
+<h2 id="上午"><a class="header-anchor" href="#上午"></a>上午</h2>
 <p>    早上起来已是八点半左右，看了最长的电影指环王，经过几天的努力（😏）只剩下四五十分钟左右，大概看完了有二十分钟左右就开始报幕仔细看了一下竟然有二十多分钟左右。真是😥<br>
     赶紧起床洗漱完毕，戴上耳机骑着电动车，一路向东，去之前的房东阿姨那里，当然是为了押金。<br>
     时间很快大约十一点左右到达目的地，事情当然办的很顺利（主要是有合同在手），和房东阿姨寒暄了几句，拿了钱，赶紧撤了，随后骑车直奔银行找了附近的邮政储蓄，结果可想而知，尴尬没有办过邮政的卡，算了直奔地铁站，上了地铁，把钱通过某宝发给了兄弟们，完事。<br>
@@ -2373,174 +2530,20 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
     时间大约在11点二十左右，开始一步一步的登山，时间在跑当然我却在走登山的阶梯，……差不多五十分钟左右过去了(没办法，身体素质好歇了好几次)😊<br>
     十二点一刻左右最终抵达了山顶，俗话说得好，尽吾志也而不能至者，可以无悔矣。<br>
 ‌这句看着怎么这么别扭呢，还是换一句吧，你所走的路，只为更好的风景（绝对不是卖弄）😆</p>
-<h2>中午</h2>
+<h2 id="中午"><a class="header-anchor" href="#中午"></a>中午</h2>
 <p>    <br>
 表示一直在下山的路上（因为选择了另外一条下山的道路）‌</p>
-<h2>下午</h2>
+<h2 id="下午"><a class="header-anchor" href="#下午"></a>下午</h2>
 <p>    <br>
 表示一直在回去路上…</p>
-<h2>晚上</h2>
+<h2 id="晚上"><a class="header-anchor" href="#晚上"></a>晚上</h2>
 <p>    <br>
 敲了几行代码，还是洗洗睡吧😴，明天还要上班呢.</p>
-<h2>END</h2>
+<h2 id="end"><a class="header-anchor" href="#end"></a>END</h2>
 <p>直接上图，今天的紫金山（风真的很大…）<br>
 <img src="/2017/07/09/life20170709/PicsArt_07-09-09.30.32.jpg" alt="紫金山"></p>
 <p>励志一下吧&lt;你已经输在了起跑线&gt;<br>
 <img src="/2017/07/09/life20170709/beb664c4-b1b2-43b4-ae5b-2e276e8cfd9a.jpg" alt="编程"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2017/06/26/shell-seconds/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="一名不知所措的IT从业者">
-      <meta itemprop="image" content="/images/custom/ava.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Change The World">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/26/shell-seconds/" itemprop="url">
-                  内置变量SECONDS小记
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-06-26 20:13:15 / 修改时间：22:14:18" itemprop="dateCreated datePublished" datetime="2017-06-26T20:13:15+08:00">2017-06-26</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1>前言</h1>
-<p><strong>How time flies!</strong><br>
-记得刚开始开通<code>blog</code>的时候，当时还是处于无业游民的状态。曾经心中默默地下过一个决心，每周写一篇技术博客。当写到这里的时候也是对自己一通唏嘘。</p>
-<p>自从找到新工作到现在差不多有三个月的时间了，曾经的决心依然无存了……最终还是败给了工作和懒惰。每当翻起<code>blog</code>就会再次激起我的决定，那就是 <code>go on……</code></p>
-<p>闲话少说，开始继续技术之旅吧，本次重新写技术博客就写一个简单易懂的吧，太难得也不会哈哈哈……</p>
-<h1>正文</h1>
-<h2>SECONDS</h2>
-<p>是一个shell脚本的内置环境变量，通过这个变量可以获取到行<code>shell</code>脚本运行的时间，【以秒为单位】:<br>
-一言不合先来个示例以表尊敬:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash  </span></span><br><span class="line">cat ＜＜eof   </span><br><span class="line">		this is a simple example:</span><br><span class="line">		this will shows the script running <span class="built_in">times</span></span><br><span class="line">		thank you <span class="built_in">read</span> the blog.</span><br><span class="line">eof</span><br><span class="line">sleep 5</span><br><span class="line"><span class="built_in">echo</span> -E <span class="string">'\E[1,31,40m'</span> <span class="string">"The shell script file <span class="variable">$(basename $0)</span> Running time is <span class="variable">$SECONDS</span>"</span> tput sgr0</span><br></pre></td></tr></table></figure>
-<p>俗话说得好，字不如表，表不如图，怎能不来张图呢：<br>
-<img src="/2017/06/26/shell-seconds/2017-06-26_22-08-41.png" alt="result"><br>
-这个变量也是蛮给力的最起码省去你的几行代码，好了本篇就到这里落笔了，哦是关机了<br>
-记住初心，默默前行。<br>
-<strong>change the world.</strong></p>
 
           
         
@@ -2630,7 +2633,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2688,7 +2691,11 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

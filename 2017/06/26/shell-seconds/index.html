@@ -421,7 +421,7 @@
 <p>自从找到新工作到现在差不多有三个月的时间了，曾经的决心依然无存了……最终还是败给了工作和懒惰。每当翻起<code>blog</code>就会再次激起我的决定，那就是 <code>go on……</code></p>
 <p>闲话少说，开始继续技术之旅吧，本次重新写技术博客就写一个简单易懂的吧，太难得也不会哈哈哈……</p>
 <h1>正文</h1>
-<h2>SECONDS</h2>
+<h2 id="seconds"><a class="header-anchor" href="#seconds"></a>SECONDS</h2>
 <p>是一个shell脚本的内置环境变量，通过这个变量可以获取到行<code>shell</code>脚本运行的时间，【以秒为单位】:<br>
 一言不合先来个示例以表尊敬:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash  </span></span><br><span class="line">cat ＜＜eof   </span><br><span class="line">		this is a simple example:</span><br><span class="line">		this will shows the script running <span class="built_in">times</span></span><br><span class="line">		thank you <span class="built_in">read</span> the blog.</span><br><span class="line">eof</span><br><span class="line">sleep 5</span><br><span class="line"><span class="built_in">echo</span> -E <span class="string">'\E[1,31,40m'</span> <span class="string">"The shell script file <span class="variable">$(basename $0)</span> Running time is <span class="variable">$SECONDS</span>"</span> tput sgr0</span><br></pre></td></tr></table></figure>
@@ -580,7 +580,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -638,7 +638,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -703,7 +707,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">SECONDS</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#seconds"><span class="nav-number">2.1.</span> <span class="nav-text">SECONDS</span></a></li></ol></li></ol></div>
             
 
           </div>

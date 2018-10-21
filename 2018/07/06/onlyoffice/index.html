@@ -430,27 +430,27 @@
 <p>    本文主要记录onlyoffice安装的过程，在安装过程中可能不会遇到问题，但是也可能会遇到各种各样的问题，如果有错误，那肯定是你错了,下文中主要是集成安装，服务包含Mysql Server、Mail Server、Community Server以及Document Server,欢迎批评指正</p>
 </blockquote>
 <p>题外话：由于本人机器很菜，Mail Server使用Mysql Server时，没跑起来…</p>
-<h2>介绍 &amp;&amp; FAQ</h2>
-<h4><strong>onlyOffice是什么？</strong></h4>
+<h2 id="介绍-faq"><a class="header-anchor" href="#介绍-faq"></a>介绍 &amp;&amp; FAQ</h2>
+<h4 id="onlyoffice是什么？"><a class="header-anchor" href="#onlyoffice是什么？"></a><strong>onlyOffice是什么？</strong></h4>
 <p>    ONLYOFFICE是一个用于业务协作，文档和项目管理的多功能门户。它允许您组织业务任务和里程碑，存储和共享您的公司或个人文档，使用社交网络工具，如博客和论坛，以及通过公司IM与您的团队成员进行沟通。</p>
-<h4><strong>onlyOffice适用于谁？</strong></h4>
+<h4 id="onlyoffice适用于谁？"><a class="header-anchor" href="#onlyoffice适用于谁？"></a><strong>onlyOffice适用于谁？</strong></h4>
 <p>    ONLYOFFICE适用于寻求有效的业务流程管理平台的中小型公司。</p>
-<h4><strong>在云中托管我的门户网站是否安全？</strong></h4>
+<h4 id="在云中托管我的门户网站是否安全？"><a class="header-anchor" href="#在云中托管我的门户网站是否安全？"></a><strong>在云中托管我的门户网站是否安全？</strong></h4>
 <p>    您的门户网站由以下Web服务提供支持：Amazon EC2，Amazon S3和Amazon RDS。亚马逊网络服务（AWS）在全球数千名开发人员使用的云中提供可靠的基础架构。此外，您可以随时备份存储在门户网站上的数据。因此，您可以确保您的数据安全且受到保护。</p>
-<h4><strong>我可以通过手机访问我的门户吗？</strong></h4>
+<h4 id="我可以通过手机访问我的门户吗？"><a class="header-anchor" href="#我可以通过手机访问我的门户吗？"></a><strong>我可以通过手机访问我的门户吗？</strong></h4>
 <p>    目前正在开发位于.com域区域中的门户的移动应用程序。 .org域区域门户和服务器解决方案的移动版本不可用。 现在可以下载适用于iOS的移动ONLYOFFICE Documents应用程序。它允许您查看和编辑.com门户中存储的文本文档，创建新文档，管理和共享它们。</p>
-<h4><strong>我们想自己维护ONLYOFFICE。那可能吗？</strong></h4>
+<h4 id="我们想自己维护onlyoffice-那可能吗？"><a class="header-anchor" href="#我们想自己维护onlyoffice-那可能吗？"></a><strong>我们想自己维护ONLYOFFICE。那可能吗？</strong></h4>
 <p>    是。可以下载和编译源代码。此后，您可以将其部署在您自己的服务器上。源代码在SourceForge上列出，并在GNU Affero通用公共许可条款下分发。有关更多详细信息，请参阅服务器版本常见问题部分。</p>
-<h4><strong>我无法在门户网站的可用列表中找到我的语言。我该怎么做才能参与翻译？</strong></h4>
+<h4 id="我无法在门户网站的可用列表中找到我的语言-我该怎么做才能参与翻译？"><a class="header-anchor" href="#我无法在门户网站的可用列表中找到我的语言-我该怎么做才能参与翻译？"></a><strong>我无法在门户网站的可用列表中找到我的语言。我该怎么做才能参与翻译？</strong></h4>
 <p>    目前，门户网站的界面有21种语言版本，它也被翻译成二十多种语言，但如果您的母语尚未列出，您可以为ONLYOFFICE翻译做出贡献。请阅读如何成为ONLYOFFICE翻译？</p>
 <p>    发送您的请求并访问我们的ONLYOFFICE在线翻译系统的指南。 您也可以直接发送电子邮件至documentation@onlyoffice.com</p>
-<h4><strong>我有一个问题，这里没有涉及。我该怎么联系你？</strong></h4>
+<h4 id="我有一个问题-这里没有涉及-我该怎么联系你？"><a class="header-anchor" href="#我有一个问题-这里没有涉及-我该怎么联系你？"></a><strong>我有一个问题，这里没有涉及。我该怎么联系你？</strong></h4>
 <p>    我们不断改进ONLYOFFICE，为您的业务需求提供高效的解决方案。因此，欢迎您提供反馈和建议。请发送电子邮件至support@onlyoffice.com告诉我们ONLYOFFICE如何为您服务。</p>
 <p>注：以上为译文，详情请参考<a href="faq">FAQ</a></p>
-<h2>安装onlyOffice in Docker</h2>
-<h3>创建onlyoffice网络</h3>
+<h2 id="安装onlyoffice-in-docker"><a class="header-anchor" href="#安装onlyoffice-in-docker"></a>安装onlyOffice in Docker</h2>
+<h3 id="创建onlyoffice网络"><a class="header-anchor" href="#创建onlyoffice网络"></a>创建onlyoffice网络</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker network create --driver bridge onlyoffice</span><br></pre></td></tr></table></figure>
-<h3>安装MySQL数据库</h3>
+<h3 id="安装mysql数据库"><a class="header-anchor" href="#安装mysql数据库"></a>安装MySQL数据库</h3>
 <p><strong>创建外部挂目录[可选]</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/mysql/conf.d"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/mysql/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/mysql/initdb"</span>;</span><br></pre></td></tr></table></figure>
 <p><strong>创建MySQL服务器Docker容器。创建配置文件</strong></p>
@@ -458,20 +458,20 @@
 <p><strong>创建SQL脚本用于生成用户以及赋予对应的权限。 ONLYOFFICE社区服务器需要onlyoffice_user，ONLYOFFICE邮件服务器需要mail_admin</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"CREATE USER 'onlyoffice_user'@'localhost' IDENTIFIED BY 'onlyoffice_pass';</span></span><br><span class="line"><span class="string">CREATE USER 'mail_admin'@'localhost' IDENTIFIED BY 'Isadmin123';</span></span><br><span class="line"><span class="string">GRANT ALL PRIVILEGES ON * . * TO 'root'@'%' IDENTIFIED BY 'my-secret-pw';</span></span><br><span class="line"><span class="string">GRANT ALL PRIVILEGES ON * . * TO 'onlyoffice_user'@'%' IDENTIFIED BY 'onlyoffice_pass';</span></span><br><span class="line"><span class="string">GRANT ALL PRIVILEGES ON * . * TO 'mail_admin'@'%' IDENTIFIED BY 'Isadmin123';</span></span><br><span class="line"><span class="string">FLUSH PRIVILEGES;"</span> &gt; /app/onlyoffice/mysql/initdb/setup.sql</span><br></pre></td></tr></table></figure>
 <p>注：为了方面安装，直接使用了默认密码，以上密码是可修改的，以及指定可访问数据库的主机</p>
-<h4><strong>创建MySQL容器设置MySQL版本到5.7</strong></h4>
+<h4 id="创建mysql容器设置mysql版本到5-7"><a class="header-anchor" href="#创建mysql容器设置mysql版本到5-7"></a><strong>创建MySQL容器设置MySQL版本到5.7</strong></h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --net onlyoffice -i -t -d --restart=always --name onlyoffice-mysql-server \</span><br><span class="line"> -v /app/onlyoffice/mysql/conf.d:/etc/mysql/conf.d \</span><br><span class="line"> -v /app/onlyoffice/mysql/data:/var/lib/mysql \</span><br><span class="line"> -v /app/onlyoffice/mysql/initdb:/docker-entrypoint-initdb.d \</span><br><span class="line"> -e MYSQL_ROOT_PASSWORD=my-secret-pw \</span><br><span class="line"> -e MYSQL_DATABASE=onlyoffice \</span><br><span class="line"> mysql:5.7</span><br></pre></td></tr></table></figure>
 <p>-v: 挂载本地目录</p>
 <p>-e: 设置环境变量</p>
 <p><strong>可挂载目录[volumes]：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">    - ./config/mysql/conf.d:/etc/mysql/conf.d </span><br><span class="line">    - ./config/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d</span><br><span class="line">    - mysql_data:/var/lib/mysql</span><br></pre></td></tr></table></figure>
-<h3>安装Document Server</h3>
+<h3 id="安装document-server"><a class="header-anchor" href="#安装document-server"></a>安装Document Server</h3>
 <p><strong>创建外部挂目录[可选]</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/logs"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/lib"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/db"</span>;</span><br></pre></td></tr></table></figure>
 <p><strong>安装</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --net onlyoffice -i -t -d --restart=always --name onlyoffice-document-server \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/logs:/var/<span class="built_in">log</span>/onlyoffice  \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data  \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/lib:/var/lib/onlyoffice \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/db:/var/lib/postgresql \</span><br><span class="line">    onlyoffice/documentserver</span><br></pre></td></tr></table></figure>
 <p><strong>可挂载目录：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">volumes:</span><br><span class="line">    - document_data:/var/www/onlyoffice/Data</span><br><span class="line">    - document_log:/var/<span class="built_in">log</span>/onlyoffice</span><br><span class="line">    - ./document_fonts:/usr/share/fonts/truetype/custom</span><br><span class="line">    - document_forgotten:/var/lib/onlyoffice/documentserver/App_Data/cache/files/forgotten</span><br></pre></td></tr></table></figure>
-<h3>安装Mail Server</h3>
+<h3 id="安装mail-server"><a class="header-anchor" href="#安装mail-server"></a>安装Mail Server</h3>
 <p><strong>创建外部挂目录[可选]</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/MailServer/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/MailServer/data/certs"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/MailServer/logs"</span>;</span><br></pre></td></tr></table></figure>
 <p><strong>安装</strong></p>
@@ -481,7 +481,7 @@
 <p>注：<a href="http://yourdomain.com" target="_blank" rel="noopener">yourdomain.com</a> 更换您的Mail Server的域名</p>
 <p><strong>可选参数：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">    - MYSQL_SERVER=onlyoffice-mysql-server</span><br><span class="line">    - MYSQL_SERVER_PORT=3306</span><br><span class="line">    - MYSQL_ROOT_USER=onlyoffice_mailserver_user</span><br><span class="line">    - MYSQL_ROOT_PASSWD=onlyoffice_mailserver_user_pass</span><br><span class="line">    - MYSQL_SERVER_DB_NAME=onlyoffice_mailserver</span><br></pre></td></tr></table></figure>
-<h3>安装Community Server</h3>
+<h3 id="安装community-server"><a class="header-anchor" href="#安装community-server"></a>安装Community Server</h3>
 <p><strong>创建外部挂目录[可选]</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/CommunityServer/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/CommunityServer/mysql"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/CommunityServer/logs"</span>;</span><br></pre></td></tr></table></figure>
 <p><strong>安装</strong></p>
@@ -499,9 +499,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect -f <span class="string">'&#123;&#123;range .NetworkSettings.Networks&#125;&#125;&#123;&#123;.IPAddress&#125;&#125;&#123;&#123;end&#125;&#125;'</span> onlyoffice-mail-server</span><br></pre></td></tr></table></figure>
 <p>以上步骤正确完成之后，就可以开始您的onlyOffice之旅了， <a href="https//localhost">点击开始</a></p>
 <p>注： 如果不指定数据库则使用自身的数据库</p>
-<h3>备份</h3>
+<h3 id="备份"><a class="header-anchor" href="#备份"></a>备份</h3>
 <p>请阅读 <a href="https://helpcenter.onlyoffice.com/tipstricks/data-backup-restore.aspx" target="_blank" rel="noopener">Data backup</a>，付费用户享有的权利🙃, 当然也可以手动备份</p>
-<h2>参考</h2>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
 <p><a href="https://github.com/ONLYOFFICE/Docker-CommunityServer" target="_blank" rel="noopener">Docker-CommunityServer</a></p>
 <p><a href="https://helpcenter.onlyoffice.com/server/docker/community/install-integrated.aspx" target="_blank" rel="noopener">Installing all three servers (Community Server, Document Server, Mail Server) integrated</a></p>
 <p><a id="faq"><a href="https://helpcenter.onlyoffice.com/faq/faq.aspx" target="_blank" rel="noopener">General Questions FAQ</a></a></p>
@@ -658,7 +658,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -716,7 +716,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -781,7 +785,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">介绍 &amp;&amp; FAQ</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.1.</span> <span class="nav-text">onlyOffice是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.2.</span> <span class="nav-text">onlyOffice适用于谁？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.3.</span> <span class="nav-text">在云中托管我的门户网站是否安全？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.4.</span> <span class="nav-text">我可以通过手机访问我的门户吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.5.</span> <span class="nav-text">我们想自己维护ONLYOFFICE。那可能吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.6.</span> <span class="nav-text">我无法在门户网站的可用列表中找到我的语言。我该怎么做才能参与翻译？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.7.</span> <span class="nav-text">我有一个问题，这里没有涉及。我该怎么联系你？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">安装onlyOffice in Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">创建onlyoffice网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">安装MySQL数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.</span> <span class="nav-text">创建MySQL容器设置MySQL版本到5.7</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">安装Document Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.</span> <span class="nav-text">安装Mail Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.</span> <span class="nav-text">安装Community Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.6.</span> <span class="nav-text">备份</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍-faq"><span class="nav-number">1.</span> <span class="nav-text">介绍 &amp;&amp; FAQ</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#onlyoffice是什么？"><span class="nav-number">1.0.1.</span> <span class="nav-text">onlyOffice是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#onlyoffice适用于谁？"><span class="nav-number">1.0.2.</span> <span class="nav-text">onlyOffice适用于谁？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在云中托管我的门户网站是否安全？"><span class="nav-number">1.0.3.</span> <span class="nav-text">在云中托管我的门户网站是否安全？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我可以通过手机访问我的门户吗？"><span class="nav-number">1.0.4.</span> <span class="nav-text">我可以通过手机访问我的门户吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我们想自己维护onlyoffice-那可能吗？"><span class="nav-number">1.0.5.</span> <span class="nav-text">我们想自己维护ONLYOFFICE。那可能吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我无法在门户网站的可用列表中找到我的语言-我该怎么做才能参与翻译？"><span class="nav-number">1.0.6.</span> <span class="nav-text">我无法在门户网站的可用列表中找到我的语言。我该怎么做才能参与翻译？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我有一个问题-这里没有涉及-我该怎么联系你？"><span class="nav-number">1.0.7.</span> <span class="nav-text">我有一个问题，这里没有涉及。我该怎么联系你？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装onlyoffice-in-docker"><span class="nav-number">2.</span> <span class="nav-text">安装onlyOffice in Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建onlyoffice网络"><span class="nav-number">2.1.</span> <span class="nav-text">创建onlyoffice网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装mysql数据库"><span class="nav-number">2.2.</span> <span class="nav-text">安装MySQL数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建mysql容器设置mysql版本到5-7"><span class="nav-number">2.2.1.</span> <span class="nav-text">创建MySQL容器设置MySQL版本到5.7</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装document-server"><span class="nav-number">2.3.</span> <span class="nav-text">安装Document Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装mail-server"><span class="nav-number">2.4.</span> <span class="nav-text">安装Mail Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装community-server"><span class="nav-number">2.5.</span> <span class="nav-text">安装Community Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份"><span class="nav-number">2.6.</span> <span class="nav-text">备份</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

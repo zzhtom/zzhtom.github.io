@@ -446,7 +446,7 @@
         <blockquote>
 <p>学习并记录shell脚本中参数替换的几种替换格式</p>
 </blockquote>
-<h5>格式一</h5>
+<h5 id="格式一"><a class="header-anchor" href="#格式一"></a>格式一</h5>
 <ul>
 <li>
 <p>${parameter-default} – 如果变量parameter没被声明, 那么就使用默认值.</p>
@@ -457,7 +457,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">default="默认值"</span><br><span class="line">echo $&#123;parameter:-$&#123;default&#125;&#125; #parameter 未声明</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出：默认值</span></span><br><span class="line">parameter=</span><br><span class="line">echo $&#123;parameter:-$&#123;default&#125;&#125; #parameter 已声明</span><br><span class="line"><span class="meta">#</span><span class="bash">输出：默认值</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5>格式二</h5>
+<h5 id="格式二"><a class="header-anchor" href="#格式二"></a>格式二</h5>
 <ul>
 <li>
 <p>${parameter=default} – 如果变量parameter没声明, 那么就把它的值设为default.</p>
@@ -468,7 +468,7 @@
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">default="默认值"</span><br><span class="line">echo $&#123;parameter:=$&#123;default&#125;&#125; #parameter 未声明</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出：默认值</span></span><br><span class="line">parameter=</span><br><span class="line">echo $&#123;parameter:=$&#123;default&#125;&#125; #parameter 已声明</span><br><span class="line"><span class="meta">#</span><span class="bash">输出：默认值</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5>格式三</h5>
+<h5 id="格式三"><a class="header-anchor" href="#格式三"></a>格式三</h5>
 <ul>
 <li>
 <p>${parameter+default} – 如果变量parameter被声明了, 那么就使用default, 否则就使用 null字符串.</p>
@@ -479,7 +479,7 @@
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">default="默认值"</span><br><span class="line">echo $&#123;parameter:+$&#123;default&#125;&#125; #parameter 未声明</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出：</span></span><br><span class="line">parameter=</span><br><span class="line">echo $&#123;parameter:+$&#123;default&#125;&#125; #parameter 已声明</span><br><span class="line"><span class="meta">#</span><span class="bash">输出：</span></span><br><span class="line">parameter= '被赋值'</span><br><span class="line">echo $&#123;parameter:+$&#123;default&#125;&#125; #parameter 已赋值</span><br><span class="line"><span class="meta">#</span><span class="bash">输出：默认值</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5>格式四</h5>
+<h5 id="格式四"><a class="header-anchor" href="#格式四"></a>格式四</h5>
 <ul>
 <li>
 <p>${parameter?default} – 如果parameter已经被声明, 那么就使用设置的值, 否则打印default 错误消息.</p>
@@ -645,7 +645,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -703,7 +703,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -768,7 +772,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">格式一</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">格式二</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">格式三</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">格式四</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#格式一"><span class="nav-number">1.</span> <span class="nav-text">格式一</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#格式二"><span class="nav-number">2.</span> <span class="nav-text">格式二</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#格式三"><span class="nav-number">3.</span> <span class="nav-text">格式三</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#格式四"><span class="nav-number">4.</span> <span class="nav-text">格式四</span></a></li></ol></div>
             
 
           </div>

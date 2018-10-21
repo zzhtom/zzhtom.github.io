@@ -333,6 +333,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2017/06/26/shell-seconds/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/26/shell-seconds/" itemprop="url">
+                  内置变量SECONDS小记
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-06-26 20:13:15 / 修改时间：22:14:18" itemprop="dateCreated datePublished" datetime="2017-06-26T20:13:15+08:00">2017-06-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1>前言</h1>
+<p><strong>How time flies!</strong><br>
+记得刚开始开通<code>blog</code>的时候，当时还是处于无业游民的状态。曾经心中默默地下过一个决心，每周写一篇技术博客。当写到这里的时候也是对自己一通唏嘘。</p>
+<p>自从找到新工作到现在差不多有三个月的时间了，曾经的决心依然无存了……最终还是败给了工作和懒惰。每当翻起<code>blog</code>就会再次激起我的决定，那就是 <code>go on……</code></p>
+<p>闲话少说，开始继续技术之旅吧，本次重新写技术博客就写一个简单易懂的吧，太难得也不会哈哈哈……</p>
+<h1>正文</h1>
+<h2 id="seconds"><a class="header-anchor" href="#seconds"></a>SECONDS</h2>
+<p>是一个shell脚本的内置环境变量，通过这个变量可以获取到行<code>shell</code>脚本运行的时间，【以秒为单位】:<br>
+一言不合先来个示例以表尊敬:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash  </span></span><br><span class="line">cat ＜＜eof   </span><br><span class="line">		this is a simple example:</span><br><span class="line">		this will shows the script running <span class="built_in">times</span></span><br><span class="line">		thank you <span class="built_in">read</span> the blog.</span><br><span class="line">eof</span><br><span class="line">sleep 5</span><br><span class="line"><span class="built_in">echo</span> -E <span class="string">'\E[1,31,40m'</span> <span class="string">"The shell script file <span class="variable">$(basename $0)</span> Running time is <span class="variable">$SECONDS</span>"</span> tput sgr0</span><br></pre></td></tr></table></figure>
+<p>俗话说得好，字不如表，表不如图，怎能不来张图呢：<br>
+<img src="/2017/06/26/shell-seconds/2017-06-26_22-08-41.png" alt="result"><br>
+这个变量也是蛮给力的最起码省去你的几行代码，好了本篇就到这里落笔了，哦是关机了<br>
+记住初心，默默前行。<br>
+<strong>change the world.</strong></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2017/03/26/blog-study/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -423,14 +577,14 @@
 <p>    在IT界混下去没有blog怎么能行呢？<br>
 以上纯属玩笑，因为有了<code>blog</code>可以记录下平时生活的点点滴滴也可以分享下相关技术心得更可以记录工作中遇到的问题。多说不宜，那就开始步入整体吧，此次<code>blog</code>搭建主要是采用 <code>hexo + githup</code>, 下面就 <code>follow me</code> 一起按照步骤开始开启blog之旅吧。</p>
 </blockquote>
-<h3>准备工作</h3>
+<h3 id="准备工作"><a class="header-anchor" href="#准备工作"></a>准备工作</h3>
 <ol>
 <li>如果你想对外可以访问，首先申请<a href="https://github.com/" title="github" target="_blank" rel="noopener"><code>github</code></a>帐号</li>
 <li>新建仓库，命名格式: <code>用户名.githup.io</code> 点击完成，如下图:</li>
 </ol>
 <p><img src="/2017/03/26/blog-study/io.png" alt="仓库名称"></p>
 <p>目前完成了万里长征的第一步,<code>go on...</code></p>
-<h3>安装<code>blog</code>环境‌</h3>
+<h3 id="安装blog环境"><a class="header-anchor" href="#安装blog环境"></a>安装<code>blog</code>环境‌</h3>
 <ul>
 <li>安装<a href="https://nodejs.org/en/" title="NODE.JS" target="_blank" rel="noopener"><code>node.js</code>官网</a>，<a href="http://nodejs.cn/download/" title="node.js" target="_blank" rel="noopener">中文网</a>，用于生成静态页面</li>
 </ul>
@@ -452,7 +606,7 @@
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server （或 hexo s）</span><br></pre></td></tr></table></figure>
 <p><code>blog</code>站点预览地址：<a href="http://localhost:4000" title="预览" target="_blank" rel="noopener">http://localhost:4000</a></p>
-<h3>配置<code>Github</code></h3>
+<h3 id="配置github"><a class="header-anchor" href="#配置github"></a>配置<code>Github</code></h3>
 <ul>
 <li>修改站点文件夹下的<code>_config.yml</code>文件，找到<code>deploy</code>位置，修改如下：</li>
 </ul>
@@ -469,7 +623,7 @@
 <li><code>hexo</code> 常用命令</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hexo clean                清理生成的blog页面    </span><br><span class="line">hexo generate             生成静态页面  </span><br><span class="line">hexo deploy               部署页面到github  </span><br><span class="line">hexo new <span class="string">"postName"</span>       新建文章  </span><br><span class="line">hexo new page <span class="string">"pageName"</span>  新建页面  </span><br><span class="line">hexo server               开启本地服务  </span><br><span class="line">hexo <span class="built_in">help</span>                 查看帮助  </span><br><span class="line">hexo version              查看Hexo的版本</span><br></pre></td></tr></table></figure>
-<h3>配置域名访问</h3>
+<h3 id="配置域名访问"><a class="header-anchor" href="#配置域名访问"></a>配置域名访问</h3>
 <ul>
 <li>注册域名，如<a href="https://wanwang.aliyun.com/" title="阿里云" target="_blank" rel="noopener">阿里云</a>、<a href="https://dnspod.qcloud.com/?from=qcloudHome" title="腾讯云" target="_blank" rel="noopener">腾讯云</a></li>
 <li>进行域名解析设置</li>
@@ -482,7 +636,7 @@
 <ul>
 <li>进行域名指向，指向域名即为 <code>用户名.github.io</code></li>
 </ul>
-<h3>网站推荐</h3>
+<h3 id="网站推荐"><a class="header-anchor" href="#网站推荐"></a>网站推荐</h3>
 <p><a href="https://hexo.io/" title="hexo" target="_blank" rel="noopener"><code>hexo</code>官网</a><br>
 <a href="http://theme-next.iissnan.com/" title="next" target="_blank" rel="noopener"><code>Next</code>主题</a><br>
 <a href="http://baixin.io/2015/08/HEXO%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="blog" target="_blank" rel="noopener">博客推荐</a><br>
@@ -576,7 +730,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -634,7 +788,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -882,6 +1040,8 @@
 
   
   
+    
+      
     
       
     

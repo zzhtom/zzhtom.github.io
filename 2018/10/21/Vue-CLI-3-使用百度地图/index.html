@@ -112,25 +112,25 @@
 
 
 
-  <meta name="description" content="分享一个简单的项目管理脚本，有待于补充，欢迎指正  前提说明     本文使用的部署工具使用的是pm2，项目存储在GitHub, 因此脚本主要做的的事情就是从GitHub上拉取最新的代码进行本地部署，项目服务的启动、关闭、重启、重载配置文件（pm2） 脚本功能  启动服务 关闭服务 重启服务 重载配置文件 更新项目 帮助说明  脚本内容 1234567891011121314151617181">
-<meta name="keywords" content="shell,linux">
+  <meta name="description" content="前提说明 Vue CLI 3 创建项目，目录大致如下所示： 123456789101112...├── [ 512]  public│   ├── [2.2K]  favicon.ico│   └── [ 812]  index.html├── [ 512]  src│   ├── [ 709]  App.vue│   ├── [ 512]  assets│   ├── [ 512]  compo">
+<meta name="keywords" content="vue,webpack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shell脚本篇">
-<meta property="og:url" content="http://www.zhangxiaoheng.cn/2018/05/20/分享shell脚本篇/index.html">
+<meta property="og:title" content="Vue CLI 3 使用百度地图">
+<meta property="og:url" content="http://www.zhangxiaoheng.cn/2018/10/21/Vue-CLI-3-使用百度地图/index.html">
 <meta property="og:site_name" content="Change The World">
-<meta property="og:description" content="分享一个简单的项目管理脚本，有待于补充，欢迎指正  前提说明     本文使用的部署工具使用的是pm2，项目存储在GitHub, 因此脚本主要做的的事情就是从GitHub上拉取最新的代码进行本地部署，项目服务的启动、关闭、重启、重载配置文件（pm2） 脚本功能  启动服务 关闭服务 重启服务 重载配置文件 更新项目 帮助说明  脚本内容 1234567891011121314151617181">
+<meta property="og:description" content="前提说明 Vue CLI 3 创建项目，目录大致如下所示： 123456789101112...├── [ 512]  public│   ├── [2.2K]  favicon.ico│   └── [ 812]  index.html├── [ 512]  src│   ├── [ 709]  App.vue│   ├── [ 512]  assets│   ├── [ 512]  compo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-22T13:27:48.761Z">
+<meta property="og:updated_time" content="2018-10-21T02:35:08.860Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shell脚本篇">
-<meta name="twitter:description" content="分享一个简单的项目管理脚本，有待于补充，欢迎指正  前提说明     本文使用的部署工具使用的是pm2，项目存储在GitHub, 因此脚本主要做的的事情就是从GitHub上拉取最新的代码进行本地部署，项目服务的启动、关闭、重启、重载配置文件（pm2） 脚本功能  启动服务 关闭服务 重启服务 重载配置文件 更新项目 帮助说明  脚本内容 1234567891011121314151617181">
+<meta name="twitter:title" content="Vue CLI 3 使用百度地图">
+<meta name="twitter:description" content="前提说明 Vue CLI 3 创建项目，目录大致如下所示： 123456789101112...├── [ 512]  public│   ├── [2.2K]  favicon.ico│   └── [ 812]  index.html├── [ 512]  src│   ├── [ 709]  App.vue│   ├── [ 512]  assets│   ├── [ 512]  compo">
 
 
 
 
 
 
-  <link rel="canonical" href="http://www.zhangxiaoheng.cn/2018/05/20/分享shell脚本篇/"/>
+  <link rel="canonical" href="http://www.zhangxiaoheng.cn/2018/10/21/Vue-CLI-3-使用百度地图/"/>
 
 
 
@@ -140,7 +140,7 @@
   };
 </script>
 
-  <title>shell脚本篇 | Change The World</title>
+  <title>Vue CLI 3 使用百度地图 | Change The World</title>
   
 
 
@@ -333,7 +333,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/05/20/分享shell脚本篇/">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/10/21/Vue-CLI-3-使用百度地图/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tom">
@@ -350,7 +350,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">shell脚本篇
+          <h2 class="post-title" itemprop="name headline">Vue CLI 3 使用百度地图
               
             
           </h2>
@@ -375,46 +375,16 @@
                 
               
 
-              <time title="创建时间：2018-05-20 18:52:33" itemprop="dateCreated datePublished" datetime="2018-05-20T18:52:33+08:00">2018-05-20</time>
+              <time title="创建时间：2018-10-21 09:44:12 / 修改时间：10:35:08" itemprop="dateCreated datePublished" datetime="2018-10-21T09:44:12+08:00">2018-10-21</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-08-22 21:27:48" itemprop="dateModified" datetime="2018-08-22T21:27:48+08:00">2018-08-22</time>
               
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">编程</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -443,29 +413,24 @@
       
 
       
-        <hr>
-<blockquote>
-<p>分享一个简单的项目管理脚本，有待于补充，欢迎指正</p>
-</blockquote>
-<h2 id="前提说明"><a class="header-anchor" href="#前提说明"></a>前提说明</h2>
-<p>    本文使用的部署工具使用的是<a href="http://pm2.keymetrics.io/" target="_blank" rel="noopener">pm2</a>，项目存储在<a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>, 因此脚本主要做的的事情就是从GitHub上拉取最新的代码进行本地部署，项目服务的启动、关闭、重启、重载配置文件（pm2）</p>
-<h2 id="脚本功能"><a class="header-anchor" href="#脚本功能"></a>脚本功能</h2>
-<ul>
-<li>启动服务</li>
-<li>关闭服务</li>
-<li>重启服务</li>
-<li>重载配置文件</li>
-<li>更新项目</li>
-<li>帮助说明</li>
-</ul>
-<h2 id="脚本内容"><a class="header-anchor" href="#脚本内容"></a>脚本内容</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">myapp_path=~/projectPath  # 项目路径</span><br><span class="line">cd $&#123;myapp_path&#125;</span><br><span class="line">pid=$(ps -ef |grep node|grep -v grep|awk '&#123;print $2&#125;') # 获取项目进程号</span><br><span class="line">start()&#123;</span><br><span class="line">    if [ -z $&#123;pid&#125; ]</span><br><span class="line">        then</span><br><span class="line">	    pm2 start pm2.json</span><br><span class="line">	else</span><br><span class="line">	    echo -e "\E[1;32;40mAPP now at starting......"; tput sgr0</span><br><span class="line">    fi	</span><br><span class="line">&#125;</span><br><span class="line">stop()&#123;</span><br><span class="line">    if [ -z $&#123;pid&#125; ]</span><br><span class="line">        then</span><br><span class="line">	    echo -e "\E[1;31;40mAPP have been stop."; tput sgr0</span><br><span class="line">        else</span><br><span class="line">	    pm2 stop pm2.json</span><br><span class="line">    fi</span><br><span class="line">&#125;</span><br><span class="line">restart()&#123;</span><br><span class="line">    pm2 restart pm2.json</span><br><span class="line">&#125;</span><br><span class="line">reload()&#123;</span><br><span class="line">    pm2 reload pm2.json</span><br><span class="line">&#125;</span><br><span class="line">refresh()&#123;</span><br><span class="line">    git pull</span><br><span class="line">    npm run compile</span><br><span class="line">    restart</span><br><span class="line">&#125;</span><br><span class="line">help()&#123;</span><br><span class="line">cat&lt;&lt;EOF</span><br><span class="line">			USE GUIDE</span><br><span class="line"></span><br><span class="line">		1.启动</span><br><span class="line"><span class="meta">			$</span><span class="bash"> myapp start</span></span><br><span class="line">		2.关闭</span><br><span class="line"><span class="meta">			$</span><span class="bash"> myapp stop</span></span><br><span class="line">		3.重启</span><br><span class="line"><span class="meta">			$</span><span class="bash"> myapp restart</span></span><br><span class="line">		4.重载配置文件</span><br><span class="line"><span class="meta">			$</span><span class="bash"> myapp reload</span></span><br><span class="line">		5.更新项目</span><br><span class="line"><span class="meta">			$</span><span class="bash"> myapp refresh</span></span><br><span class="line"></span><br><span class="line">EOF</span><br><span class="line">&#125;</span><br><span class="line">main()&#123;</span><br><span class="line">    if [ $# -ne 1 ];then</span><br><span class="line">        help</span><br><span class="line">	exit 1</span><br><span class="line">    fi</span><br><span class="line">    case $1 in</span><br><span class="line">        "start")</span><br><span class="line">	    start</span><br><span class="line">	;;	</span><br><span class="line">	"stop")</span><br><span class="line">	    stop</span><br><span class="line">	;;</span><br><span class="line">	"restart")</span><br><span class="line">	    restart</span><br><span class="line">	;;</span><br><span class="line">	"refresh")</span><br><span class="line">	    refresh</span><br><span class="line">	;;</span><br><span class="line">	"reload")</span><br><span class="line">	    reload</span><br><span class="line">	;;</span><br><span class="line">	*)</span><br><span class="line">	    help</span><br><span class="line">	;;</span><br><span class="line">    esac</span><br><span class="line">&#125;</span><br><span class="line">main $@</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a class="header-anchor" href="#总结"></a>总结</h2>
-<p>    通过shell编写一些脚本，可以减少我们工作当中经常重复的工作，对于运维工作者是一种必不可少的技能了，当然本文展示的知识一些简单的操作，如果需要更加自动化部署项目，我们可以考虑使用GitHub上的webhook功能</p>
-<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
-<p><a href="https://jenkins.io/" target="_blank" rel="noopener">jenkins</a></p>
-<p><a href="http://www.walle-web.io/" target="_blank" rel="noopener">瓦力上线部署</a></p>
-<p><a href="https://www.wikiwand.com/en/Comparison_of_continuous_integration_software" target="_blank" rel="noopener">Comparison of continuous integration software</a></p>
+        <h2 id="前提说明"><a class="header-anchor" href="#前提说明"></a>前提说明</h2>
+<p>Vue CLI 3 创建项目，目录大致如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">├── [ 512]  public</span><br><span class="line">│   ├── [2.2K]  favicon.ico</span><br><span class="line">│   └── [ 812]  index.html</span><br><span class="line">├── [ 512]  src</span><br><span class="line">│   ├── [ 709]  App.vue</span><br><span class="line">│   ├── [ 512]  assets</span><br><span class="line">│   ├── [ 512]  components</span><br><span class="line">│   ├── [ 277]  main.js</span><br><span class="line">│   ├── [1.2K]  router.js</span><br><span class="line">│   └── [ 512]  views</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>在项目根目录手动创建<code>vue.config.js webpack</code>配置文件,现在目录如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">├── [ 512]  public</span><br><span class="line">│   ├── [2.2K]  favicon.ico</span><br><span class="line">│   └── [ 812]  index.html</span><br><span class="line">├── [ 512]  src</span><br><span class="line">│   ├── [ 709]  App.vue</span><br><span class="line">│   ├── [ 512]  assets</span><br><span class="line">│   ├── [ 512]  components</span><br><span class="line">│   ├── [ 277]  main.js</span><br><span class="line">│   ├── [1.2K]  router.js</span><br><span class="line">│   └── [ 512]  views</span><br><span class="line">├── [1.6k]  vue.config.js</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><code>vue.config.js</code>内容大致如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  configureWebpack: &#123;</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// OR</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  configureWebpack: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="具体操作"><a class="header-anchor" href="#具体操作"></a>具体操作</h2>
+<p>在文件<code>@/public/index.html</code><sup>[1]</sup>中引入百度<code>javascript</code>文件，如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ... --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"https://api.map.baidu.com/api?v=2.0&amp;ak=您的秘钥"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>修改<code>vue.config.js</code>内容，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  configureWebpack: &#123;</span><br><span class="line">      externals: &#123;</span><br><span class="line">          <span class="string">"BMap"</span>: <span class="string">"BMap"</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// OR</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  configureWebpack: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">     config.externals = &#123;</span><br><span class="line">        <span class="string">"BMap"</span>: <span class="string">"BMap"</span></span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完成以上操作后，就可以在需要的地方引入<code>BMap</code>模块了，示例如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"map"</span> <span class="attr">class</span>=<span class="string">"map"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">import</span> BMap <span class="keyword">from</span> <span class="string">'BMap'</span> </span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">        methods: &#123;</span></span><br><span class="line"><span class="undefined">            initMap()&#123;</span></span><br><span class="line"><span class="javascript">                <span class="comment">// 百度地图API功能</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> map = <span class="keyword">new</span> BMap.Map(<span class="string">"map"</span>);          </span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> point = <span class="keyword">new</span> BMap.Point(<span class="number">118.750801</span>, <span class="number">31.944156</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">                map.centerAndZoom(point, 15);</span></span><br><span class="line"><span class="javascript">                map.enableScrollWheelZoom(<span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> marker = <span class="keyword">new</span> BMap.Marker(point); <span class="comment">// 创建标注    </span></span></span><br><span class="line"><span class="undefined">                map.addOverlay(marker);  </span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        mounted()&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">this</span>.initMap();</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"scss"</span> <span class="attr">scoped</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    // ...</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>[^1]: @代表项目根目录</p>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<p><a href="https://cli.vuejs.org/zh/guide/webpack.html" target="_blank" rel="noopener">Vue CLI 3 webpack 相关</a></p>
+<p><a href="https://webpack.js.org/configuration/externals/" target="_blank" rel="noopener">webpack externals</a></p>
 
       
     </div>
@@ -515,9 +480,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/shell/" rel="tag"># shell</a>
+            <a href="/tags/vue/" rel="tag"># vue</a>
           
-            <a href="/tags/linux/" rel="tag"># linux</a>
+            <a href="/tags/webpack/" rel="tag"># webpack</a>
           
         </div>
       
@@ -530,8 +495,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/12/session-cookie/" rel="next" title="session、cookie 篇">
-                <i class="fa fa-chevron-left"></i> session、cookie 篇
+              <a href="/2018/08/02/BasicSortingAlgorithm/" rel="next" title="基本排序算法">
+                <i class="fa fa-chevron-left"></i> 基本排序算法
               </a>
             
           </div>
@@ -539,10 +504,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/10/parameterReplacement-shell/" rel="prev" title="shell参数替换">
-                shell参数替换 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -743,7 +704,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前提说明"><span class="nav-number">1.</span> <span class="nav-text">前提说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本功能"><span class="nav-number">2.</span> <span class="nav-text">脚本功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本内容"><span class="nav-number">3.</span> <span class="nav-text">脚本内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">5.</span> <span class="nav-text">附录</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前提说明"><span class="nav-number">1.</span> <span class="nav-text">前提说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体操作"><span class="nav-number">2.</span> <span class="nav-text">具体操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
