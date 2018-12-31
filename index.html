@@ -333,6 +333,185 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/12/31/NFS安装及使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/31/NFS安装及使用/" itemprop="url">
+                  NFS安装及使用
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-31 20:34:47 / 修改时间：22:32:26" itemprop="dateCreated datePublished" datetime="2018-12-31T20:34:47+08:00">2018-12-31</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="环境准备"><a class="header-anchor" href="#环境准备"></a>环境准备</h2>
+<blockquote>
+<p>系统：CentOS 7.6 //目前最新发行版，2018年12月31日</p>
+<p>网络：可以连接互联网，用于下载必须的软件包</p>
+</blockquote>
+<h2 id="简介与说明"><a class="header-anchor" href="#简介与说明"></a>简介与说明</h2>
+<h3 id="rpcbind"><a class="header-anchor" href="#rpcbind"></a>rpcbind</h3>
+<p>​	用于将RPC程序编号映射到IP地址端口号组合, RPC进程在启动时通知rpcbind，注册他们正在侦听的端口以及他们希望服务的RPC程序编号。然后，客户端系统使用特定的RPC程序编号联系服务器上的rpcbind。 rpcbind服务将客户端重定向到正确的端口号，以便它可以与请求的服务进行通信。</p>
+<h3 id="nfs"><a class="header-anchor" href="#nfs"></a>NFS</h3>
+<p>​	网络文件系统（NFS）允许远程主机通过网络安装文件系统，并与这些文件系统进行交互，就好像它们是本地安装的一样。这使系统管理员能够将资源整合到网络上的集中式服务器上。</p>
+<p>​	NFS版本都依赖于客户端和服务器之间的远程过程调用（RPC）。 一般Linux发行版（Fedora、RHEL、CentOS）RPC服务由rpcbind服务控制。要共享或挂载NFS文件系统，以下服务可以协同工作，具体取决于实现的NFS版本</p>
+<h3 id="开始安装"><a class="header-anchor" href="#开始安装"></a>开始安装</h3>
+<p><strong>软件安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ yum -y install nfs-utils rpcbind</span><br></pre></td></tr></table></figure>
+<p><strong>配置</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ sudo vi /etc/exports</span><br><span class="line">/opt/share/ 192.168.0.0/24(rw,no_root_squash,no_all_squash,sync,anonuid=501,anongid=501) <span class="comment">#添加内容</span></span><br></pre></td></tr></table></figure>
+<p>简单说明</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/opt/share/           共享目录</span><br><span class="line"></span><br><span class="line">192.168.0.0/24、192.168.0.110、nfs.nfsdemo.org、*.nfsdemo.org    主持网段、IP、域名、通配符域名</span><br><span class="line"></span><br><span class="line">sync                  文件同时写入硬盘和内存；</span><br><span class="line"></span><br><span class="line">async                 文件暂存于内存，而不是直接写入内存；</span><br><span class="line"></span><br><span class="line">no_root_squash        NFS客户端连接服务端时如果使用的是root的话，那么对服务端分享的目录来说，也拥有root权限。显然开启这项是不安全的。</span><br><span class="line"></span><br><span class="line">root_squash           NFS客户端连接服务端时如果使用的是root的话，那么对服务端分享的目录来说，拥有匿名用户权限，通常他将使用nobody或nfsnobody身份；</span><br><span class="line"></span><br><span class="line">all_squash            不论NFS客户端连接服务端时使用什么用户，对服务端分享的目录来说都是拥有匿名用户权限；</span><br><span class="line"></span><br><span class="line">anonuid               匿名用户的UID值，可以在此处自行设定</span><br><span class="line"></span><br><span class="line">anongid               匿名用户的GID值</span><br></pre></td></tr></table></figure>
+<p>配置文件生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ sudo mkdir -p  /opt/share/ <span class="comment">#文件夹必须要存在</span></span><br><span class="line">[ocloud@centos-linux ~]$ sudo exportfs -r</span><br></pre></td></tr></table></figure>
+<h3 id="开启服务"><a class="header-anchor" href="#开启服务"></a>开启服务</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rpcbind</span></span><br><span class="line">[ocloud@centos-linux ~]$ sudo systemctl start rpcbind</span><br><span class="line">[sudo] ocloud 的密码：</span><br><span class="line">[ocloud@centos-linux ~]$ sudo systemctl status rpcbind</span><br><span class="line">● rpcbind.service - RPC <span class="built_in">bind</span> service</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/rpcbind.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: active (running) since 一 2018-12-31 21:33:15 CST; 7s ago</span><br><span class="line">  Process: 5966 ExecStart=/sbin/rpcbind -w <span class="variable">$RPCBIND_ARGS</span> (code=exited, status=0/SUCCESS)</span><br><span class="line"> Main PID: 5967 (rpcbind)</span><br><span class="line">   CGroup: /system.slice/rpcbind.service</span><br><span class="line">           └─5967 /sbin/rpcbind -w</span><br><span class="line"></span><br><span class="line">12月 31 21:33:15 centos-linux.shared systemd[1]: Starting RPC <span class="built_in">bind</span> service...</span><br><span class="line">12月 31 21:33:15 centos-linux.shared systemd[1]: Started RPC <span class="built_in">bind</span> service.</span><br><span class="line"></span><br><span class="line"><span class="comment"># nfs</span></span><br><span class="line">[ocloud@centos-linux ~]$ sudo systemctl start nfs</span><br><span class="line">[ocloud@centos-linux ~]$ sudo systemctl status nfs</span><br><span class="line">● nfs-server.service - NFS server and services</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/nfs-server.service; disabled; vendor preset: disabled)</span><br><span class="line">   Active: active (exited) since 一 2018-12-31 21:41:20 CST; 3s ago</span><br><span class="line">  Process: 6128 ExecStopPost=/usr/sbin/exportfs -f (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 6126 ExecStopPost=/usr/sbin/exportfs -au (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 6122 ExecStop=/usr/sbin/rpc.nfsd 0 (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 6167 ExecStartPost=/bin/sh -c <span class="keyword">if</span> systemctl -q is-active gssproxy; <span class="keyword">then</span> systemctl restart gssproxy ; <span class="keyword">fi</span> (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 6151 ExecStart=/usr/sbin/rpc.nfsd <span class="variable">$RPCNFSDARGS</span> (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 6149 ExecStartPre=/usr/sbin/exportfs -r (code=exited, status=0/SUCCESS)</span><br><span class="line"> Main PID: 6151 (code=exited, status=0/SUCCESS)</span><br><span class="line">   CGroup: /system.slice/nfs-server.service</span><br><span class="line"></span><br><span class="line">12月 31 21:41:20 centos-linux.shared systemd[1]: Starting NFS server and services...</span><br><span class="line">12月 31 21:41:20 centos-linux.shared systemd[1]: Started NFS server and services.</span><br></pre></td></tr></table></figure>
+<p><strong>设置开机自启动</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ sudo systemctl <span class="built_in">enable</span> rpcbind</span><br><span class="line">[ocloud@centos-linux ~]$ sudo systemctl <span class="built_in">enable</span> nfs</span><br></pre></td></tr></table></figure>
+<h4 id="查看已注册的rpc列表"><a class="header-anchor" href="#查看已注册的rpc列表"></a>查看已注册的RPC列表</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ rpcinfo -p</span><br><span class="line">   program vers proto   port  service</span><br><span class="line">    100000    4   tcp    111  portmapper</span><br><span class="line">    100000    3   tcp    111  portmapper</span><br><span class="line">    100000    2   tcp    111  portmapper</span><br><span class="line">    100000    4   udp    111  portmapper</span><br><span class="line">    100000    3   udp    111  portmapper</span><br><span class="line">    100000    2   udp    111  portmapper</span><br><span class="line">    100024    1   udp  48527  status</span><br><span class="line">    100024    1   tcp  39724  status</span><br><span class="line">    100005    1   udp  20048  mountd</span><br><span class="line">    100005    1   tcp  20048  mountd</span><br><span class="line">    100005    2   udp  20048  mountd</span><br><span class="line">    100005    2   tcp  20048  mountd</span><br><span class="line">    100005    3   udp  20048  mountd</span><br><span class="line">    100005    3   tcp  20048  mountd</span><br><span class="line">    100003    3   tcp   2049  nfs</span><br><span class="line">    100003    4   tcp   2049  nfs</span><br><span class="line">    100227    3   tcp   2049  nfs_acl</span><br><span class="line">    100003    3   udp   2049  nfs</span><br><span class="line">    100003    4   udp   2049  nfs</span><br><span class="line">    100227    3   udp   2049  nfs_acl</span><br><span class="line">    100021    1   udp  43200  nlockmgr</span><br><span class="line">    100021    3   udp  43200  nlockmgr</span><br><span class="line">    100021    4   udp  43200  nlockmgr</span><br><span class="line">    100021    1   tcp  46330  nlockmgr</span><br><span class="line">    100021    3   tcp  46330  nlockmgr</span><br><span class="line">    100021    4   tcp  46330  nlockmgr</span><br></pre></td></tr></table></figure>
+<p>可以看到nfs相关rpc服务已注册</p>
+<h2 id="防火墙设置"><a class="header-anchor" href="#防火墙设置"></a>防火墙设置</h2>
+<p>如果需要外部主机进行远程访问，则必须将nfs服务开发的端口添加至防火墙</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ sudo firewall-cmd --permanent --zone=public --add-service=nfs</span><br><span class="line">[ocloud@centos-linux ~]$ sudo firewall-cmd --permanent --zone=public --add-service=mountd</span><br><span class="line">[ocloud@centos-linux ~]$ sudo firewall-cmd --permanent --zone=public --add-service=rpc-bind</span><br><span class="line">[ocloud@centos-linux ~]$ sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<h2 id="客户端进行挂载"><a class="header-anchor" href="#客户端进行挂载"></a>客户端进行挂载</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ showmount -e 192.168.0.110            <span class="comment">#查看可挂载</span></span><br><span class="line">[ocloud@centos-linux ~]$ showmount -e 192.168.0.110 </span><br><span class="line">Export list <span class="keyword">for</span> 192.168.0.110 :</span><br><span class="line">/opt/share 192.168.0.0/24</span><br><span class="line">[ocloud@centos-linux ~]$ mount -t nfs 192.168.0.110:/opt/share /mnt -o nolock <span class="comment">#不提示即为成功</span></span><br><span class="line"><span class="comment"># nfs默认数据传输使用UDP，可以指定传输协议</span></span><br><span class="line">mount -t nfs 192.168.0.110:/opt/share /mnt -o proto=tcp -o nolock</span><br></pre></td></tr></table></figure>
+<p><strong>永久生效设置</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ vi /etc/fstab <span class="comment">#添加如下的一行内容</span></span><br><span class="line">...</span><br><span class="line">192.168.0.110:/opt/share /mnt                        nfs     defaults        0 0</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">#第五列</span></span><br><span class="line"><span class="comment">#当其值设置为1时，将允许dump备份程序备份；设置为0时，忽略备份操作</span></span><br><span class="line"><span class="comment">#第六列</span></span><br><span class="line"><span class="comment">#其值是一个顺序。当其值为0时，永远不检查；而 / 根目录分区永远都为1。其它分区从2开始，数字越小越先检查，如果两个分区的数字相同，则同时检查</span></span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<p><a href="https://www.wikiwand.com/en/Network_File_System" target="_blank" rel="noopener">Network File System</a></p>
+<p><a href="https://docs.fedoraproject.org/en-US/Fedora/14/html/Storage_Administration_Guide/ch-nfs.html#ftn.fn-portmap2rpcbind" target="_blank" rel="noopener">Chapter 9.  Network File System (NFS)</a></p>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.4/html/administration_guide/nfs" target="_blank" rel="noopener">6.2. NFS</a></p>
+<p>祝：所有的有理想、有梦想的程序员们，新的一年bug消消乐，码上生花，也希望社会更加宽容…等等</p>
+<p>早日活出真实的自己</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/12/22/通过kickstart定制Centos7系统/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2420,223 +2599,6 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2017/07/22/showmacbook/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="一名不知所措的IT从业者">
-      <meta itemprop="image" content="/images/custom/ava.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Change The World">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/22/showmacbook/" itemprop="url">
-                  拆开它
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-07-22 15:35:54" itemprop="dateCreated datePublished" datetime="2017-07-22T15:35:54+08:00">2017-07-22</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-08-23 09:36:59" itemprop="dateModified" datetime="2018-08-23T09:36:59+08:00">2018-08-23</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/computer/" itemprop="url" rel="index"><span itemprop="name">computer</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="上篇"><a class="header-anchor" href="#上篇"></a>上篇</h2>
-<p>    最近小弟做了一个艰难的决定 ☺ ，接下来的即将面临着一段相对艰难的日子。不用多疑，因为买了人生中的第一台macbook pro,凭心而讲这个决定其实很早之前就已经萌生了，记得当时正在学习<a href="https://developer.apple.com/swift/" title="swift" target="_blank" rel="noopener">swift</a>（Apple新出来的开发语言，也不怎么新了），也就是在2016年10月份左右，当时刚毕业没有多久，在第一家公司需要Apple应用开发人员，顺势便开始了我的Apple之路。<br>
-    当时因为身上并没有什么闲钱（吃喝还是可以的），想买一台mac，⊙﹏⊙‖∣ 只是想想而已，但是脚步并未有放弃，我把自己的<a href="http://www.gateway.com/gw/zh/CN/content/home" title="gateway官网" target="_blank" rel="noopener">gateway</a>笔记本装了一个黑苹果，哎！装上是可以的但让人头痛的是合适的驱动太难找了，目前我的黑苹果无线网卡驱动，电池驱动还没有着落…<br>
-<img src="/2017/07/22/showmacbook/hpg.png" alt="微博记录"><br>
-    抒情就此打住，下面就来看看今天（2017年7月22日）刚买到的macbook pro吧，在此感谢弟兄们的推荐以及苹果的叶子客服给与的讲解与解惑，更是要感谢快递小哥在炎炎的夏日能够准时的送达，你们辛苦了，都不容易相互尊重，相互理解。</p>
-<h2 id="下篇"><a class="header-anchor" href="#下篇"></a>下篇</h2>
-<p>    下面我们开始上图了，步入正规<sub>拆开它</sub></p>
-<ul>
-<li>
-<p>快递包装(顺风)<br>
-<img src="/2017/07/22/showmacbook/baozhuanghe.jpg" alt="快递包装"><br>
-并没有多大看头，和普通快递差不多</p>
-</li>
-<li>
-<p>下面揭掉l庐山第一层面纱<br>
-<img src="/2017/07/22/showmacbook/dym.jpg" alt="庐山第一面"></p>
-</li>
-<li>
-<p>庐山第二面<br>
-<img src="/2017/07/22/showmacbook/dem.jpg" alt="庐山第二面"><br>
-正面一如既往的logo,反面有六颗螺钉</p>
-</li>
-<li>
-<p>内部装置<br>
-<img src="/2017/07/22/showmacbook/zz.jpg" alt="装置"></p>
-</li>
-<li>
-<p>下面就是正常的系统预设，就简单的放几张新功能,Touch ID<br>
-<img src="/2017/07/22/showmacbook/dsm.jpg" alt="庐山第三面"><br>
-在最新的macbook上加入了指纹解锁</p>
-</li>
-<li>
-<p>指纹支付<br>
-<img src="/2017/07/22/showmacbook/dsim.jpg" alt="庐山第四面"><br>
-剁手党们你准备好了吗</p>
-</li>
-<li>
-<p>Touch Bar<br>
-<img src="/2017/07/22/showmacbook/dwm.jpg" alt="庐山第五面"><br>
-逼格满满有木有</p>
-</li>
-<li>
-<p>最后主界面闪过<br>
-<img src="/2017/07/22/showmacbook/dlm.jpg" alt="庐山第五面"></p>
-</li>
-</ul>
-<h2 id="结束"><a class="header-anchor" href="#结束"></a>结束</h2>
-<p>梦想 奋斗 坚持</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2688,7 +2650,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2754,7 +2716,11 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
