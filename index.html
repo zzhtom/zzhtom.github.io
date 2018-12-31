@@ -379,7 +379,7 @@
                 
               
 
-              <time title="创建时间：2018-12-31 20:34:47 / 修改时间：22:32:26" itemprop="dateCreated datePublished" datetime="2018-12-31T20:34:47+08:00">2018-12-31</time>
+              <time title="创建时间：2018-12-31 20:34:47 / 修改时间：23:12:44" itemprop="dateCreated datePublished" datetime="2018-12-31T20:34:47+08:00">2018-12-31</time>
             
 
             
@@ -426,10 +426,10 @@
 </blockquote>
 <h2 id="简介与说明"><a class="header-anchor" href="#简介与说明"></a>简介与说明</h2>
 <h3 id="rpcbind"><a class="header-anchor" href="#rpcbind"></a>rpcbind</h3>
-<p>​	用于将RPC程序编号映射到IP地址端口号组合, RPC进程在启动时通知rpcbind，注册他们正在侦听的端口以及他们希望服务的RPC程序编号。然后，客户端系统使用特定的RPC程序编号联系服务器上的rpcbind。 rpcbind服务将客户端重定向到正确的端口号，以便它可以与请求的服务进行通信。</p>
+<p>用于将RPC程序编号映射到IP地址端口号组合, RPC进程在启动时通知rpcbind，注册他们正在侦听的端口以及他们希望服务的RPC程序编号。然后，客户端系统使用特定的RPC程序编号联系服务器上的rpcbind。 rpcbind服务将客户端重定向到正确的端口号，以便它可以与请求的服务进行通信。</p>
 <h3 id="nfs"><a class="header-anchor" href="#nfs"></a>NFS</h3>
-<p>​	网络文件系统（NFS）允许远程主机通过网络安装文件系统，并与这些文件系统进行交互，就好像它们是本地安装的一样。这使系统管理员能够将资源整合到网络上的集中式服务器上。</p>
-<p>​	NFS版本都依赖于客户端和服务器之间的远程过程调用（RPC）。 一般Linux发行版（Fedora、RHEL、CentOS）RPC服务由rpcbind服务控制。要共享或挂载NFS文件系统，以下服务可以协同工作，具体取决于实现的NFS版本</p>
+<p>网络文件系统（NFS）允许远程主机通过网络安装文件系统，并与这些文件系统进行交互，就好像它们是本地安装的一样。这使系统管理员能够将资源整合到网络上的集中式服务器上。</p>
+<p>NFS版本都依赖于客户端和服务器之间的远程过程调用（RPC）。 一般Linux发行版（Fedora、RHEL、CentOS）RPC服务由rpcbind服务控制。要共享或挂载NFS文件系统，以下服务可以协同工作，具体取决于实现的NFS版本</p>
 <h3 id="开始安装"><a class="header-anchor" href="#开始安装"></a>开始安装</h3>
 <p><strong>软件安装</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ yum -y install nfs-utils rpcbind</span><br></pre></td></tr></table></figure>
@@ -450,7 +450,7 @@
 <p>如果需要外部主机进行远程访问，则必须将nfs服务开发的端口添加至防火墙</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ sudo firewall-cmd --permanent --zone=public --add-service=nfs</span><br><span class="line">[ocloud@centos-linux ~]$ sudo firewall-cmd --permanent --zone=public --add-service=mountd</span><br><span class="line">[ocloud@centos-linux ~]$ sudo firewall-cmd --permanent --zone=public --add-service=rpc-bind</span><br><span class="line">[ocloud@centos-linux ~]$ sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
 <h2 id="客户端进行挂载"><a class="header-anchor" href="#客户端进行挂载"></a>客户端进行挂载</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ showmount -e 192.168.0.110            <span class="comment">#查看可挂载</span></span><br><span class="line">[ocloud@centos-linux ~]$ showmount -e 192.168.0.110 </span><br><span class="line">Export list <span class="keyword">for</span> 192.168.0.110 :</span><br><span class="line">/opt/share 192.168.0.0/24</span><br><span class="line">[ocloud@centos-linux ~]$ mount -t nfs 192.168.0.110:/opt/share /mnt -o nolock <span class="comment">#不提示即为成功</span></span><br><span class="line"><span class="comment"># nfs默认数据传输使用UDP，可以指定传输协议</span></span><br><span class="line">mount -t nfs 192.168.0.110:/opt/share /mnt -o proto=tcp -o nolock</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ showmount -e 192.168.0.110            <span class="comment">#查看可挂载</span></span><br><span class="line">Export list <span class="keyword">for</span> 192.168.0.110 :</span><br><span class="line">/opt/share 192.168.0.0/24</span><br><span class="line">[ocloud@centos-linux ~]$ mount -t nfs 192.168.0.110:/opt/share /mnt -o nolock <span class="comment">#不提示即为成功</span></span><br><span class="line"><span class="comment"># nfs默认数据传输使用UDP，可以指定传输协议</span></span><br><span class="line">mount -t nfs 192.168.0.110:/opt/share /mnt -o proto=tcp -o nolock</span><br></pre></td></tr></table></figure>
 <p><strong>永久生效设置</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ vi /etc/fstab <span class="comment">#添加如下的一行内容</span></span><br><span class="line">...</span><br><span class="line">192.168.0.110:/opt/share /mnt                        nfs     defaults        0 0</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">#第五列</span></span><br><span class="line"><span class="comment">#当其值设置为1时，将允许dump备份程序备份；设置为0时，忽略备份操作</span></span><br><span class="line"><span class="comment">#第六列</span></span><br><span class="line"><span class="comment">#其值是一个顺序。当其值为0时，永远不检查；而 / 根目录分区永远都为1。其它分区从2开始，数字越小越先检查，如果两个分区的数字相同，则同时检查</span></span><br></pre></td></tr></table></figure>
 <h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
