@@ -112,24 +112,27 @@
 
 
 
-  <meta name="description" content="一名不知所措的IT从业者">
-<meta name="keywords" content="html,js,jquery,node.js,fibjs,开发者,编程,运维,运维开发">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Change The World">
-<meta property="og:url" content="http://www.zhangxiaoheng.cn/archives/2017/03/index.html">
+  <meta name="description" content="本文主要展示双节点集群的建立，集群效果如下图   安装前准备 在所有节点配置hosts 123#添加如下内容192.168.0.10 node1192.168.0.10 node2 安装 安装Red Hat High Availability Add-On软件套件以及隔离代理程序[所有节点] 1# yum install pcs fence-agents-all 防火墙配置[所有节点] 12#">
+<meta name="keywords" content="linux,cluster,centos7.6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过PACEMAKER创建高可用集群">
+<meta property="og:url" content="http://www.zhangxiaoheng.cn/2019/06/07/通过PACEMAKER创建高可用集群/index.html">
 <meta property="og:site_name" content="Change The World">
-<meta property="og:description" content="一名不知所措的IT从业者">
+<meta property="og:description" content="本文主要展示双节点集群的建立，集群效果如下图   安装前准备 在所有节点配置hosts 123#添加如下内容192.168.0.10 node1192.168.0.10 node2 安装 安装Red Hat High Availability Add-On软件套件以及隔离代理程序[所有节点] 1# yum install pcs fence-agents-all 防火墙配置[所有节点] 12#">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://assets.processon.com/chart_image/5cf9d636e4b0f1ac036b9fb2.png?_=1559878918945">
+<meta property="og:updated_time" content="2019-06-07T04:29:05.043Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Change The World">
-<meta name="twitter:description" content="一名不知所措的IT从业者">
+<meta name="twitter:title" content="通过PACEMAKER创建高可用集群">
+<meta name="twitter:description" content="本文主要展示双节点集群的建立，集群效果如下图   安装前准备 在所有节点配置hosts 123#添加如下内容192.168.0.10 node1192.168.0.10 node2 安装 安装Red Hat High Availability Add-On软件套件以及隔离代理程序[所有节点] 1# yum install pcs fence-agents-all 防火墙配置[所有节点] 12#">
+<meta name="twitter:image" content="http://assets.processon.com/chart_image/5cf9d636e4b0f1ac036b9fb2.png?_=1559878918945">
 
 
 
 
 
 
-  <link rel="canonical" href="http://www.zhangxiaoheng.cn/archives/2017/03/"/>
+  <link rel="canonical" href="http://www.zhangxiaoheng.cn/2019/06/07/通过PACEMAKER创建高可用集群/"/>
 
 
 
@@ -139,7 +142,7 @@
   };
 </script>
 
-  <title>归档 | Change The World</title>
+  <title>通过PACEMAKER创建高可用集群 | Change The World</title>
   
 
 
@@ -195,7 +198,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -268,7 +271,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
   </li>
@@ -312,106 +315,244 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 15 篇日志。 继续努力。
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2017">2017</h2>
-          </div>
-        
-        
-
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2019/06/07/通过PACEMAKER创建高可用集群/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/03/26/blog-study/" itemprop="url">
-              
-                <span itemprop="name">blog搭建小记</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">通过PACEMAKER创建高可用集群
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-26T12:55:15+08:00"
-              content="2017-03-26" >
-          03-26
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
 
+              
+                
+              
+
+              <time title="创建时间：2019-06-07 10:49:50 / 修改时间：12:29:05" itemprop="dateCreated datePublished" datetime="2019-06-07T10:49:50+08:00">2019-06-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <blockquote>
+<p>本文主要展示双节点集群的建立，集群效果如下图</p>
+</blockquote>
+<p><img src="http://assets.processon.com/chart_image/5cf9d636e4b0f1ac036b9fb2.png?_=1559878918945" alt="cluster"></p>
+<h2 id="安装前准备"><a class="header-anchor" href="#安装前准备"></a>安装前准备</h2>
+<p><strong>在所有节点配置hosts</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#添加如下内容</span></span><br><span class="line">192.168.0.10 node1</span><br><span class="line">192.168.0.10 node2</span><br></pre></td></tr></table></figure>
+<h2 id="安装"><a class="header-anchor" href="#安装"></a>安装</h2>
+<p><strong>安装<code>Red Hat High Availability Add-On</code>软件套件以及隔离代理程序[所有节点]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install pcs fence-agents-all</span></span><br></pre></td></tr></table></figure>
+<p><strong>防火墙配置[所有节点]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># firewall-cmd --permanent --add-service=high-availability</span></span><br><span class="line"><span class="comment"># firewall-cmd --add-service=high-availability</span></span><br></pre></td></tr></table></figure>
+<p><strong>用户配置[所有节点]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># passwd hacluster</span></span><br><span class="line">Changing password <span class="keyword">for</span> user hacluster.</span><br><span class="line">New password:</span><br><span class="line">Retype new password:</span><br><span class="line">passwd: all authentication tokens updated successfully.</span><br></pre></td></tr></table></figure>
+<p>注：hacluster用户为自动创建用户，只需修改密码即可，确保所有节点密码一致</p>
+<p><strong>启动pcsd[所有节点]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl start pcsd.service</span></span><br><span class="line"><span class="comment"># systemctl enable pcsd.service</span></span><br></pre></td></tr></table></figure>
+<p><strong>节点认证[单节点]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@z1 ~]<span class="comment"># pcs cluster auth node1 node2</span></span><br><span class="line">Username: hacluster</span><br><span class="line">Password:</span><br><span class="line">node1: Authorized</span><br><span class="line">node2: Authorized</span><br></pre></td></tr></table></figure>
+<h2 id="创建集群"><a class="header-anchor" href="#创建集群"></a>创建集群</h2>
+<p><strong>创建[单节点]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@z1 ~]<span class="comment"># pcs cluster setup --start --name my_cluster node1 node2</span></span><br><span class="line">node1: Succeeded</span><br><span class="line">node2: Starting Cluster...</span><br><span class="line">node1: Succeeded</span><br><span class="line">node2: Starting Cluster...</span><br></pre></td></tr></table></figure>
+<p>注：–start 启动所有节点的集群服务</p>
+<p><strong>设置集群自启动</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs cluster enable --all</span></span><br></pre></td></tr></table></figure>
+<p><strong>手动启动</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs cluster start --all</span></span><br></pre></td></tr></table></figure>
+<p>注： --all启动所有的节点，否则启动单节点</p>
+<p><strong>查看集群状态</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># pcs cluster status</span></span><br></pre></td></tr></table></figure>
+<h2 id="隔离代理配置"><a class="header-anchor" href="#隔离代理配置"></a><a href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/ch-fencing-haar" target="_blank" rel="noopener">隔离代理配置</a></h2>
+<p><strong>创建隔离代理</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs stonith create scsi-shooter fence_scsi devices=/dev/disk/by-id/wwn-0x6001405189b893893594dffb3a2cb3e9 meta provides=unfencing</span></span><br></pre></td></tr></table></figure>
+<p>注：fence_scsi 为fence类型，详情列表: <code>pcs stonith show</code></p>
+<p>​	   provides=unfencing 主要用在基于存储的 FENCE 设备</p>
+<p><strong>查看隔离配置</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs stonith show myapc</span></span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<p><a href="https://access.redhat.com/documentation/zh-tw/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index" target="_blank" rel="noopener">HIGH AVAILABILITY 外掛程式管理</a></p>
+
+      
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>没有别的意思</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/custom/wechat.png" alt="Tom 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/custom/alipay.jpg" alt="Tom 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/cluster/" rel="tag"># cluster</a>
+          
+            <a href="/tags/centos7-6/" rel="tag"># centos7.6</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/31/NFS安装及使用/" rel="next" title="NFS安装及使用">
+                <i class="fa fa-chevron-left"></i> NFS安装及使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -432,8 +573,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -581,6 +731,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装前准备"><span class="nav-number">1.</span> <span class="nav-text">安装前准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建集群"><span class="nav-number">3.</span> <span class="nav-text">创建集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隔离代理配置"><span class="nav-number">4.</span> <span class="nav-text">隔离代理配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -734,6 +900,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
 
   
 
