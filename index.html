@@ -333,6 +333,220 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2019/06/08/构建PACEMAKER集群共享存储-CLVM-GFS2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/08/构建PACEMAKER集群共享存储-CLVM-GFS2/" itemprop="url">
+                  构建PACEMAKER集群共享存储[CLVM + GFS2]
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-08 11:26:23 / 修改时间：12:08:16" itemprop="dateCreated datePublished" datetime="2019-06-08T11:26:23+08:00">2019-06-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档</p>
+</blockquote>
+<p><img src="http://assets.processon.com/chart_image/5cf9d636e4b0f1ac036b9fb2.png" alt="共享存储"></p>
+<h2 id="准备"><a class="header-anchor" href="#准备"></a>准备</h2>
+<ol>
+<li>
+<p>配置集群，请参考 <a href="https://www.zhangxiaoheng.cn/2019/06/07/%E9%80%9A%E8%BF%87PACEMAKER%E5%88%9B%E5%BB%BA%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4/">通过PACEMAKER创建高可用集群</a></p>
+</li>
+<li>
+<p>ISCSI共享存储</p>
+</li>
+<li>
+<p>所有的集群节点接入ISCSI共享存储</p>
+</li>
+</ol>
+<h2 id="安装"><a class="header-anchor" href="#安装"></a>安装</h2>
+<ol>
+<li>安装lvm2-cluster和gfs2-utils软件包[所有节点]</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install lvm2-cluster gfs2-utils</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>将全局Pacemaker参数no_quorum_policy设置为freeze</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pcs property <span class="built_in">set</span> no-quorum-policy=freeze</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong></p>
+<blockquote>
+<p>默认情况下会将 <code>no-quorum-policy</code> 值设定为 <code>stop</code>，说明丢失一个仲裁，同时将停止剩余分区中的所有资源。通常这个选项是最安全同时也是最佳选项，但与大多数资源不同，GFS2 需要仲裁功能。丢失仲裁后，使用 GFS2 挂载的应用程序及 GFS2 挂载本身都将正常停止。所有在无仲裁的情况下停止执行资源的尝试都将失败，并最终造成每次丢失仲裁时都 fence 整个集群。</p>
+<p>为解决这个问题，您可以在使用 GFS2 时设置 <code>no-quorum-policy=freeze</code>。这意味着丢失仲裁时，重新获得仲裁钱剩余分区不会做任何操作。</p>
+</blockquote>
+<ol start="3">
+<li>设置dlm资源。这是clvmd和GFS2的必需依赖项[单节点]</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs resource create dlm ocf:pacemaker:controld op monitor interval=30s on-fail=fence clone interleave=true ordered=true</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>执行以下命令以启用集群锁定。此命令将/etc/lvm/lvm.conf文件中的locking_type参数设置为3[所有节点]</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lvmconf --enable-cluster</span></span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>将clvmd设置为集群资源[单节点]</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs resource create clvmd ocf:heartbeat:clvm op monitor interval=30s on-fail=fence clone interleave=true ordered=true</span></span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>设置clvmd和dlm依赖项并启动顺序,  clvmd必须在dlm之后启动，并且必须与dlm在同一节点上运行[单节点]</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs constraint order start dlm-clone then clvmd-clone</span></span><br><span class="line"><span class="comment"># pcs constraint colocation add clvmd-clone with dlm-clone</span></span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>创建集群逻辑卷[单节点]</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pvcreate /dev/vdb</span></span><br><span class="line"><span class="comment"># vgcreate -Ay -cy cluster_vg /dev/vdb</span></span><br><span class="line"><span class="comment"># lvcreate -L5G -n cluster_lv cluster_vg</span></span><br></pre></td></tr></table></figure>
+<p>注：/dev/vdb iscsi共享存储</p>
+<ol start="8">
+<li>使用GFS2文件系统格式化逻辑卷[单节点]</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mkfs.gfs2 -j2 -p lock_dlm -t rhel7-demo:gfs2-demo /dev/cluster_vg/cluster_lv</span></span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li>配置clusterfs资源[单节点]</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs resource create clusterfs Filesystem device="/dev/cluster_vg/cluster_lv" directory="/var/mountpoint" fstype="gfs2" options="noatime" op monitor interval=10s on-fail=fence clone interleave=true</span></span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li>设置GFS2和clvmd依赖关系和启动顺序[单节点]</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs constraint order start clvmd-clone then clusterfs-clone</span></span><br><span class="line"><span class="comment"># pcs constraint colocation add clusterfs-clone with clvmd-clone</span></span><br></pre></td></tr></table></figure>
+<ol start="12">
+<li>查看资源信息</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs resource show #查看资源信息</span></span><br></pre></td></tr></table></figure>
+<ol start="13">
+<li>验证是否按预期安装了GFS2</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mount |grep /mnt/gfs2-demo</span></span><br><span class="line">/dev/mapper/cluster_vg-cluster_lv on /mnt/gfs2-demo <span class="built_in">type</span> gfs2 (rw,noatime,seclabel)</span><br></pre></td></tr></table></figure>
+<p>完成以上操作后，就已经成功构建了集群的共享存储，具体参数含义还望请参考官方文档介绍</p>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-clustsetup-gfs2" target="_blank" rel="noopener">CHAPTER 5. CONFIGURING A GFS2 FILE SYSTEM IN A CLUSTER</a></p>
+<p><a href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/ch-clustresources-haar" target="_blank" rel="noopener">第 5 章 配置集群资源</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2019/06/07/通过PACEMAKER创建高可用集群/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -379,12 +593,24 @@
                 
               
 
-              <time title="创建时间：2019-06-07 10:49:50 / 修改时间：12:30:45" itemprop="dateCreated datePublished" datetime="2019-06-07T10:49:50+08:00">2019-06-07</time>
+              <time title="创建时间：2019-06-07 10:49:50" itemprop="dateCreated datePublished" datetime="2019-06-07T10:49:50+08:00">2019-06-07</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-08 12:08:11" itemprop="dateModified" datetime="2019-06-08T12:08:11+08:00">2019-06-08</time>
               
             
           </span>
@@ -452,7 +678,7 @@
 <h2 id="隔离代理配置"><a class="header-anchor" href="#隔离代理配置"></a><a href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/ch-fencing-haar" target="_blank" rel="noopener">隔离代理配置</a></h2>
 <p><strong>创建隔离代理</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs stonith create scsi-shooter fence_scsi devices=/dev/disk/by-id/wwn-0x6001405189b893893594dffb3a2cb3e9 meta provides=unfencing</span></span><br></pre></td></tr></table></figure>
-<p>注：fence_scsi 为fence类型，详情列表: <code>pcs stonith show</code></p>
+<p>注：fence_scsi 为fence类型，详情列表: <code>pcs stonith list</code></p>
 <p>​	   provides=unfencing 主要用在基于存储的 FENCE 设备</p>
 <p><strong>查看隔离配置</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs stonith show scsi-shooter</span></span><br></pre></td></tr></table></figure>
@@ -2107,219 +2333,6 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/05/12/session-cookie/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="一名不知所措的IT从业者">
-      <meta itemprop="image" content="/images/custom/ava.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Change The World">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/12/session-cookie/" itemprop="url">
-                  session、cookie 篇
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-12 12:21:31" itemprop="dateCreated datePublished" datetime="2018-05-12T12:21:31+08:00">2018-05-12</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-08-22 21:27:48" itemprop="dateModified" datetime="2018-08-22T21:27:48+08:00">2018-08-22</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>    内容主要用于自己对资料的整理以及日后查阅，无任何其他目的，对于内容有不正确的地方还请邮箱联系小弟，在此先谢过。</p>
-</blockquote>
-<hr>
-<h2 id="session-cookie出现的原因"><a class="header-anchor" href="#session-cookie出现的原因"></a>session、cookie出现的原因</h2>
-<p>​    http无状态的协议，什么是无状态呢，是指http没有记忆的功能。如果没有状态的情况下，需要每次链接都传送大量数据，比如说在购物的时候，如果没有cookie和session每浏览加入购物车一次都得重新登陆。<br>
-为了解决这一问题，两种用于保持HTTP连接状态的技术就应运而生了，一个是Cookie，而另一个则是Session。</p>
-<h2 id="cookie"><a class="header-anchor" href="#cookie"></a>cookie?</h2>
-<blockquote>
-<p>This document defines the HTTP Cookie and Set-Cookie header fields.These header fields can be used by HTTP servers to store state (called cookies) at HTTP user agents, letting the servers maintain a stateful session over the mostly stateless HTTP protocol.  Although cookies have many historical infelicities that degrade their security and privacy, the Cookie and Set-Cookie header fields are widely used on the Internet.  This document obsoletes RFC 2965.</p>
-</blockquote>
-<p>​    HTTP Cookie（也叫Web Cookie或浏览器Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。</p>
-<p>​    通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie使基于无状态的HTTP协议记录稳定的状态信息成为了可能。</p>
-<h3 id="解决问题？"><a class="header-anchor" href="#解决问题？"></a>解决问题？</h3>
-<p>Cookie主要用于以下三个方面：</p>
-<ul>
-<li>会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）</li>
-<li>个性化设置（如用户自定义设置、主题等）</li>
-<li>浏览器行为跟踪（如跟踪分析用户行为等）</li>
-</ul>
-<p>​    Cookie曾一度用于客户端数据的存储，因当时并没有其它合适的存储办法而作为唯一的存储手段，但现在随着现代浏览器开始支持各种各样的存储方式，Cookie渐渐被淘汰。由于服务器指定Cookie后，浏览器的每次请求都会携带Cookie数据，会带来额外的性能开销（尤其是在移动环境下）。新的浏览器API已经允许开发者直接将数据存储到本地，如使用 Web storage API （本地存储和会话存储）或 IndexedDB 。</p>
-<p><em>注： 客户端维护会话状态</em></p>
-<h2 id="session"><a class="header-anchor" href="#session"></a>session?</h2>
-<p><strong>session定义(来源API文档)</strong></p>
-<blockquote>
-<p>Provides a way to identify a user across more than one page request or visit to a Web site and to store information about that user.</p>
-</blockquote>
-<p>【译文】：为用户识别多个页面请求或访问Web站点，并存储有关该用户的信息提供一种方法。</p>
-<p>​    是指一类用来在客户端与服务器端之间保持状态的解决方案。 有时候Session也用来指这种解决方案的存储结构或服务器端的一种存储会话的机制</p>
-<h3 id="运行机制"><a class="header-anchor" href="#运行机制"></a>运行机制</h3>
-<p>​    当程序需要为某个客户端的请求创建一个session的时候，服务器首先检查这个客户端的请求里是否已包含了一个session标识 - 称为session id，如果已包含一个session id则说明以前已经为此客户端创建过session，服务器就按照session id把这个session检索出来使用（如果检索不到，可能会新建一个），如果客户端请求不包含session id，则为此客户端创建一个session并且生成一个与此session相关联的session id，session id的值应该是一个既不会重复，又不容易被找到规律以仿造的字符串，这个session id将被在本次响应中返回给客户端保存。</p>
-<h3 id="解决问题？-v2"><a class="header-anchor" href="#解决问题？-v2"></a>解决问题？</h3>
-<p>    会话状态管理(session用于在用户身份验证后跟踪用户行为轨迹)</p>
-<p>持久性方式：文件、数据库、客户端cookie</p>
-<p><em>注： 服务端维护会话状态</em></p>
-<h3 id="小总结-session"><a class="header-anchor" href="#小总结-session"></a>小总结[session]</h3>
-<ol>
-<li>浏览器会话期间： 一系列的请求响应事务</li>
-<li>session机制：是指一类用来在客户端与服务器之间保持状态的解决方案</li>
-<li>session：有时候session也用来指这种解决方案的存储结构，如“把xxx保存在session里</li>
-<li>HttpSession：由于各种用于web开发的语言在一定程度上都提供了对这种解决方案的支持，所以在某种特定语言的语境下，session也被用来指代该语言的解决方案，比如经常把Java里提供的javax.servlet.http.HttpSession简称为session</li>
-</ol>
-<h2 id="cookie-与-session-的关系"><a class="header-anchor" href="#cookie-与-session-的关系"></a>cookie 与 session 的关系</h2>
-<ol>
-<li>session技术基于cookie没有cookie,session也无法完成</li>
-<li>浏览器在第一次访问服务器时，服务器发现没有携带sessionId,会自动创建session对象。并将创建的cookie对象保存sessionId发送给浏览器。</li>
-<li>在浏览器发送请求时，带有cookieid的session</li>
-</ol>
-<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
-<p><a href="https://tools.ietf.org/html/rfc6265#page-13" target="_blank" rel="noopener"> HTTP State Management Mechanism </a></p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies" target="_blank" rel="noopener">HTTP cookies</a></p>
-<p><a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank" rel="noopener">Cookies - Information that websites store on your computer</a></p>
-<p><a href="http://justsee.iteye.com/blog/1570652" target="_blank" rel="noopener">Session机制详解</a></p>
-<p><a href="https://zh.wikipedia.org/wiki/Cookie" target="_blank" rel="noopener">Cookie</a></p>
-<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
-<h3 id="cookie分类"><a class="header-anchor" href="#cookie分类"></a>cookie分类</h3>
-<h4 id="会话期cookie"><a class="header-anchor" href="#会话期cookie"></a>会话期Cookie</h4>
-<p>    会话期Cookie是最简单的Cookie：浏览器关闭之后它会被自动删除，也就是说它仅在会话期内有效。会话期Cookie不需要指定过期时间（<code>Expires</code>）或者有效期（Max-Age）。需要注意的是，有些浏览器提供了会话恢复功能，这种情况下即使关闭了浏览器，会话期Cookie也会被保留下来，就好像浏览器从来没有关闭一样。</p>
-<h4 id="持久性cookie"><a class="header-anchor" href="#持久性cookie"></a>持久性Cookie</h4>
-<p>    和关闭浏览器便失效的会话期Cookie不同，持久性Cookie可以指定一个特定的过期时间（<code>Expires</code>）或有效期（<code>Max-Age</code>）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;</span><br></pre></td></tr></table></figure>
-<p><strong>提示:</strong> 当Cookie的过期时间被设定时，设定的日期和时间只与客户端相关，而不是服务端。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2371,7 +2384,7 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2445,7 +2458,15 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

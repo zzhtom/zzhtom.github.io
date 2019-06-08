@@ -333,6 +333,219 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/05/12/session-cookie/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/12/session-cookie/" itemprop="url">
+                  session、cookie 篇
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-12 12:21:31" itemprop="dateCreated datePublished" datetime="2018-05-12T12:21:31+08:00">2018-05-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-22 21:27:48" itemprop="dateModified" datetime="2018-08-22T21:27:48+08:00">2018-08-22</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>    内容主要用于自己对资料的整理以及日后查阅，无任何其他目的，对于内容有不正确的地方还请邮箱联系小弟，在此先谢过。</p>
+</blockquote>
+<hr>
+<h2 id="session-cookie出现的原因"><a class="header-anchor" href="#session-cookie出现的原因"></a>session、cookie出现的原因</h2>
+<p>​    http无状态的协议，什么是无状态呢，是指http没有记忆的功能。如果没有状态的情况下，需要每次链接都传送大量数据，比如说在购物的时候，如果没有cookie和session每浏览加入购物车一次都得重新登陆。<br>
+为了解决这一问题，两种用于保持HTTP连接状态的技术就应运而生了，一个是Cookie，而另一个则是Session。</p>
+<h2 id="cookie"><a class="header-anchor" href="#cookie"></a>cookie?</h2>
+<blockquote>
+<p>This document defines the HTTP Cookie and Set-Cookie header fields.These header fields can be used by HTTP servers to store state (called cookies) at HTTP user agents, letting the servers maintain a stateful session over the mostly stateless HTTP protocol.  Although cookies have many historical infelicities that degrade their security and privacy, the Cookie and Set-Cookie header fields are widely used on the Internet.  This document obsoletes RFC 2965.</p>
+</blockquote>
+<p>​    HTTP Cookie（也叫Web Cookie或浏览器Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。</p>
+<p>​    通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie使基于无状态的HTTP协议记录稳定的状态信息成为了可能。</p>
+<h3 id="解决问题？"><a class="header-anchor" href="#解决问题？"></a>解决问题？</h3>
+<p>Cookie主要用于以下三个方面：</p>
+<ul>
+<li>会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）</li>
+<li>个性化设置（如用户自定义设置、主题等）</li>
+<li>浏览器行为跟踪（如跟踪分析用户行为等）</li>
+</ul>
+<p>​    Cookie曾一度用于客户端数据的存储，因当时并没有其它合适的存储办法而作为唯一的存储手段，但现在随着现代浏览器开始支持各种各样的存储方式，Cookie渐渐被淘汰。由于服务器指定Cookie后，浏览器的每次请求都会携带Cookie数据，会带来额外的性能开销（尤其是在移动环境下）。新的浏览器API已经允许开发者直接将数据存储到本地，如使用 Web storage API （本地存储和会话存储）或 IndexedDB 。</p>
+<p><em>注： 客户端维护会话状态</em></p>
+<h2 id="session"><a class="header-anchor" href="#session"></a>session?</h2>
+<p><strong>session定义(来源API文档)</strong></p>
+<blockquote>
+<p>Provides a way to identify a user across more than one page request or visit to a Web site and to store information about that user.</p>
+</blockquote>
+<p>【译文】：为用户识别多个页面请求或访问Web站点，并存储有关该用户的信息提供一种方法。</p>
+<p>​    是指一类用来在客户端与服务器端之间保持状态的解决方案。 有时候Session也用来指这种解决方案的存储结构或服务器端的一种存储会话的机制</p>
+<h3 id="运行机制"><a class="header-anchor" href="#运行机制"></a>运行机制</h3>
+<p>​    当程序需要为某个客户端的请求创建一个session的时候，服务器首先检查这个客户端的请求里是否已包含了一个session标识 - 称为session id，如果已包含一个session id则说明以前已经为此客户端创建过session，服务器就按照session id把这个session检索出来使用（如果检索不到，可能会新建一个），如果客户端请求不包含session id，则为此客户端创建一个session并且生成一个与此session相关联的session id，session id的值应该是一个既不会重复，又不容易被找到规律以仿造的字符串，这个session id将被在本次响应中返回给客户端保存。</p>
+<h3 id="解决问题？-v2"><a class="header-anchor" href="#解决问题？-v2"></a>解决问题？</h3>
+<p>    会话状态管理(session用于在用户身份验证后跟踪用户行为轨迹)</p>
+<p>持久性方式：文件、数据库、客户端cookie</p>
+<p><em>注： 服务端维护会话状态</em></p>
+<h3 id="小总结-session"><a class="header-anchor" href="#小总结-session"></a>小总结[session]</h3>
+<ol>
+<li>浏览器会话期间： 一系列的请求响应事务</li>
+<li>session机制：是指一类用来在客户端与服务器之间保持状态的解决方案</li>
+<li>session：有时候session也用来指这种解决方案的存储结构，如“把xxx保存在session里</li>
+<li>HttpSession：由于各种用于web开发的语言在一定程度上都提供了对这种解决方案的支持，所以在某种特定语言的语境下，session也被用来指代该语言的解决方案，比如经常把Java里提供的javax.servlet.http.HttpSession简称为session</li>
+</ol>
+<h2 id="cookie-与-session-的关系"><a class="header-anchor" href="#cookie-与-session-的关系"></a>cookie 与 session 的关系</h2>
+<ol>
+<li>session技术基于cookie没有cookie,session也无法完成</li>
+<li>浏览器在第一次访问服务器时，服务器发现没有携带sessionId,会自动创建session对象。并将创建的cookie对象保存sessionId发送给浏览器。</li>
+<li>在浏览器发送请求时，带有cookieid的session</li>
+</ol>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<p><a href="https://tools.ietf.org/html/rfc6265#page-13" target="_blank" rel="noopener"> HTTP State Management Mechanism </a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies" target="_blank" rel="noopener">HTTP cookies</a></p>
+<p><a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank" rel="noopener">Cookies - Information that websites store on your computer</a></p>
+<p><a href="http://justsee.iteye.com/blog/1570652" target="_blank" rel="noopener">Session机制详解</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/Cookie" target="_blank" rel="noopener">Cookie</a></p>
+<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
+<h3 id="cookie分类"><a class="header-anchor" href="#cookie分类"></a>cookie分类</h3>
+<h4 id="会话期cookie"><a class="header-anchor" href="#会话期cookie"></a>会话期Cookie</h4>
+<p>    会话期Cookie是最简单的Cookie：浏览器关闭之后它会被自动删除，也就是说它仅在会话期内有效。会话期Cookie不需要指定过期时间（<code>Expires</code>）或者有效期（Max-Age）。需要注意的是，有些浏览器提供了会话恢复功能，这种情况下即使关闭了浏览器，会话期Cookie也会被保留下来，就好像浏览器从来没有关闭一样。</p>
+<h4 id="持久性cookie"><a class="header-anchor" href="#持久性cookie"></a>持久性Cookie</h4>
+<p>    和关闭浏览器便失效的会话期Cookie不同，持久性Cookie可以指定一个特定的过期时间（<code>Expires</code>）或有效期（<code>Max-Age</code>）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;</span><br></pre></td></tr></table></figure>
+<p><strong>提示:</strong> 当Cookie的过期时间被设定时，设定的日期和时间只与客户端相关，而不是服务端。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2017/08/14/javascript-regexp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1566,7 +1779,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1640,7 +1853,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1888,6 +2109,8 @@
 
   
   
+    
+      
     
       
     
