@@ -379,12 +379,24 @@
                 
               
 
-              <time title="创建时间：2019-06-08 11:26:23 / 修改时间：12:08:16" itemprop="dateCreated datePublished" datetime="2019-06-08T11:26:23+08:00">2019-06-08</time>
+              <time title="创建时间：2019-06-08 11:26:23" itemprop="dateCreated datePublished" datetime="2019-06-08T11:26:23+08:00">2019-06-08</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-08 17:28:33" itemprop="dateModified" datetime="2019-07-08T17:28:33+08:00">2019-07-08</time>
               
             
           </span>
@@ -420,7 +432,7 @@
         
           
             <blockquote>
-<p>本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档</p>
+<p>本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档，主要内容就是把集群分配的iscsi存储使用clvm + GFS2进行管理,使得此存储设备成功集群的共享存储</p>
 </blockquote>
 <p><img src="http://assets.processon.com/chart_image/5cf9d636e4b0f1ac036b9fb2.png" alt="共享存储"></p>
 <h2 id="准备"><a class="header-anchor" href="#准备"></a>准备</h2>
@@ -443,7 +455,7 @@
 <ol start="2">
 <li>将全局Pacemaker参数no_quorum_policy设置为freeze</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pcs property <span class="built_in">set</span> no-quorum-policy=freeze</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs property set no-quorum-policy=freeze</span></span><br></pre></td></tr></table></figure>
 <p><strong>注意</strong></p>
 <blockquote>
 <p>默认情况下会将 <code>no-quorum-policy</code> 值设定为 <code>stop</code>，说明丢失一个仲裁，同时将停止剩余分区中的所有资源。通常这个选项是最安全同时也是最佳选项，但与大多数资源不同，GFS2 需要仲裁功能。丢失仲裁后，使用 GFS2 挂载的应用程序及 GFS2 挂载本身都将正常停止。所有在无仲裁的情况下停止执行资源的尝试都将失败，并最终造成每次丢失仲裁时都 fence 整个集群。</p>
@@ -454,7 +466,7 @@
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs resource create dlm ocf:pacemaker:controld op monitor interval=30s on-fail=fence clone interleave=true ordered=true</span></span><br></pre></td></tr></table></figure>
 <ol start="4">
-<li>执行以下命令以启用集群锁定。此命令将/etc/lvm/lvm.conf文件中的locking_type参数设置为3[所有节点]</li>
+<li>执行以下命令以启用集群。此命令将/etc/lvm/lvm.conf文件中的locking_type参数设置为3[所有节点]</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lvmconf --enable-cluster</span></span><br></pre></td></tr></table></figure>
 <ol start="5">
@@ -490,6 +502,18 @@
 <li>验证是否按预期安装了GFS2</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mount |grep /mnt/gfs2-demo</span></span><br><span class="line">/dev/mapper/cluster_vg-cluster_lv on /mnt/gfs2-demo <span class="built_in">type</span> gfs2 (rw,noatime,seclabel)</span><br></pre></td></tr></table></figure>
+<ol start="14">
+<li>扩展GFS2文件系统空间</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lvextend -L +2G /dev/cluster_vg/cluster_lv</span></span><br><span class="line"><span class="comment"># gfs2_grow  /var/mountpoint</span></span><br></pre></td></tr></table></figure>
+<ol start="15">
+<li>添加GFS2日志数量</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gfs2_jadd -j 1 /var/mountpoint</span></span><br></pre></td></tr></table></figure>
+<p>注：如果节点需要使用此共享存储，必选保证日志数量大于或者等于集群节点，及机节点数小于或等于日志数</p>
+<ol start="16">
+<li>添加挂载点</li>
+</ol>
 <p>完成以上操作后，就已经成功构建了集群的共享存储，具体参数含义还望请参考官方文档介绍</p>
 <h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
 <p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-clustsetup-gfs2" target="_blank" rel="noopener">CHAPTER 5. CONFIGURING A GFS2 FILE SYSTEM IN A CLUSTER</a></p>
@@ -610,7 +634,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-08 12:12:30" itemprop="dateModified" datetime="2019-06-08T12:12:30+08:00">2019-06-08</time>
+                <time title="修改时间：2019-07-08 16:55:25" itemprop="dateModified" datetime="2019-07-08T16:55:25+08:00">2019-07-08</time>
               
             
           </span>
@@ -646,12 +670,13 @@
         
           
             <blockquote>
-<p>本文主要展示双节点集群的建立，集群效果如下图</p>
+<p>集群主要用于在主服务由于异常状况不能继续正常工作，此时会有一个备用的服务器继续提供服务，进而不会导致服务停止，本文主要展示双节点集群的建立，集群效果如下图</p>
 </blockquote>
 <p><img src="http://assets.processon.com/chart_image/5cfb2bb8e4b0a64c88ac0d86.png" alt="cluster"></p>
 <h2 id="安装前准备"><a class="header-anchor" href="#安装前准备"></a>安装前准备</h2>
-<p><strong>在所有节点配置hosts</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#添加如下内容</span></span><br><span class="line">192.168.0.10 node1</span><br><span class="line">192.168.0.10 node2</span><br></pre></td></tr></table></figure>
+<p><strong>配置hosts[所有节点]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#添加如下内容，确保集群中的主机可以通过主机名相互通信</span></span><br><span class="line">192.168.0.10 node1</span><br><span class="line">192.168.0.11 node2</span><br></pre></td></tr></table></figure>
+<p>注：[所有节点]代表所有节点执行，[单节点]代表集群中一个节点执行即可，下同</p>
 <h2 id="安装"><a class="header-anchor" href="#安装"></a>安装</h2>
 <p><strong>安装<code>Red Hat High Availability Add-On</code>软件套件以及隔离代理程序[所有节点]</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install pcs fence-agents-all</span></span><br></pre></td></tr></table></figure>
@@ -676,12 +701,15 @@
 <p><strong>查看集群状态</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># pcs cluster status</span></span><br></pre></td></tr></table></figure>
 <h2 id="隔离代理配置"><a class="header-anchor" href="#隔离代理配置"></a><a href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/ch-fencing-haar" target="_blank" rel="noopener">隔离代理配置</a></h2>
-<p><strong>创建隔离代理</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs stonith create scsi-shooter fence_scsi devices=/dev/disk/by-id/wwn-0x6001405189b893893594dffb3a2cb3e9 meta provides=unfencing</span></span><br></pre></td></tr></table></figure>
-<p>注：fence_scsi 为fence类型，详情列表: <code>pcs stonith list</code></p>
-<p>​	   provides=unfencing 主要用在基于存储的 FENCE 设备</p>
+<blockquote>
+<p>以下使用iscsi设备充当stonith设备<br>
+<strong>创建隔离代理</strong></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs stonith create scsi-shooter fence_scsi devices=/dev/disk/by-id/wwn-0x6001405189b893893594dffb3a2cb3e9 pcmk_monitor_action=metadata pcmk_reboot_action=off pcmk_host_list="node1 node2" meta provides=unfencing</span></span><br></pre></td></tr></table></figure>
+<p>注：scsi-shooter 为资源名称，fence_scsi 为fence设备类型，详情列表: <code>pcs stonith list</code><br>
+provides=unfencing 主要用在基于存储的 FENCE 设备，如果仅仅希望stonith资源是开启的，则可以添加配置项 pcmk_monitor_action=metadata，此操作不会检测stonith设备是否存在直接返回成功。</p>
 <p><strong>查看隔离配置</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs stonith show scsi-shooter</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs stonith show scsi-shooter</span></span><br><span class="line"> scsi-shooter	(stonith:fence_scsi):	Started node1</span><br></pre></td></tr></table></figure>
 <h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
 <p><a href="https://access.redhat.com/documentation/zh-tw/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index" target="_blank" rel="noopener">HIGH AVAILABILITY 外掛程式管理</a></p>
 
