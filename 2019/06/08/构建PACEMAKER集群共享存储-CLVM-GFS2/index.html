@@ -113,7 +113,7 @@
 
 
   <meta name="description" content="本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档，主要内容就是把集群分配的iscsi存储使用clvm + GFS2进行管理,使得此存储设备成功集群的共享存储   准备   配置集群，请参考 通过PACEMAKER创建高可用集群   ISCSI共享存储   所有的集群节点接入ISCSI共享存储   安装  安装lvm2-cluster和gfs2-utils软件包">
-<meta name="keywords" content="cluster,centos7,packmaker,clvm,gfs2">
+<meta name="keywords" content="centos7,cluster,packmaker,clvm,gfs2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="构建PACEMAKER集群共享存储[CLVM + GFS2]">
 <meta property="og:url" content="http://www.zhangxiaoheng.cn/2019/06/08/构建PACEMAKER集群共享存储-CLVM-GFS2/index.html">
@@ -121,7 +121,7 @@
 <meta property="og:description" content="本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档，主要内容就是把集群分配的iscsi存储使用clvm + GFS2进行管理,使得此存储设备成功集群的共享存储   准备   配置集群，请参考 通过PACEMAKER创建高可用集群   ISCSI共享存储   所有的集群节点接入ISCSI共享存储   安装  安装lvm2-cluster和gfs2-utils软件包">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://assets.processon.com/chart_image/5cf9d636e4b0f1ac036b9fb2.png">
-<meta property="og:updated_time" content="2019-07-08T09:28:33.475Z">
+<meta property="og:updated_time" content="2019-07-08T09:32:41.051Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="构建PACEMAKER集群共享存储[CLVM + GFS2]">
 <meta name="twitter:description" content="本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档，主要内容就是把集群分配的iscsi存储使用clvm + GFS2进行管理,使得此存储设备成功集群的共享存储   准备   配置集群，请参考 通过PACEMAKER创建高可用集群   ISCSI共享存储   所有的集群节点接入ISCSI共享存储   安装  安装lvm2-cluster和gfs2-utils软件包">
@@ -394,7 +394,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-08 17:28:33" itemprop="dateModified" datetime="2019-07-08T17:28:33+08:00">2019-07-08</time>
+                <time title="修改时间：2019-07-08 17:32:41" itemprop="dateModified" datetime="2019-07-08T17:32:41+08:00">2019-07-08</time>
               
             
           </span>
@@ -506,7 +506,7 @@
 <li>添加GFS2日志数量</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gfs2_jadd -j 1 /var/mountpoint</span></span><br></pre></td></tr></table></figure>
-<p>注：如果节点需要使用此共享存储，必选保证日志数量大于或者等于集群节点，及机节点数小于或等于日志数</p>
+<p>注：如果节点需要使用此共享存储，必选保证日志数量大于或者等于集群节点，集群节点数小于或等于GFS2文件系统日志数</p>
 <ol start="16">
 <li>添加挂载点</li>
 </ol>
@@ -563,9 +563,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/cluster/" rel="tag"># cluster</a>
-          
             <a href="/tags/centos7/" rel="tag"># centos7</a>
+          
+            <a href="/tags/cluster/" rel="tag"># cluster</a>
           
             <a href="/tags/packmaker/" rel="tag"># packmaker</a>
           
