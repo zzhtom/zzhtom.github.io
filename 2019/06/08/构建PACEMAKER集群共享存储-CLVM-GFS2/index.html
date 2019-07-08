@@ -112,19 +112,19 @@
 
 
 
-  <meta name="description" content="本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档，主要内容就是把集群分配的iscsi存储使用clvm + GFS2进行管理,使得此存储设备成功集群的共享存储   准备   配置集群，请参考 通过PACEMAKER创建高可用集群   ISCSI共享存储   所有的集群节点接入ISCSI共享存储   安装  安装lvm2-cluster和gfs2-utils软件包">
+  <meta name="description" content="本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档，主要内容就是把集群分配的iscsi存储使用clvm + GFS2进行管理，使得此存储设备成功集群的共享存储   准备   配置集群，请参考 通过PACEMAKER创建高可用集群   ISCSI共享存储   所有的集群节点接入ISCSI共享存储   安装  安装lvm2-cluster和gfs2-utils软件包">
 <meta name="keywords" content="centos7,cluster,packmaker,clvm,gfs2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="构建PACEMAKER集群共享存储[CLVM + GFS2]">
 <meta property="og:url" content="http://www.zhangxiaoheng.cn/2019/06/08/构建PACEMAKER集群共享存储-CLVM-GFS2/index.html">
 <meta property="og:site_name" content="Change The World">
-<meta property="og:description" content="本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档，主要内容就是把集群分配的iscsi存储使用clvm + GFS2进行管理,使得此存储设备成功集群的共享存储   准备   配置集群，请参考 通过PACEMAKER创建高可用集群   ISCSI共享存储   所有的集群节点接入ISCSI共享存储   安装  安装lvm2-cluster和gfs2-utils软件包">
+<meta property="og:description" content="本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档，主要内容就是把集群分配的iscsi存储使用clvm + GFS2进行管理，使得此存储设备成功集群的共享存储   准备   配置集群，请参考 通过PACEMAKER创建高可用集群   ISCSI共享存储   所有的集群节点接入ISCSI共享存储   安装  安装lvm2-cluster和gfs2-utils软件包">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://assets.processon.com/chart_image/5cf9d636e4b0f1ac036b9fb2.png">
-<meta property="og:updated_time" content="2019-07-08T09:32:41.051Z">
+<meta property="og:updated_time" content="2019-07-08T09:34:15.535Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="构建PACEMAKER集群共享存储[CLVM + GFS2]">
-<meta name="twitter:description" content="本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档，主要内容就是把集群分配的iscsi存储使用clvm + GFS2进行管理,使得此存储设备成功集群的共享存储   准备   配置集群，请参考 通过PACEMAKER创建高可用集群   ISCSI共享存储   所有的集群节点接入ISCSI共享存储   安装  安装lvm2-cluster和gfs2-utils软件包">
+<meta name="twitter:description" content="本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档，主要内容就是把集群分配的iscsi存储使用clvm + GFS2进行管理，使得此存储设备成功集群的共享存储   准备   配置集群，请参考 通过PACEMAKER创建高可用集群   ISCSI共享存储   所有的集群节点接入ISCSI共享存储   安装  安装lvm2-cluster和gfs2-utils软件包">
 <meta name="twitter:image" content="http://assets.processon.com/chart_image/5cf9d636e4b0f1ac036b9fb2.png">
 
 
@@ -394,7 +394,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-08 17:32:41" itemprop="dateModified" datetime="2019-07-08T17:32:41+08:00">2019-07-08</time>
+                <time title="修改时间：2019-07-08 17:34:15" itemprop="dateModified" datetime="2019-07-08T17:34:15+08:00">2019-07-08</time>
               
             
           </span>
@@ -428,7 +428,7 @@
 
       
         <blockquote>
-<p>本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档，主要内容就是把集群分配的iscsi存储使用clvm + GFS2进行管理,使得此存储设备成功集群的共享存储</p>
+<p>本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档，主要内容就是把集群分配的iscsi存储使用clvm + GFS2进行管理，使得此存储设备成功集群的共享存储</p>
 </blockquote>
 <p><img src="http://assets.processon.com/chart_image/5cf9d636e4b0f1ac036b9fb2.png" alt="共享存储"></p>
 <h2 id="准备"><a class="header-anchor" href="#准备"></a>准备</h2>
