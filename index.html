@@ -226,7 +226,7 @@
           <blockquote>
 <p>本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档，主要内容就是把集群分配的iscsi存储使用clvm + GFS2进行管理，使得此存储设备成功集群的共享存储</p>
 </blockquote>
-<p><img src="http://assets.processon.com/chart_image/5cf9d636e4b0f1ac036b9fb2.png" alt="共享存储"></p>
+<p><img data-src="http://assets.processon.com/chart_image/5cf9d636e4b0f1ac036b9fb2.png" alt="共享存储"></p>
 <h2 id="准备"><a class="header-anchor" href="#准备"></a>准备</h2>
 <ol>
 <li>
@@ -377,7 +377,7 @@
           <blockquote>
 <p>集群主要用于在主服务由于异常状况不能继续正常工作，此时会有一个备用的服务器继续提供服务，进而不会导致服务停止，本文主要展示双节点集群的建立，集群效果如下图</p>
 </blockquote>
-<p><img src="http://assets.processon.com/chart_image/5cfb2bb8e4b0a64c88ac0d86.png" alt="cluster"></p>
+<p><img data-src="http://assets.processon.com/chart_image/5cfb2bb8e4b0a64c88ac0d86.png" alt="cluster"></p>
 <h2 id="安装前准备"><a class="header-anchor" href="#安装前准备"></a>安装前准备</h2>
 <p><strong>配置hosts[所有节点]</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#添加如下内容，确保集群中的主机可以通过主机名相互通信</span></span><br><span class="line">192.168.0.10 node1</span><br><span class="line">192.168.0.11 node2</span><br></pre></td></tr></table></figure>
@@ -799,7 +799,7 @@ $$<br>
 $$<br>
 C一般是算法中最大的语句频度，是最内层循环语句的执行次数。</p>
 <h2 id="基本排序算法"><a class="header-anchor" href="#基本排序算法"></a>基本排序算法</h2>
-<p><img src="https://upload-images.jianshu.io/upload_images/1156494-ab4cecff133d87b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="sort"></p>
+<p><img data-src="https://upload-images.jianshu.io/upload_images/1156494-ab4cecff133d87b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="sort"></p>
 <p>图片from: <a href="https://www.jianshu.com/p/7d037c332a9d" target="_blank" rel="noopener">数据结构常见的八大排序算法</a></p>
 <h3 id="直接插入排序"><a class="header-anchor" href="#直接插入排序"></a>直接插入排序</h3>
 <blockquote>
@@ -816,21 +816,21 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 <p>    （Selection sort）是一种简单直观的<a href="https://www.wikiwand.com/zh-hans/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">排序算法</a>。它的工作原理如下。首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
 </blockquote>
 <p><strong>图示：</strong></p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Selection_sort_animation.gif" alt="selectsort"></p>
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Selection_sort_animation.gif" alt="selectsort"></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//script</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="built_in">Array</span>.isArray(arr)) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; len - <span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">let</span> min = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; len; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[min] &gt; arr[j])</span><br><span class="line">                min = j;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">      <span class="keyword">let</span> temp = arr[min];</span><br><span class="line">		arr[min] = arr[i];</span><br><span class="line">		arr[i] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="堆排序"><a class="header-anchor" href="#堆排序"></a>堆排序</h3>
 <blockquote>
 <p>    <strong>堆排序</strong>（英语：Heapsort）是指利用<a href="https://www.wikiwand.com/zh-cn/%E5%A0%86_(%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)" target="_blank" rel="noopener">堆</a>这种数据结构所设计的一种<a href="https://www.wikiwand.com/zh-cn/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">排序算法</a>。堆积是一个近似<a href="https://www.wikiwand.com/zh-cn/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91" target="_blank" rel="noopener">完全二叉树</a>的结构，并同时满足<strong>堆积的性质</strong>：即子结点的键值或索引总是小于（或者大于）它的父节点。</p>
 </blockquote>
 <p><strong>图示：</strong></p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Sorting_heapsort_anim.gif" alt="img"></p>
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Sorting_heapsort_anim.gif" alt="img"></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">heapSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> arr = arr.slice(<span class="number">0</span>);</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">swap</span>(<span class="params">i, j</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> tmp = arr[i];</span><br><span class="line">		arr[i] = arr[j];</span><br><span class="line">		arr[j] = tmp;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">max_heapify</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">		<span class="comment">//建立父節點指標和子節點指標</span></span><br><span class="line">		<span class="keyword">var</span> dad = start;</span><br><span class="line">		<span class="keyword">var</span> son = dad * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (son &gt;= end)<span class="comment">//若子節點指標超過範圍直接跳出函數</span></span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		<span class="keyword">if</span> (son + <span class="number">1</span> &lt; end &amp;&amp; arr[son] &lt; arr[son + <span class="number">1</span>])<span class="comment">//先比較兩個子節點大小，選擇最大的</span></span><br><span class="line">			son++;</span><br><span class="line">		<span class="keyword">if</span> (arr[dad] &lt;= arr[son]) &#123;<span class="comment">//如果父節點小於子節點時，交換父子內容再繼續子節點和孫節點比較</span></span><br><span class="line">			swap(dad, son);</span><br><span class="line">			max_heapify(son, end);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> len = arr.length;</span><br><span class="line">	<span class="comment">//初始化，i從最後一個父節點開始調整</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="built_in">Math</span>.floor(len / <span class="number">2</span>) - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">		max_heapify(i, len);</span><br><span class="line">	<span class="comment">//先將第一個元素和已排好元素前一位做交換，再從新調整，直到排序完畢</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = len - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">		swap(<span class="number">0</span>, i);</span><br><span class="line">		max_heapify(<span class="number">0</span>, i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="冒泡排序"><a class="header-anchor" href="#冒泡排序"></a>冒泡排序</h3>
 <blockquote>
 <p>    冒泡排序（英语：Bubble Sort）是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢「浮」到数列的顶端。</p>
 </blockquote>
 <p><strong>图示：</strong></p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Bubble_sort_animation.gif" alt="bubblesort"></p>
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/3/37/Bubble_sort_animation.gif" alt="bubblesort"></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> i, j, temp,</span><br><span class="line">        length = arr.length;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; length - <span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; length - <span class="number">1</span> - i; j++)&#123;</span><br><span class="line">                        <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                temp = arr[j];</span><br><span class="line">                arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p><a href="https://jsbin.com/cewalig/edit?js,console" target="_blank" rel="noopener">运行源码</a></p>
 <h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
@@ -1082,15 +1082,15 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 <ol>
 <li><strong>简单的继承原型链图</strong></li>
 </ol>
-<p><img src="https://wx4.sinaimg.cn/large/7ed42f5cly1fqguw4y1zej20ge0e8wes.jpg" alt="继承与原型链"></p>
+<p><img data-src="https://wx4.sinaimg.cn/large/7ed42f5cly1fqguw4y1zej20ge0e8wes.jpg" alt="继承与原型链"></p>
 <ol start="2">
 <li>
 <p><strong>经典原型链图</strong></p>
-<p><img src="http://zencode.in/imgs/2/1.jpg" alt=""></p>
+<p><img data-src="http://zencode.in/imgs/2/1.jpg" alt=""></p>
 </li>
 </ol>
 <h4 id="拆解图"><a class="header-anchor" href="#拆解图"></a>拆解图</h4>
-<p><img src="https://docs.google.com/drawings/d/e/2PACX-1vSzUFGozCQizNXU8FkI4Q9ooA4s1uVY4EfDzDDLqhTtKGbNG7n5ZlMx8BVDc6tBnGAXdDqBJbSgzYDk/pub?w=801&amp;h=649" alt="原型链拆解图"></p>
+<p><img data-src="https://docs.google.com/drawings/d/e/2PACX-1vSzUFGozCQizNXU8FkI4Q9ooA4s1uVY4EfDzDDLqhTtKGbNG7n5ZlMx8BVDc6tBnGAXdDqBJbSgzYDk/pub?w=801&amp;h=649" alt="原型链拆解图"></p>
 <p>声明：文中图片均来自网络，如有错误烦请邮件告知小弟</p>
 <h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/proto" target="_blank" rel="noopener">Object</a></p>

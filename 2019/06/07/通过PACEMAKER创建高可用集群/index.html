@@ -30,12 +30,10 @@
 <meta property="og:site_name" content="Change The World">
 <meta property="og:description" content="集群主要用于在主服务由于异常状况不能继续正常工作，此时会有一个备用的服务器继续提供服务，进而不会导致服务停止，本文主要展示双节点集群的建立，集群效果如下图   安装前准备 配置hosts[所有节点] 123#添加如下内容，确保集群中的主机可以通过主机名相互通信192.168.0.10 node1192.168.0.11 node2 注：[所有节点]代表所有节点执行，[单节点]代表集群中一个节点执">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://assets.processon.com/chart_image/5cfb2bb8e4b0a64c88ac0d86.png">
 <meta property="og:updated_time" content="2019-07-08T08:55:25.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过PACEMAKER创建高可用集群">
 <meta name="twitter:description" content="集群主要用于在主服务由于异常状况不能继续正常工作，此时会有一个备用的服务器继续提供服务，进而不会导致服务停止，本文主要展示双节点集群的建立，集群效果如下图   安装前准备 配置hosts[所有节点] 123#添加如下内容，确保集群中的主机可以通过主机名相互通信192.168.0.10 node1192.168.0.11 node2 注：[所有节点]代表所有节点执行，[单节点]代表集群中一个节点执">
-<meta name="twitter:image" content="http://assets.processon.com/chart_image/5cfb2bb8e4b0a64c88ac0d86.png">
 
 <link rel="canonical" href="http://www.zhangxiaoheng.cn/2019/06/07/通过PACEMAKER创建高可用集群/">
 
@@ -229,7 +227,7 @@
         <blockquote>
 <p>集群主要用于在主服务由于异常状况不能继续正常工作，此时会有一个备用的服务器继续提供服务，进而不会导致服务停止，本文主要展示双节点集群的建立，集群效果如下图</p>
 </blockquote>
-<p><img src="http://assets.processon.com/chart_image/5cfb2bb8e4b0a64c88ac0d86.png" alt="cluster"></p>
+<p><img data-src="http://assets.processon.com/chart_image/5cfb2bb8e4b0a64c88ac0d86.png" alt="cluster"></p>
 <h2 id="安装前准备"><a class="header-anchor" href="#安装前准备"></a>安装前准备</h2>
 <p><strong>配置hosts[所有节点]</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#添加如下内容，确保集群中的主机可以通过主机名相互通信</span></span><br><span class="line">192.168.0.10 node1</span><br><span class="line">192.168.0.11 node2</span><br></pre></td></tr></table></figure>
