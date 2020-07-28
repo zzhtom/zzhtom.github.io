@@ -30,7 +30,7 @@
 <meta property="og:site_name" content="Change The World">
 <meta property="og:description" content="学习笔记,以下代码部分拷贝的维基百科，见链接  时间复杂度      在计算机科学中，算法的时间复杂度是一个函数，它定性描述该算法的运行时间。 这是一个代表算法输入值的字符串的长度的函数。 时间复杂度常用大O符号表述，不包括这个函数的低阶项和首项系数。 使用这种方式时，时间复杂度可被称为是渐近的，亦即考察输入值大小趋近无穷时的情况。  公式： $$ \lim_{n\rightarrow+\in">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-22T13:27:48.753Z">
+<meta property="og:updated_time" content="2020-07-28T11:08:59.964Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基本排序算法">
 <meta name="twitter:description" content="学习笔记,以下代码部分拷贝的维基百科，见链接  时间复杂度      在计算机科学中，算法的时间复杂度是一个函数，它定性描述该算法的运行时间。 这是一个代表算法输入值的字符串的长度的函数。 时间复杂度常用大O符号表述，不包括这个函数的低阶项和首项系数。 使用这种方式时，时间复杂度可被称为是渐近的，亦即考察输入值大小趋近无穷时的情况。  公式： $$ \lim_{n\rightarrow+\in">
@@ -210,7 +210,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-08-22 21:27:48" itemprop="dateModified" datetime="2018-08-22T21:27:48+08:00">2018-08-22</time>
+                <time title="修改时间：2020-07-28 19:08:59" itemprop="dateModified" datetime="2020-07-28T19:08:59+08:00">2020-07-28</time>
               </span>
 
           
@@ -252,7 +252,7 @@ $$<br>
 $$<br>
 C一般是算法中最大的语句频度，是最内层循环语句的执行次数。</p>
 <h2 id="基本排序算法"><a class="header-anchor" href="#基本排序算法"></a>基本排序算法</h2>
-<p><img data-src="https://upload-images.jianshu.io/upload_images/1156494-ab4cecff133d87b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="sort"></p>
+<p><img data-src="https://upload-images.jianshu.io/upload_images/1156494-ab4cecff133d87b3.png" alt="sort"></p>
 <p>图片from: <a href="https://www.jianshu.com/p/7d037c332a9d" target="_blank" rel="noopener">数据结构常见的八大排序算法</a></p>
 <h3 id="直接插入排序"><a class="header-anchor" href="#直接插入排序"></a>直接插入排序</h3>
 <blockquote>
@@ -536,6 +536,63 @@ C一般是算法中最大的语句频度，是最内层循环语句的执行次�
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
   <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
