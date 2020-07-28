@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"www.zhangxiaoheng.cn","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档，主要内容就是把集群分配的iscsi存储使用clvm + GFS2进行管理，使得此存储设备成功集群的共享存储   准备   配置集群，请参考 通过PACEMAKER创建高可用集群   ISCSI共享存储   所有的集群节点接入ISCSI共享存储   安装  安装lvm2-cluster和gfs2-utils软件包">
-<meta name="keywords" content="cluster,centos7,packmaker,clvm,gfs2">
+  <meta name="description" content="本文主要出现的原因其实很简单，就是让目前已经使用的虚拟机支持UEFI,目前已知i440FX仅支持BIOS而Q35同时支持BIOS和UEFI。话不多说开始吧😳  环境信息 1234[root@dev ~]# cat /etc/redhat-releaseCentOS Linux release 8.1.1911 (Core)[root@dev ~]# uname -aLinux dev 2.6.">
+<meta name="keywords" content="linux,centos,qemu-kvm,libvirt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="构建PACEMAKER集群共享存储[CLVM + GFS2]">
-<meta property="og:url" content="http://www.zhangxiaoheng.cn/2019/06/08/构建PACEMAKER集群共享存储-CLVM-GFS2/index.html">
+<meta property="og:title" content="QEMU虚拟机支持UEFI">
+<meta property="og:url" content="http://www.zhangxiaoheng.cn/2020/07/28/QEMU虚拟机支持UEFI/index.html">
 <meta property="og:site_name" content="Change The World">
-<meta property="og:description" content="本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档，主要内容就是把集群分配的iscsi存储使用clvm + GFS2进行管理，使得此存储设备成功集群的共享存储   准备   配置集群，请参考 通过PACEMAKER创建高可用集群   ISCSI共享存储   所有的集群节点接入ISCSI共享存储   安装  安装lvm2-cluster和gfs2-utils软件包">
+<meta property="og:description" content="本文主要出现的原因其实很简单，就是让目前已经使用的虚拟机支持UEFI,目前已知i440FX仅支持BIOS而Q35同时支持BIOS和UEFI。话不多说开始吧😳  环境信息 1234[root@dev ~]# cat /etc/redhat-releaseCentOS Linux release 8.1.1911 (Core)[root@dev ~]# uname -aLinux dev 2.6.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-08T09:34:15.535Z">
+<meta property="og:updated_time" content="2020-07-28T09:17:40.473Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="构建PACEMAKER集群共享存储[CLVM + GFS2]">
-<meta name="twitter:description" content="本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档，主要内容就是把集群分配的iscsi存储使用clvm + GFS2进行管理，使得此存储设备成功集群的共享存储   准备   配置集群，请参考 通过PACEMAKER创建高可用集群   ISCSI共享存储   所有的集群节点接入ISCSI共享存储   安装  安装lvm2-cluster和gfs2-utils软件包">
+<meta name="twitter:title" content="QEMU虚拟机支持UEFI">
+<meta name="twitter:description" content="本文主要出现的原因其实很简单，就是让目前已经使用的虚拟机支持UEFI,目前已知i440FX仅支持BIOS而Q35同时支持BIOS和UEFI。话不多说开始吧😳  环境信息 1234[root@dev ~]# cat /etc/redhat-releaseCentOS Linux release 8.1.1911 (Core)[root@dev ~]# uname -aLinux dev 2.6.">
 
-<link rel="canonical" href="http://www.zhangxiaoheng.cn/2019/06/08/构建PACEMAKER集群共享存储-CLVM-GFS2/">
+<link rel="canonical" href="http://www.zhangxiaoheng.cn/2020/07/28/QEMU虚拟机支持UEFI/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>构建PACEMAKER集群共享存储[CLVM + GFS2] | Change The World</title>
+  <title>QEMU虚拟机支持UEFI | Change The World</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121888655-1"></script>
     <script>
@@ -180,7 +180,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2019/06/08/构建PACEMAKER集群共享存储-CLVM-GFS2/">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2020/07/28/QEMU虚拟机支持UEFI/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/custom/ava.jpg">
@@ -193,7 +193,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          构建PACEMAKER集群共享存储[CLVM + GFS2]
+          QEMU虚拟机支持UEFI
         </h1>
 
         <div class="post-meta">
@@ -202,16 +202,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-06-08 11:26:23" itemprop="dateCreated datePublished" datetime="2019-06-08T11:26:23+08:00">2019-06-08</time>
+              <time title="创建时间：2020-07-28 16:59:45 / 修改时间：17:17:40" itemprop="dateCreated datePublished" datetime="2020-07-28T16:59:45+08:00">2020-07-28</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-07-08 17:34:15" itemprop="dateModified" datetime="2019-07-08T17:34:15+08:00">2019-07-08</time>
-              </span>
 
           
   
@@ -222,8 +216,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2019/06/08/构建PACEMAKER集群共享存储-CLVM-GFS2/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/08/构建PACEMAKER集群共享存储-CLVM-GFS2/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/07/28/QEMU虚拟机支持UEFI/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/07/28/QEMU虚拟机支持UEFI/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -239,92 +233,49 @@
 
       
         <blockquote>
-<p>本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档，主要内容就是把集群分配的iscsi存储使用clvm + GFS2进行管理，使得此存储设备成功集群的共享存储</p>
+<p>本文主要出现的原因其实很简单，就是让目前已经使用的虚拟机支持UEFI,目前已知i440FX仅支持BIOS而Q35同时支持BIOS和UEFI。话不多说开始吧😳</p>
 </blockquote>
-<p><img data-src="http://assets.processon.com/chart_image/5cf9d636e4b0f1ac036b9fb2.png" alt="共享存储"></p>
-<h2 id="准备"><a class="header-anchor" href="#准备"></a>准备</h2>
-<ol>
-<li>
-<p>配置集群，请参考 <a href="https://www.zhangxiaoheng.cn/2019/06/07/%E9%80%9A%E8%BF%87PACEMAKER%E5%88%9B%E5%BB%BA%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4/">通过PACEMAKER创建高可用集群</a></p>
-</li>
-<li>
-<p>ISCSI共享存储</p>
-</li>
-<li>
-<p>所有的集群节点接入ISCSI共享存储</p>
-</li>
-</ol>
-<h2 id="安装"><a class="header-anchor" href="#安装"></a>安装</h2>
-<ol>
-<li>安装lvm2-cluster和gfs2-utils软件包[所有节点]</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install lvm2-cluster gfs2-utils</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>将全局Pacemaker参数no_quorum_policy设置为freeze</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs property set no-quorum-policy=freeze</span></span><br></pre></td></tr></table></figure>
-<p><strong>注意</strong></p>
+<h2 id="环境信息"><a class="header-anchor" href="#环境信息"></a>环境信息</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@dev ~]<span class="comment"># cat /etc/redhat-release</span></span><br><span class="line">CentOS Linux release 8.1.1911 (Core)</span><br><span class="line">[root@dev ~]<span class="comment"># uname -a</span></span><br><span class="line">Linux dev 2.6.78-147.8.1.el8_1.x86_64 <span class="comment">#1 SMP Thu Apr 9 13:49:54 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux</span></span><br></pre></td></tr></table></figure>
+<h2 id="查看当前主机qemu支持机器类型"><a class="header-anchor" href="#查看当前主机qemu支持机器类型"></a>查看当前主机Qemu支持机器类型</h2>
 <blockquote>
-<p>默认情况下会将 <code>no-quorum-policy</code> 值设定为 <code>stop</code>，说明丢失一个仲裁，同时将停止剩余分区中的所有资源。通常这个选项是最安全同时也是最佳选项，但与大多数资源不同，GFS2 需要仲裁功能。丢失仲裁后，使用 GFS2 挂载的应用程序及 GFS2 挂载本身都将正常停止。所有在无仲裁的情况下停止执行资源的尝试都将失败，并最终造成每次丢失仲裁时都 fence 整个集群。</p>
-<p>为解决这个问题，您可以在使用 GFS2 时设置 <code>no-quorum-policy=freeze</code>。这意味着丢失仲裁时，重新获得仲裁钱剩余分区不会做任何操作。</p>
+<p>可以通过以下两种查询方法，或其他有效的方法</p>
 </blockquote>
-<ol start="3">
-<li>设置dlm资源。这是clvmd和GFS2的必需依赖项[单节点]</li>
+<ol>
+<li>
+<p>通过qemu-kvm进行查询</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@dev ~]<span class="comment"># /usr/libexec/qemu-kvm -M help</span></span><br><span class="line">Supported machines are:</span><br><span class="line">pc                   RHEL 7.6.0 PC (i440FX + PIIX, 1996) (<span class="built_in">alias</span> of pc-i440fx-rhel7.6.0)</span><br><span class="line">pc-i440fx-rhel7.6.0  RHEL 7.6.0 PC (i440FX + PIIX, 1996) (default)</span><br><span class="line">pc-i440fx-rhel7.5.0  RHEL 7.5.0 PC (i440FX + PIIX, 1996)</span><br><span class="line">pc-i440fx-rhel7.4.0  RHEL 7.4.0 PC (i440FX + PIIX, 1996)</span><br><span class="line">pc-i440fx-rhel7.3.0  RHEL 7.3.0 PC (i440FX + PIIX, 1996)</span><br><span class="line">pc-i440fx-rhel7.2.0  RHEL 7.2.0 PC (i440FX + PIIX, 1996)</span><br><span class="line">pc-i440fx-rhel7.1.0  RHEL 7.1.0 PC (i440FX + PIIX, 1996)</span><br><span class="line">pc-i440fx-rhel7.0.0  RHEL 7.0.0 PC (i440FX + PIIX, 1996)</span><br><span class="line">q35                  RHEL-7.6.0 PC (Q35 + ICH9, 2009) (<span class="built_in">alias</span> of pc-q35-rhel7.6.0)</span><br><span class="line">pc-q35-rhel7.6.0     RHEL-7.6.0 PC (Q35 + ICH9, 2009)</span><br><span class="line">pc-q35-rhel7.5.0     RHEL-7.5.0 PC (Q35 + ICH9, 2009)</span><br><span class="line">pc-q35-rhel7.4.0     RHEL-7.4.0 PC (Q35 + ICH9, 2009)</span><br><span class="line">pc-q35-rhel7.3.0     RHEL-7.3.0 PC (Q35 + ICH9, 2009)</span><br><span class="line">none                 empty machine</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>通过libvirt进行查询</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[root@dev ~]<span class="comment"># virsh capabilities</span></span><br><span class="line">&lt;capabilities&gt;</span><br><span class="line">  ...</span><br><span class="line">  &lt;guest&gt;</span><br><span class="line">      ...</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'240'</span>&gt;pc-i440fx-rhel7.6.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine canonical=<span class="string">'pc-i440fx-rhel7.6.0'</span> maxCpus=<span class="string">'240'</span>&gt;pc&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'240'</span>&gt;pc-i440fx-rhel7.0.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'384'</span>&gt;pc-q35-rhel7.6.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine canonical=<span class="string">'pc-q35-rhel7.6.0'</span> maxCpus=<span class="string">'384'</span>&gt;q35&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'240'</span>&gt;pc-i440fx-rhel7.5.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'240'</span>&gt;pc-i440fx-rhel7.1.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'240'</span>&gt;pc-i440fx-rhel7.2.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'255'</span>&gt;pc-q35-rhel7.3.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'384'</span>&gt;pc-q35-rhel7.4.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'240'</span>&gt;pc-i440fx-rhel7.3.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'240'</span>&gt;pc-i440fx-rhel7.4.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'384'</span>&gt;pc-q35-rhel7.5.0&lt;/machine&gt;</span><br><span class="line">	    ...</span><br><span class="line">  &lt;/guest&gt;</span><br><span class="line">  ...</span><br><span class="line">&lt;/capabilities&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs resource create dlm ocf:pacemaker:controld op monitor interval=30s on-fail=fence clone interleave=true ordered=true</span></span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>执行以下命令以启用集群。此命令将/etc/lvm/lvm.conf文件中的locking_type参数设置为3[所有节点]</li>
+<p>通过以上内容可以看出，如果我们只是需要使用最新的机器类型只要选择 <code>pc</code> 或 <code>q35</code></p>
+<h2 id="配置虚拟机使用q35"><a class="header-anchor" href="#配置虚拟机使用q35"></a>配置虚拟机使用Q35</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@dev ~]<span class="comment"># virsh edit --domain alpinelinux3.8</span></span><br><span class="line">...</span><br><span class="line"> &lt;os&gt;</span><br><span class="line">   &lt;<span class="built_in">type</span> arch=<span class="string">'x86_64'</span> machine=<span class="string">'q35'</span>&gt;hvm&lt;/<span class="built_in">type</span>&gt;</span><br><span class="line"> &lt;/os&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>将以上内容调整为 <code>machine='q35'</code>即为完成</p>
+<h2 id="配置虚拟机支持uefi"><a class="header-anchor" href="#配置虚拟机支持uefi"></a>配置虚拟机支持UEFI</h2>
+<blockquote>
+<p>如果需要虚拟机支持 <code>uefi</code> 还需要 <code>edk2-ovmf</code> 软件包的支持</p>
+</blockquote>
+<ol>
+<li>安装<code>edk2-ovmf</code>软件包</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lvmconf --enable-cluster</span></span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>将clvmd设置为集群资源[单节点]</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@dev ~]<span class="comment"># yum search edk2-ovmf</span></span><br><span class="line">FATAL: kernel too old</span><br><span class="line">上次元数据过期检查：2:35:19 前，执行于 2020年07月28日 星期二 13时01分20秒。</span><br><span class="line">===================================== 名称 精准匹配：edk2-ovmf ===================================================</span><br><span class="line">edk2-ovmf.noarch : UEFI firmware <span class="keyword">for</span> x86_64 virtual machines</span><br><span class="line">[root@dev ~]<span class="comment"># yum install -y edk2-ovmf</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>编辑虚拟机配置</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs resource create clvmd ocf:heartbeat:clvm op monitor interval=30s on-fail=fence clone interleave=true ordered=true</span></span><br></pre></td></tr></table></figure>
-<ol start="6">
-<li>设置clvmd和dlm依赖项并启动顺序,  clvmd必须在dlm之后启动，并且必须与dlm在同一节点上运行[单节点]</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs constraint order start dlm-clone then clvmd-clone</span></span><br><span class="line"><span class="comment"># pcs constraint colocation add clvmd-clone with dlm-clone</span></span><br></pre></td></tr></table></figure>
-<ol start="7">
-<li>创建集群逻辑卷[单节点]</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pvcreate /dev/vdb</span></span><br><span class="line"><span class="comment"># vgcreate -Ay -cy cluster_vg /dev/vdb</span></span><br><span class="line"><span class="comment"># lvcreate -L5G -n cluster_lv cluster_vg</span></span><br></pre></td></tr></table></figure>
-<p>注：/dev/vdb iscsi共享存储</p>
-<ol start="8">
-<li>使用GFS2文件系统格式化逻辑卷[单节点]</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mkfs.gfs2 -j2 -p lock_dlm -t rhel7-demo:gfs2-demo /dev/cluster_vg/cluster_lv</span></span><br></pre></td></tr></table></figure>
-<ol start="9">
-<li>配置clusterfs资源[单节点]</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs resource create clusterfs Filesystem device="/dev/cluster_vg/cluster_lv" directory="/var/mountpoint" fstype="gfs2" options="noatime" op monitor interval=10s on-fail=fence clone interleave=true</span></span><br></pre></td></tr></table></figure>
-<ol start="10">
-<li>设置GFS2和clvmd依赖关系和启动顺序[单节点]</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs constraint order start clvmd-clone then clusterfs-clone</span></span><br><span class="line"><span class="comment"># pcs constraint colocation add clusterfs-clone with clvmd-clone</span></span><br></pre></td></tr></table></figure>
-<ol start="12">
-<li>查看资源信息</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs resource show #查看资源信息</span></span><br></pre></td></tr></table></figure>
-<ol start="13">
-<li>验证是否按预期安装了GFS2</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mount |grep /mnt/gfs2-demo</span></span><br><span class="line">/dev/mapper/cluster_vg-cluster_lv on /mnt/gfs2-demo <span class="built_in">type</span> gfs2 (rw,noatime,seclabel)</span><br></pre></td></tr></table></figure>
-<ol start="14">
-<li>扩展GFS2文件系统空间</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lvextend -L +2G /dev/cluster_vg/cluster_lv</span></span><br><span class="line"><span class="comment"># gfs2_grow  /var/mountpoint</span></span><br></pre></td></tr></table></figure>
-<ol start="15">
-<li>添加GFS2日志数量</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gfs2_jadd -j 1 /var/mountpoint</span></span><br></pre></td></tr></table></figure>
-<p>注：如果节点需要使用此共享存储，必选保证日志数量大于或者等于集群节点，集群节点数小于或等于GFS2文件系统日志数</p>
-<ol start="16">
-<li>添加挂载点</li>
-</ol>
-<p>完成以上操作后，就已经成功构建了集群的共享存储，具体参数含义还望请参考官方文档介绍</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@ocloud-dev ~]<span class="comment"># virsh edit alpinelinux3.8</span></span><br><span class="line">  &lt;os&gt;</span><br><span class="line">    ...</span><br><span class="line">    &lt;loader <span class="built_in">readonly</span>=<span class="string">'yes'</span> secure=<span class="string">'yes'</span> <span class="built_in">type</span>=<span class="string">'pflash'</span>&gt;/usr/share/OVMF/OVMF_CODE.secboot.fd&lt;/loader&gt; </span><br><span class="line">    ...</span><br><span class="line">  &lt;/os&gt;</span><br><span class="line">  &lt;features&gt;</span><br><span class="line">    ...</span><br><span class="line">    &lt;smm state=<span class="string">'on'</span>/&gt;</span><br><span class="line">    ...</span><br><span class="line">  &lt;/features&gt;</span><br></pre></td></tr></table></figure>
+<p>找到以上节点添加对应的内容即可</p>
+<p><strong>注意：如果loader节点属性secure='yes’则必须开启smm</strong></p>
 <h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
-<p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-clustsetup-gfs2" target="_blank" rel="noopener">CHAPTER 5. CONFIGURING A GFS2 FILE SYSTEM IN A CLUSTER</a></p>
-<p><a href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/ch-clustresources-haar" target="_blank" rel="noopener">第 5 章 配置集群资源</a></p>
+<ol>
+<li><a href="https://www.linux-kvm.org/images/0/06/2012-forum-Q35.pdf" target="_blank" rel="noopener">A New Chipset For Qemu - Intel’s Q35</a></li>
+<li><a href="https://wiki.qemu.org/Features/Q35" target="_blank" rel="noopener">Features/Q35</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/libvirt_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#UEFI_%E6%94%AF%E6%8C%81" target="_blank" rel="noopener">UEFI支持</a></li>
+<li><a href="https://www.linux-kvm.org/page/OVMF" target="_blank" rel="noopener">OVMF</a></li>
+</ol>
 
     </div>
 
@@ -354,11 +305,10 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/cluster/" rel="tag"># cluster</a>
-              <a href="/tags/centos7/" rel="tag"># centos7</a>
-              <a href="/tags/packmaker/" rel="tag"># packmaker</a>
-              <a href="/tags/clvm/" rel="tag"># clvm</a>
-              <a href="/tags/gfs2/" rel="tag"># gfs2</a>
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/centos/" rel="tag"># centos</a>
+              <a href="/tags/qemu-kvm/" rel="tag"># qemu-kvm</a>
+              <a href="/tags/libvirt/" rel="tag"># libvirt</a>
           </div>
 
         
@@ -367,13 +317,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/06/07/通过PACEMAKER创建高可用集群/" rel="prev" title="通过PACEMAKER创建高可用集群">
-      <i class="fa fa-chevron-left"></i> 通过PACEMAKER创建高可用集群
+    <a href="/2019/06/08/构建PACEMAKER集群共享存储-CLVM-GFS2/" rel="prev" title="构建PACEMAKER集群共享存储[CLVM + GFS2]">
+      <i class="fa fa-chevron-left"></i> 构建PACEMAKER集群共享存储[CLVM + GFS2]
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/07/28/QEMU虚拟机支持UEFI/" rel="next" title="QEMU虚拟机支持UEFI">
-      QEMU虚拟机支持UEFI <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -439,7 +386,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境信息"><span class="nav-number">1.</span> <span class="nav-text">环境信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看当前主机qemu支持机器类型"><span class="nav-number">2.</span> <span class="nav-text">查看当前主机Qemu支持机器类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置虚拟机使用q35"><span class="nav-number">3.</span> <span class="nav-text">配置虚拟机使用Q35</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置虚拟机支持uefi"><span class="nav-number">4.</span> <span class="nav-text">配置虚拟机支持UEFI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -577,7 +524,7 @@
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'http://www.zhangxiaoheng.cn/2019/06/08/构建PACEMAKER集群共享存储-CLVM-GFS2/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://www.zhangxiaoheng.cn/2020/07/28/QEMU虚拟机支持UEFI/',]
       });
       });
   </script>
@@ -594,9 +541,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "http://www.zhangxiaoheng.cn/2019/06/08/构建PACEMAKER集群共享存储-CLVM-GFS2/";
-    this.page.identifier = "2019/06/08/构建PACEMAKER集群共享存储-CLVM-GFS2/";
-    this.page.title = "构建PACEMAKER集群共享存储[CLVM + GFS2]";
+    this.page.url = "http://www.zhangxiaoheng.cn/2020/07/28/QEMU虚拟机支持UEFI/";
+    this.page.identifier = "2020/07/28/QEMU虚拟机支持UEFI/";
+    this.page.title = "QEMU虚拟机支持UEFI";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
