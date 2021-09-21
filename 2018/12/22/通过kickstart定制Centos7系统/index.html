@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-CN,en,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.7.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/custom/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/custom/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/custom/favicon.ico">
+  <link rel="mask-icon" href="/images/custom/favicon.ico" color="#222">
+  <meta name="google-site-verification" content="google9da7538369cddbcb.html">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <script data-ad-client="ca-pub-2495417577430280" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.zhangxiaoheng.cn","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="环境准备   CentOS 环境一个 12[ocloud@centos-linux ~]$ uname -aLinux centos-linux.shared 3.10.0-957.1.3.el7.x86_64 #1 SMP Thu Nov 29 14:49:43 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux   CentOS7 镜像一个 1CentOS-7-x8">
+<meta name="keywords" content="linux,centos,kickstart">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过kickstart定制Centos7系统">
+<meta property="og:url" content="http://www.zhangxiaoheng.cn/2018/12/22/通过kickstart定制Centos7系统/index.html">
+<meta property="og:site_name" content="Change The World">
+<meta property="og:description" content="环境准备   CentOS 环境一个 12[ocloud@centos-linux ~]$ uname -aLinux centos-linux.shared 3.10.0-957.1.3.el7.x86_64 #1 SMP Thu Nov 29 14:49:43 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux   CentOS7 镜像一个 1CentOS-7-x8">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-26T02:19:52.443Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="通过kickstart定制Centos7系统">
+<meta name="twitter:description" content="环境准备   CentOS 环境一个 12[ocloud@centos-linux ~]$ uname -aLinux centos-linux.shared 3.10.0-957.1.3.el7.x86_64 #1 SMP Thu Nov 29 14:49:43 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux   CentOS7 镜像一个 1CentOS-7-x8">
+
+<link rel="canonical" href="http://www.zhangxiaoheng.cn/2018/12/22/通过kickstart定制Centos7系统/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>通过kickstart定制Centos7系统 | Change The World</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121888655-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-121888655-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Change The World</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">沉默是一种力量，嘶吼就不是力量了？</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/zzhtom" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/12/22/通过kickstart定制Centos7系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+      <meta itemprop="name" content="大脚丫子下的小蚂蚁">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          通过kickstart定制Centos7系统
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-22 08:36:39" itemprop="dateCreated datePublished" datetime="2018-12-22T08:36:39+08:00">2018-12-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-26 10:19:52" itemprop="dateModified" datetime="2020-07-26T10:19:52+08:00">2020-07-26</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/12/22/通过kickstart定制Centos7系统/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/22/通过kickstart定制Centos7系统/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="环境准备"><a class="header-anchor" href="#环境准备"></a>环境准备</h2>
+<ul>
+<li>
+<p>CentOS 环境一个</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ uname -a</span><br><span class="line">Linux centos-linux.shared 3.10.0-957.1.3.el7.x86_64 <span class="comment">#1 SMP Thu Nov 29 14:49:43 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>CentOS7 镜像一个</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CentOS-7-x86_64-DVD-1810.iso</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="开始制作"><a class="header-anchor" href="#开始制作"></a>开始制作</h2>
+<ol>
+<li><strong>安装需要的工具</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ sudo yum -y install createrepo mkisofs dosfstools syslinux</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>挂载<code>CentOS-7-x86_64-DVD-1810.iso</code> 到目录</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ lsblk //查看磁盘设备，选择对应的光驱设备</span><br><span class="line">NAME                 MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT</span><br><span class="line">sda                    8:0    0    64G  0 disk</span><br><span class="line">├─sda1                 8:1    0   500M  0 part /boot</span><br><span class="line">└─sda2                 8:2    0  63.5G  0 part</span><br><span class="line">  ├─VolGroup-lv_root 253:0    0    50G  0 lvm  /</span><br><span class="line">  ├─VolGroup-lv_swap 253:1    0     2G  0 lvm  [SWAP]</span><br><span class="line">  └─VolGroup-lv_home 253:2    0  11.6G  0 lvm  /home</span><br><span class="line">sr0                   11:0    1 122.5M  0 rom</span><br><span class="line">sr1                   11:1    1   4.3G  0 rom //这个即为挂载的CentOS-7-x86_64-DVD-1810.iso</span><br><span class="line"></span><br><span class="line">[ocloud@centos-linux ~]$ mkdir ~/originISO</span><br><span class="line">[ocloud@centos-linux ~]$ sudo mount /dev/sr1 ~/originISO</span><br><span class="line">[sudo] ocloud 的密码：</span><br><span class="line">mount: /dev/sr1 写保护，将以只读方式挂载</span><br><span class="line"></span><br><span class="line"><span class="comment">#如果不是通过光驱加载，则执行以下操作即可,和上面是同样的效果</span></span><br><span class="line">[ocloud@centos-linux ~]$ sudo mount ~/CentOS-7-x86_64-DVD-1810.iso ~/originISO</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><strong>将镜像内容拷贝到即将制作镜像的文件夹</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ mkdir ~/customISO</span><br><span class="line">[ocloud@centos-linux ~]$ sudo cp -ar ~/originISO/* customISO/</span><br><span class="line">[ocloud@centos-linux customISO]$ ls</span><br><span class="line">CentOS_BuildTag  EFI  EULA  GPL  images  isolinux  LiveOS  Packages  repodata  RPM-GPG-KEY-CentOS-7  RPM-GPG-KEY-CentOS-Testing-7  TRANS.TBL</span><br><span class="line"></span><br><span class="line"><span class="comment">#Packages目录是用来放rpm安装包</span></span><br><span class="line"><span class="comment">#isolinux 目录包含了启动相关的配置文件</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>准备我们需要的<code>rpm</code>包, 具体操作如下</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rpm安装有许多的依赖问题，但是我们可以通过yum获取到相关的依赖包</span></span><br><span class="line">[ocloud@centos-linux ~]$ yum -h</span><br><span class="line">  ...</span><br><span class="line">  --downloadonly        仅下载而不更新</span><br><span class="line">  --downloaddir=DLDIR   指定一个其他文件夹用于保存软件包</span><br><span class="line">  ...</span><br><span class="line">  </span><br><span class="line"> <span class="comment">#比如下载qemu-kvm相关的包</span></span><br><span class="line"> [ocloud@centos-linux ~]$ sudo yum -y --downloadonly --downloaddir=<span class="string">"~/customISO/Packages"</span> qemu-kvm qemu-kvm-tools qemu-img gpxe-roms-qemu qemu-guest-agent <span class="comment">#这里直接包相关联的包下载到我们制作镜像的单独放rpm包的文件夹中</span></span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>
+<p><strong>更新软件组的关联信息</strong></p>
+<blockquote>
+<p>由于我们添加了新的rpm包，因此需要更新软件组的关联信息，每次更新了rpm包就需要更新软件组的信息</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ <span class="built_in">cd</span> ~/customISO</span><br><span class="line">[ocloud@centos-linux customISO]$ mv repodata/*comps.xml repodata/comps.xml <span class="comment">#备份软件组的配置文件，其中包含了软件组元数据</span></span><br><span class="line">[ocloud@centos-linux customISO]$ <span class="built_in">cd</span> repodata/</span><br><span class="line">[ocloud@centos-linux repodata]$ ls | grep -v comps.xml$|xargs rm <span class="comment">#删除其他文件</span></span><br><span class="line">[ocloud@centos-linux repodata]$ <span class="built_in">cd</span> ../</span><br><span class="line">[ocloud@centos-linux customISO] createrepo -g repodata/comps.xml /home/ocloud/customISO <span class="comment">#重新生成软件组的数据信息</span></span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>
+<p><strong>准备kickstart文件</strong></p>
+<blockquote>
+<p>推荐用来生成 Kickstart 文件的方法是在系统中首先执行一次手动安装。安装完成后，安装程序中的所有选择都会保存到名为 <code>anaconda-ks.cfg</code> 的文件中，该文件位于所安装系统的 <code>/root/</code> 目录下。然后可以复制这个文件，根据需要进行修改，并在以后的安装中使用得到的配置文件。 —来自redhat官网内容</p>
+</blockquote>
+</li>
+</ol>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这个文件是一个示例</span></span><br><span class="line">install <span class="comment">#表示是安装系统</span></span><br><span class="line">cdrom <span class="comment">#安装方式，这里是通过光驱</span></span><br><span class="line">lang en_US.UTF-8 <span class="comment">#设置语言</span></span><br><span class="line">keyboard us  <span class="comment">#设置键盘</span></span><br><span class="line">network --device eth0 --bootproto dhcp  <span class="comment">#设置网络</span></span><br><span class="line">rootpw 4a7YAZQ1nvUHI --iscrypted  <span class="comment">#设置root密码，--iscrypted代表加密 --plaintext代表明文</span></span><br><span class="line">firewall --service=ssh <span class="comment">#指定ssh服务可以通过防火墙</span></span><br><span class="line">authconfig --enableshadow --passalgo=sha512 --enablefingerprint <span class="comment">#系统设置认证选项</span></span><br><span class="line">selinux --enforcing <span class="comment">#开启selinux</span></span><br><span class="line">timezone --utc Asia/Shanghai <span class="comment">#设置时区</span></span><br><span class="line">bootloader --location=mbr --driveorder=sda --append=<span class="string">"crashkernel=auto rhgb quiet"</span> <span class="comment">#引导装载程序</span></span><br><span class="line">zerombr <span class="comment">#在使用之前初始化的磁盘的系统中执行自动安装时需要这个命令。</span></span><br><span class="line"><span class="comment">#磁盘分区</span></span><br><span class="line">clearpart --all --drives=sda</span><br><span class="line"><span class="comment">#EFIpart /boot/efi --fstype=efi --grow --maxsize=200 --size=20</span></span><br><span class="line">part /boot --fstype=ext4 --size=500</span><br><span class="line">part pv.raid01 --grow --size=1</span><br><span class="line">volgroup VolGroup --pesize=4096 pv.raid01</span><br><span class="line">logvol /home --fstype=ext4 --name=lv_home --vgname=VolGroup --grow --size=100</span><br><span class="line">logvol / --fstype=ext4 --name=lv_root --vgname=VolGroup --grow --size=1024 --maxsize=51200</span><br><span class="line">logvol swap --name=lv_swap --vgname=VolGroup --grow --size=1008 --maxsize=2016</span><br><span class="line">text</span><br><span class="line">reboot</span><br><span class="line"><span class="comment">#EFIbootloader --location=partition</span></span><br><span class="line"><span class="comment">#OPT-6key --skip</span></span><br><span class="line">user --name=ocloud --password=4a7YAZQ1nvUHI --iscrypted --groups=wheel <span class="comment">#添加用户</span></span><br><span class="line">xconfig --startxonboot</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装所需要的软件包，把自定义的安装包添加进去即可在安装系统时自定义的软件</span></span><br><span class="line">%packages --ignoremissing</span><br><span class="line">@base</span><br><span class="line">@core</span><br><span class="line">@debugging</span><br><span class="line">@basic-desktop</span><br><span class="line">@gnome-desktop</span><br><span class="line">@desktop-debugging</span><br><span class="line">@desktop-platform</span><br><span class="line">@directory-client</span><br><span class="line">@fonts</span><br><span class="line">@general-desktop</span><br><span class="line">@graphical-admin-tools</span><br><span class="line">@graphics</span><br><span class="line">@input-methods</span><br><span class="line">@java-platform</span><br><span class="line">@legacy-x</span><br><span class="line">@network-file-system-client</span><br><span class="line">@performance</span><br><span class="line">@perl-runtime</span><br><span class="line">@<span class="built_in">print</span>-client</span><br><span class="line">@remote-desktop-clients</span><br><span class="line">@server-platform</span><br><span class="line">@virtualization</span><br><span class="line">@virtualization-client</span><br><span class="line">@virtualization-platform</span><br><span class="line">@x11</span><br><span class="line">authconfig</span><br><span class="line">system-config-firewall-base</span><br><span class="line">mtools</span><br><span class="line">pax</span><br><span class="line">python-dmidecode</span><br><span class="line">oddjob</span><br><span class="line">sgpio</span><br><span class="line">genisoimage</span><br><span class="line">wodim</span><br><span class="line">abrt-gui</span><br><span class="line">certmonger</span><br><span class="line">pam_krb5</span><br><span class="line">krb5-workstation</span><br><span class="line">nscd</span><br><span class="line">pam_ldap</span><br><span class="line">nss-pam-ldapd</span><br><span class="line">libXmu</span><br><span class="line">perl-DBD-SQLite</span><br><span class="line">python</span><br><span class="line">gcc</span><br><span class="line">make</span><br><span class="line">kernel-devel</span><br><span class="line">checkpolicy</span><br><span class="line">selinux-policy-devel</span><br><span class="line">%end</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装完系统后，需要做什么事情请写在%post里面</span></span><br><span class="line">%post</span><br><span class="line"><span class="comment"># Get interface up</span></span><br><span class="line">ifdown eth0</span><br><span class="line">ifup eth0</span><br><span class="line">/usr/bin/chfn -f <span class="string">'demo'</span> demo</span><br><span class="line">umount /dev/sr0</span><br><span class="line">[ -e /tmp/sepolicy-devel.temp ] &amp;&amp; rm /tmp/sepolicy-devel.temp</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"..."</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"setting network for openvswitch"</span></span><br><span class="line">scriptsUrl=<span class="string">"/etc/sysconfig/network-scripts"</span></span><br><span class="line"><span class="keyword">if</span> [ -e <span class="variable">$scriptsUrl</span>/ifcfg-eth0 ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">    <span class="comment"># disable NetworkManager</span></span><br><span class="line">    systemctl <span class="built_in">disable</span> NetworkManager</span><br><span class="line"></span><br><span class="line">    <span class="comment"># copy device  eth0 configure to ovs-br0</span></span><br><span class="line">    cp <span class="variable">$scriptsUrl</span>/ifcfg-eth0 <span class="variable">$scriptsUrl</span>/ifcfg-br0</span><br><span class="line"></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"device eth0 configure isn't exist,please check it!"</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">sleep 2</span><br><span class="line">reboot</span><br><span class="line">%end</span><br></pre></td></tr></table></figure>
+<p>将kickstart文件保存为<code>ks.cfg</code>文件到~/customISO</p>
+<ol start="7">
+<li><strong>修改安装启动信息</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux customISO]$ vi isolinux/isolinux.cfg <span class="comment"># BIOS引导</span></span><br><span class="line">...</span><br><span class="line">  append initrd=initrd.img inst.stage2=hd:LABEL=CentOS\x207\x20x86_64 quiet</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">#将以上多处相同的内容调整为为以下内容,光驱进行安装</span></span><br><span class="line">...</span><br><span class="line">  append initrd=initrd.img inst.ks=cdrom:/ks.cfg quiet</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">#使用硬盘进行安装修改为以下内容</span></span><br><span class="line">...</span><br><span class="line">  append initrd=initrd.img inst.ks=hd:LABEL=CentOS\x207\x20x86_64:/ks.cfg inst.stage2=hd:LABEL=CentOS\x207\x20x86_64:/ks.cfg quiet</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">[ocloud@centos-linux customISO]$ vi EFI/BOOT/grub.cfg <span class="comment"># EFI引导</span></span><br><span class="line">...</span><br><span class="line">  linuxefi /images/pxeboot/vmlinuz inst.stage2=hd:LABEL=CentOS\x207\x20x86_64 quiet</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">#将以上多处相同的内容调整为为以下内容,光驱进行安装</span></span><br><span class="line">...</span><br><span class="line">  linuxefi /images/pxeboot/vmlinuz inst.ks=cdrom:/ks.cfg quiet</span><br><span class="line">...</span><br><span class="line"><span class="comment">#使用硬盘进行安装修改为以下内容</span></span><br><span class="line">...</span><br><span class="line">  linuxefi /images/pxeboot/vmlinuz inst.ks=hd:LABEL=CentOS\x207\x20x86_64:/ks.cfg inst.stage2=hd:LABEL=CentOS\x207\x20x86_64:/ks.cfg quiet</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>因为ks.cfg中指定安装方式为cdrom, 如果通过硬盘安装则发现不了系统映像，因此添加 <code>inst.stage2</code> 指定要载入的安装程序运行时映像位置, 在这里引导参数 <code>inst.ks</code> 和 <code>inst.stage2</code>都会被读取, 如果只希望写一个<code>inst.ks</code>则只需要将ks.cfg中的cdrom调整为 url --url hd:LABEL=CentOS\x207\x20x86_64 即可</p>
+</blockquote>
+<ol>
+<li><strong>制作CentOS7镜像文件</strong></li>
+</ol>
+<blockquote>
+<p>本文出现的<code>CentOS\x207\x20x86_64</code> 即为 <code>CentOS 7 x86_64</code> 的URI编码, 可通过mkisofs命令的参数-V指定</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux customISO] mkisofs -o /tmp/CentOS-7-x86_64-demo.iso -b isolinux/isolinux.bin -c isolinux/boot.cat --no-emul-boot --boot-load-size 4 --boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot -T -J -R -V <span class="string">"CentOS 7 x86_64"</span> .</span><br><span class="line">[ocloud@centos-linux customISO] isohybrid /tmp/CentOS-7-x86_64-demo.iso <span class="comment">#使用mkisofs或genisoimage生成的ISO 9660镜像，以允许混合启动为CD-ROM或硬盘</span></span><br></pre></td></tr></table></figure>
+<h2 id="usb启动盘制作"><a class="header-anchor" href="#usb启动盘制作"></a>USB启动盘制作</h2>
+<blockquote>
+<p>将U盘插入系统</p>
+</blockquote>
+<p><strong>格式化U盘分区</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ lsblk</span><br><span class="line">NAME                 MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT</span><br><span class="line">...</span><br><span class="line">sdb                    8:16   1  14.3G  0 disk</span><br><span class="line">└─sdb4                 8:20   1  14.3G  0 part <span class="comment">#U盘分区</span></span><br><span class="line">...</span><br><span class="line">[ocloud@centos-linux ~]$ sudo mkfs.vfat -I /dev/sdb</span><br><span class="line">mkfs.fat 3.0.20 (12 Jun 2013)</span><br></pre></td></tr></table></figure>
+<p><strong>写入镜像</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ dd <span class="keyword">if</span>=/tmp/CentOS-7-x86_64-demo.iso of=/dev/sdb</span><br><span class="line">[ocloud@centos-linux ~]$ <span class="built_in">exit</span> <span class="comment">#退出后拔掉U盘即可</span></span><br></pre></td></tr></table></figure>
+<p>完成以上步骤后，即可生成一个自己定制的CentOS7的系统，更多详情请参考参考链接，如果本文有任何问题请发<a href="mailto:xiaoheng.zh@gmail.com" target="_blank" rel="noopener">Email</a>。</p>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<ol>
+<li><a href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/installation_guide/chap-anaconda-boot-options#list-boot-options-sources" target="_blank" rel="noopener">第 20 章 引导选项</a></li>
+<li><a href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/installation_guide/chap-kickstart-installations" target="_blank" rel="noopener">第 23 章 KICKSTART 安装</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>不如请我吃根冰棒吧</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/custom/wechat.png" alt="大脚丫子下的小蚂蚁 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/custom/alipay.jpg" alt="大脚丫子下的小蚂蚁 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/centos/" rel="tag"># centos</a>
+              <a href="/tags/kickstart/" rel="tag"># kickstart</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/10/21/Vue-CLI-3-使用百度地图/" rel="prev" title="Vue CLI 3 使用百度地图">
+      <i class="fa fa-chevron-left"></i> Vue CLI 3 使用百度地图
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/12/31/NFS安装及使用/" rel="next" title="NFS安装及使用">
+      NFS安装及使用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境准备"><span class="nav-number">1.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始制作"><span class="nav-number">2.</span> <span class="nav-text">开始制作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usb启动盘制作"><span class="nav-number">3.</span> <span class="nav-text">USB启动盘制作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="大脚丫子下的小蚂蚁"
+      src="/images/custom/ava.jpg">
+  <p class="site-author-name" itemprop="name">大脚丫子下的小蚂蚁</p>
+  <div class="site-description" itemprop="description">一名不知所措的IT从业者</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zzhtom" title="GitHub → https://github.com/zzhtom" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xiaoheng.zh@gmail.com" title="E-Mail → mailto:xiaoheng.zh@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/113809036652138215181" title="Google → https://plus.google.com/113809036652138215181" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/xiaoheng_zhang" title="Twitter → https://twitter.com/xiaoheng_zhang" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/tom.zhang.313371" title="FB Page → https://www.facebook.com/tom.zhang.313371" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i>FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/9628832/xiaoheng-zhang" title="StackOverflow → https://stackoverflow.com/users/9628832/xiaoheng-zhang" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">大脚丫子下的小蚂蚁</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://www.zhangxiaoheng.cn/2018/12/22/通过kickstart定制Centos7系统/',]
+      });
+      });
+  </script>
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://zhangxiaoheng.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://www.zhangxiaoheng.cn/2018/12/22/通过kickstart定制Centos7系统/";
+    this.page.identifier = "2018/12/22/通过kickstart定制Centos7系统/";
+    this.page.title = "通过kickstart定制Centos7系统";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://zhangxiaoheng.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="zh-CN,en,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.7.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/custom/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/custom/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/custom/favicon.ico">
+  <link rel="mask-icon" href="/images/custom/favicon.ico" color="#222">
+  <meta name="google-site-verification" content="google9da7538369cddbcb.html">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <script data-ad-client="ca-pub-2495417577430280" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.zhangxiaoheng.cn","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一名不知所措的IT从业者">
+<meta name="keywords" content="html,js,jquery,node.js,fibjs,开发者,编程,运维,运维开发">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Change The World">
+<meta property="og:url" content="http://www.zhangxiaoheng.cn/index.html">
+<meta property="og:site_name" content="Change The World">
+<meta property="og:description" content="一名不知所措的IT从业者">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Change The World">
+<meta name="twitter:description" content="一名不知所措的IT从业者">
+
+<link rel="canonical" href="http://www.zhangxiaoheng.cn/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Change The World</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121888655-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-121888655-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Change The World</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">沉默是一种力量，嘶吼就不是力量了？</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/zzhtom" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2021/09/20/登高-望远/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+      <meta itemprop="name" content="大脚丫子下的小蚂蚁">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/20/登高-望远/" class="post-title-link" itemprop="url">登高,望远</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-20 10:05:15" itemprop="dateCreated datePublished" datetime="2021-09-20T10:05:15+08:00">2021-09-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-21 10:27:06" itemprop="dateModified" datetime="2021-09-21T10:27:06+08:00">2021-09-21</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2021/09/20/登高-望远/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/09/20/登高-望远/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>中秋节近，喜，遂登高望远</p>
+<img data-src="/2021/09/20/登高-望远/2AF8E11B-9220-4E11-A9CC-790AEAAF9E87_1_105_c.jpeg">
+<img data-src="/2021/09/20/登高-望远/4E8209C1-5C7E-4A5D-A378-9573F853219A_1_105_c.jpeg">
+<img data-src="/2021/09/20/登高-望远/9AC71EF9-8642-44A3-A30F-9BA814ABD3A2_1_105_c.jpeg">
+<img data-src="/2021/09/20/登高-望远/27D16386-F96A-4C3B-A4C6-F40986DBFEFB_1_105_c.jpeg">
+<img data-src="/2021/09/20/登高-望远/82BEB564-DA3A-447B-9367-01B32FC279B2_1_105_c.jpeg">
+<img data-src="/2021/09/20/登高-望远/BE223BC6-58A4-4440-8278-2AFE7106859D_1_105_c.jpeg">
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2020/07/28/QEMU虚拟机支持UEFI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+      <meta itemprop="name" content="大脚丫子下的小蚂蚁">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/28/QEMU虚拟机支持UEFI/" class="post-title-link" itemprop="url">QEMU虚拟机支持UEFI</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-28 16:59:45 / 修改时间：17:17:40" itemprop="dateCreated datePublished" datetime="2020-07-28T16:59:45+08:00">2020-07-28</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/07/28/QEMU虚拟机支持UEFI/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/07/28/QEMU虚拟机支持UEFI/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>本文主要出现的原因其实很简单，就是让目前已经使用的虚拟机支持UEFI,目前已知i440FX仅支持BIOS而Q35同时支持BIOS和UEFI。话不多说开始吧😳</p>
+</blockquote>
+<h2 id="环境信息"><a class="header-anchor" href="#环境信息"></a>环境信息</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@dev ~]<span class="comment"># cat /etc/redhat-release</span></span><br><span class="line">CentOS Linux release 8.1.1911 (Core)</span><br><span class="line">[root@dev ~]<span class="comment"># uname -a</span></span><br><span class="line">Linux dev 2.6.78-147.8.1.el8_1.x86_64 <span class="comment">#1 SMP Thu Apr 9 13:49:54 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux</span></span><br></pre></td></tr></table></figure>
+<h2 id="查看当前主机qemu支持机器类型"><a class="header-anchor" href="#查看当前主机qemu支持机器类型"></a>查看当前主机Qemu支持机器类型</h2>
+<blockquote>
+<p>可以通过以下两种查询方法，或其他有效的方法</p>
+</blockquote>
+<ol>
+<li>
+<p>通过qemu-kvm进行查询</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@dev ~]<span class="comment"># /usr/libexec/qemu-kvm -M help</span></span><br><span class="line">Supported machines are:</span><br><span class="line">pc                   RHEL 7.6.0 PC (i440FX + PIIX, 1996) (<span class="built_in">alias</span> of pc-i440fx-rhel7.6.0)</span><br><span class="line">pc-i440fx-rhel7.6.0  RHEL 7.6.0 PC (i440FX + PIIX, 1996) (default)</span><br><span class="line">pc-i440fx-rhel7.5.0  RHEL 7.5.0 PC (i440FX + PIIX, 1996)</span><br><span class="line">pc-i440fx-rhel7.4.0  RHEL 7.4.0 PC (i440FX + PIIX, 1996)</span><br><span class="line">pc-i440fx-rhel7.3.0  RHEL 7.3.0 PC (i440FX + PIIX, 1996)</span><br><span class="line">pc-i440fx-rhel7.2.0  RHEL 7.2.0 PC (i440FX + PIIX, 1996)</span><br><span class="line">pc-i440fx-rhel7.1.0  RHEL 7.1.0 PC (i440FX + PIIX, 1996)</span><br><span class="line">pc-i440fx-rhel7.0.0  RHEL 7.0.0 PC (i440FX + PIIX, 1996)</span><br><span class="line">q35                  RHEL-7.6.0 PC (Q35 + ICH9, 2009) (<span class="built_in">alias</span> of pc-q35-rhel7.6.0)</span><br><span class="line">pc-q35-rhel7.6.0     RHEL-7.6.0 PC (Q35 + ICH9, 2009)</span><br><span class="line">pc-q35-rhel7.5.0     RHEL-7.5.0 PC (Q35 + ICH9, 2009)</span><br><span class="line">pc-q35-rhel7.4.0     RHEL-7.4.0 PC (Q35 + ICH9, 2009)</span><br><span class="line">pc-q35-rhel7.3.0     RHEL-7.3.0 PC (Q35 + ICH9, 2009)</span><br><span class="line">none                 empty machine</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>通过libvirt进行查询</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[root@dev ~]<span class="comment"># virsh capabilities</span></span><br><span class="line">&lt;capabilities&gt;</span><br><span class="line">  ...</span><br><span class="line">  &lt;guest&gt;</span><br><span class="line">      ...</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'240'</span>&gt;pc-i440fx-rhel7.6.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine canonical=<span class="string">'pc-i440fx-rhel7.6.0'</span> maxCpus=<span class="string">'240'</span>&gt;pc&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'240'</span>&gt;pc-i440fx-rhel7.0.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'384'</span>&gt;pc-q35-rhel7.6.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine canonical=<span class="string">'pc-q35-rhel7.6.0'</span> maxCpus=<span class="string">'384'</span>&gt;q35&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'240'</span>&gt;pc-i440fx-rhel7.5.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'240'</span>&gt;pc-i440fx-rhel7.1.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'240'</span>&gt;pc-i440fx-rhel7.2.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'255'</span>&gt;pc-q35-rhel7.3.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'384'</span>&gt;pc-q35-rhel7.4.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'240'</span>&gt;pc-i440fx-rhel7.3.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'240'</span>&gt;pc-i440fx-rhel7.4.0&lt;/machine&gt;</span><br><span class="line">      &lt;machine maxCpus=<span class="string">'384'</span>&gt;pc-q35-rhel7.5.0&lt;/machine&gt;</span><br><span class="line">	    ...</span><br><span class="line">  &lt;/guest&gt;</span><br><span class="line">  ...</span><br><span class="line">&lt;/capabilities&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>通过以上内容可以看出，如果我们只是需要使用最新的机器类型只要选择 <code>pc</code> 或 <code>q35</code></p>
+<h2 id="配置虚拟机使用q35"><a class="header-anchor" href="#配置虚拟机使用q35"></a>配置虚拟机使用Q35</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@dev ~]<span class="comment"># virsh edit --domain alpinelinux3.8</span></span><br><span class="line">...</span><br><span class="line"> &lt;os&gt;</span><br><span class="line">   &lt;<span class="built_in">type</span> arch=<span class="string">'x86_64'</span> machine=<span class="string">'q35'</span>&gt;hvm&lt;/<span class="built_in">type</span>&gt;</span><br><span class="line"> &lt;/os&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>将以上内容调整为 <code>machine='q35'</code>即为完成</p>
+<h2 id="配置虚拟机支持uefi"><a class="header-anchor" href="#配置虚拟机支持uefi"></a>配置虚拟机支持UEFI</h2>
+<blockquote>
+<p>如果需要虚拟机支持 <code>uefi</code> 还需要 <code>edk2-ovmf</code> 软件包的支持</p>
+</blockquote>
+<ol>
+<li>安装<code>edk2-ovmf</code>软件包</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@dev ~]<span class="comment"># yum search edk2-ovmf</span></span><br><span class="line">FATAL: kernel too old</span><br><span class="line">上次元数据过期检查：2:35:19 前，执行于 2020年07月28日 星期二 13时01分20秒。</span><br><span class="line">===================================== 名称 精准匹配：edk2-ovmf ===================================================</span><br><span class="line">edk2-ovmf.noarch : UEFI firmware <span class="keyword">for</span> x86_64 virtual machines</span><br><span class="line">[root@dev ~]<span class="comment"># yum install -y edk2-ovmf</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>编辑虚拟机配置</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@ocloud-dev ~]<span class="comment"># virsh edit alpinelinux3.8</span></span><br><span class="line">  &lt;os&gt;</span><br><span class="line">    ...</span><br><span class="line">    &lt;loader <span class="built_in">readonly</span>=<span class="string">'yes'</span> secure=<span class="string">'yes'</span> <span class="built_in">type</span>=<span class="string">'pflash'</span>&gt;/usr/share/OVMF/OVMF_CODE.secboot.fd&lt;/loader&gt; </span><br><span class="line">    ...</span><br><span class="line">  &lt;/os&gt;</span><br><span class="line">  &lt;features&gt;</span><br><span class="line">    ...</span><br><span class="line">    &lt;smm state=<span class="string">'on'</span>/&gt;</span><br><span class="line">    ...</span><br><span class="line">  &lt;/features&gt;</span><br></pre></td></tr></table></figure>
+<p>找到以上节点添加对应的内容即可</p>
+<p><strong>注意：如果loader节点属性secure='yes’则必须开启smm</strong></p>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<ol>
+<li><a href="https://www.linux-kvm.org/images/0/06/2012-forum-Q35.pdf" target="_blank" rel="noopener">A New Chipset For Qemu - Intel’s Q35</a></li>
+<li><a href="https://wiki.qemu.org/Features/Q35" target="_blank" rel="noopener">Features/Q35</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/libvirt_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#UEFI_%E6%94%AF%E6%8C%81" target="_blank" rel="noopener">UEFI支持</a></li>
+<li><a href="https://www.linux-kvm.org/page/OVMF" target="_blank" rel="noopener">OVMF</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2019/06/08/构建PACEMAKER集群共享存储-CLVM-GFS2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+      <meta itemprop="name" content="大脚丫子下的小蚂蚁">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/06/08/构建PACEMAKER集群共享存储-CLVM-GFS2/" class="post-title-link" itemprop="url">构建PACEMAKER集群共享存储[CLVM + GFS2]</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-08 11:26:23" itemprop="dateCreated datePublished" datetime="2019-06-08T11:26:23+08:00">2019-06-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-07-08 17:34:15" itemprop="dateModified" datetime="2019-07-08T17:34:15+08:00">2019-07-08</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2019/06/08/构建PACEMAKER集群共享存储-CLVM-GFS2/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/08/构建PACEMAKER集群共享存储-CLVM-GFS2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>本文主要记录构建pacemaker集群的共享存储的学习过程，如有疑问还请查看官方文档，主要内容就是把集群分配的iscsi存储使用clvm + GFS2进行管理，使得此存储设备成功集群的共享存储</p>
+</blockquote>
+<p><img data-src="http://assets.processon.com/chart_image/5cf9d636e4b0f1ac036b9fb2.png" alt="共享存储"></p>
+<h2 id="准备"><a class="header-anchor" href="#准备"></a>准备</h2>
+<ol>
+<li>
+<p>配置集群，请参考 <a href="https://www.zhangxiaoheng.cn/2019/06/07/%E9%80%9A%E8%BF%87PACEMAKER%E5%88%9B%E5%BB%BA%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4/">通过PACEMAKER创建高可用集群</a></p>
+</li>
+<li>
+<p>ISCSI共享存储</p>
+</li>
+<li>
+<p>所有的集群节点接入ISCSI共享存储</p>
+</li>
+</ol>
+<h2 id="安装"><a class="header-anchor" href="#安装"></a>安装</h2>
+<ol>
+<li>安装lvm2-cluster和gfs2-utils软件包[所有节点]</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install lvm2-cluster gfs2-utils</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>将全局Pacemaker参数no_quorum_policy设置为freeze</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs property set no-quorum-policy=freeze</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong></p>
+<blockquote>
+<p>默认情况下会将 <code>no-quorum-policy</code> 值设定为 <code>stop</code>，说明丢失一个仲裁，同时将停止剩余分区中的所有资源。通常这个选项是最安全同时也是最佳选项，但与大多数资源不同，GFS2 需要仲裁功能。丢失仲裁后，使用 GFS2 挂载的应用程序及 GFS2 挂载本身都将正常停止。所有在无仲裁的情况下停止执行资源的尝试都将失败，并最终造成每次丢失仲裁时都 fence 整个集群。</p>
+<p>为解决这个问题，您可以在使用 GFS2 时设置 <code>no-quorum-policy=freeze</code>。这意味着丢失仲裁时，重新获得仲裁钱剩余分区不会做任何操作。</p>
+</blockquote>
+<ol start="3">
+<li>设置dlm资源。这是clvmd和GFS2的必需依赖项[单节点]</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs resource create dlm ocf:pacemaker:controld op monitor interval=30s on-fail=fence clone interleave=true ordered=true</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>执行以下命令以启用集群。此命令将/etc/lvm/lvm.conf文件中的locking_type参数设置为3[所有节点]</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lvmconf --enable-cluster</span></span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>将clvmd设置为集群资源[单节点]</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs resource create clvmd ocf:heartbeat:clvm op monitor interval=30s on-fail=fence clone interleave=true ordered=true</span></span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>设置clvmd和dlm依赖项并启动顺序,  clvmd必须在dlm之后启动，并且必须与dlm在同一节点上运行[单节点]</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs constraint order start dlm-clone then clvmd-clone</span></span><br><span class="line"><span class="comment"># pcs constraint colocation add clvmd-clone with dlm-clone</span></span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>创建集群逻辑卷[单节点]</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pvcreate /dev/vdb</span></span><br><span class="line"><span class="comment"># vgcreate -Ay -cy cluster_vg /dev/vdb</span></span><br><span class="line"><span class="comment"># lvcreate -L5G -n cluster_lv cluster_vg</span></span><br></pre></td></tr></table></figure>
+<p>注：/dev/vdb iscsi共享存储</p>
+<ol start="8">
+<li>使用GFS2文件系统格式化逻辑卷[单节点]</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mkfs.gfs2 -j2 -p lock_dlm -t rhel7-demo:gfs2-demo /dev/cluster_vg/cluster_lv</span></span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li>配置clusterfs资源[单节点]</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs resource create clusterfs Filesystem device="/dev/cluster_vg/cluster_lv" directory="/var/mountpoint" fstype="gfs2" options="noatime" op monitor interval=10s on-fail=fence clone interleave=true</span></span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li>设置GFS2和clvmd依赖关系和启动顺序[单节点]</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs constraint order start clvmd-clone then clusterfs-clone</span></span><br><span class="line"><span class="comment"># pcs constraint colocation add clusterfs-clone with clvmd-clone</span></span><br></pre></td></tr></table></figure>
+<ol start="12">
+<li>查看资源信息</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs resource show #查看资源信息</span></span><br></pre></td></tr></table></figure>
+<ol start="13">
+<li>验证是否按预期安装了GFS2</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mount |grep /mnt/gfs2-demo</span></span><br><span class="line">/dev/mapper/cluster_vg-cluster_lv on /mnt/gfs2-demo <span class="built_in">type</span> gfs2 (rw,noatime,seclabel)</span><br></pre></td></tr></table></figure>
+<ol start="14">
+<li>扩展GFS2文件系统空间</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lvextend -L +2G /dev/cluster_vg/cluster_lv</span></span><br><span class="line"><span class="comment"># gfs2_grow  /var/mountpoint</span></span><br></pre></td></tr></table></figure>
+<ol start="15">
+<li>添加GFS2日志数量</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gfs2_jadd -j 1 /var/mountpoint</span></span><br></pre></td></tr></table></figure>
+<p>注：如果节点需要使用此共享存储，必选保证日志数量大于或者等于集群节点，集群节点数小于或等于GFS2文件系统日志数</p>
+<ol start="16">
+<li>添加挂载点</li>
+</ol>
+<p>完成以上操作后，就已经成功构建了集群的共享存储，具体参数含义还望请参考官方文档介绍</p>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-clustsetup-gfs2" target="_blank" rel="noopener">CHAPTER 5. CONFIGURING A GFS2 FILE SYSTEM IN A CLUSTER</a></p>
+<p><a href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/ch-clustresources-haar" target="_blank" rel="noopener">第 5 章 配置集群资源</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2019/06/07/通过PACEMAKER创建高可用集群/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+      <meta itemprop="name" content="大脚丫子下的小蚂蚁">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/06/07/通过PACEMAKER创建高可用集群/" class="post-title-link" itemprop="url">通过PACEMAKER创建高可用集群</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-07 10:49:50" itemprop="dateCreated datePublished" datetime="2019-06-07T10:49:50+08:00">2019-06-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-07-08 16:55:25" itemprop="dateModified" datetime="2019-07-08T16:55:25+08:00">2019-07-08</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2019/06/07/通过PACEMAKER创建高可用集群/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/07/通过PACEMAKER创建高可用集群/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>集群主要用于在主服务由于异常状况不能继续正常工作，此时会有一个备用的服务器继续提供服务，进而不会导致服务停止，本文主要展示双节点集群的建立，集群效果如下图</p>
+</blockquote>
+<p><img data-src="http://assets.processon.com/chart_image/5cfb2bb8e4b0a64c88ac0d86.png" alt="cluster"></p>
+<h2 id="安装前准备"><a class="header-anchor" href="#安装前准备"></a>安装前准备</h2>
+<p><strong>配置hosts[所有节点]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#添加如下内容，确保集群中的主机可以通过主机名相互通信</span></span><br><span class="line">192.168.0.10 node1</span><br><span class="line">192.168.0.11 node2</span><br></pre></td></tr></table></figure>
+<p>注：[所有节点]代表所有节点执行，[单节点]代表集群中一个节点执行即可，下同</p>
+<h2 id="安装"><a class="header-anchor" href="#安装"></a>安装</h2>
+<p><strong>安装<code>Red Hat High Availability Add-On</code>软件套件以及隔离代理程序[所有节点]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install pcs fence-agents-all</span></span><br></pre></td></tr></table></figure>
+<p><strong>防火墙配置[所有节点]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># firewall-cmd --permanent --add-service=high-availability</span></span><br><span class="line"><span class="comment"># firewall-cmd --add-service=high-availability</span></span><br></pre></td></tr></table></figure>
+<p><strong>用户配置[所有节点]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># passwd hacluster</span></span><br><span class="line">Changing password <span class="keyword">for</span> user hacluster.</span><br><span class="line">New password:</span><br><span class="line">Retype new password:</span><br><span class="line">passwd: all authentication tokens updated successfully.</span><br></pre></td></tr></table></figure>
+<p>注：hacluster用户为自动创建用户，只需修改密码即可，确保所有节点密码一致</p>
+<p><strong>启动pcsd[所有节点]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl start pcsd.service</span></span><br><span class="line"><span class="comment"># systemctl enable pcsd.service</span></span><br></pre></td></tr></table></figure>
+<p><strong>节点认证[单节点]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@z1 ~]<span class="comment"># pcs cluster auth node1 node2</span></span><br><span class="line">Username: hacluster</span><br><span class="line">Password:</span><br><span class="line">node1: Authorized</span><br><span class="line">node2: Authorized</span><br></pre></td></tr></table></figure>
+<h2 id="创建集群"><a class="header-anchor" href="#创建集群"></a>创建集群</h2>
+<p><strong>创建[单节点]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@z1 ~]<span class="comment"># pcs cluster setup --start --name my_cluster node1 node2</span></span><br><span class="line">node1: Succeeded</span><br><span class="line">node2: Starting Cluster...</span><br><span class="line">node1: Succeeded</span><br><span class="line">node2: Starting Cluster...</span><br></pre></td></tr></table></figure>
+<p>注：–start 启动所有节点的集群服务</p>
+<p><strong>设置集群自启动</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs cluster enable --all</span></span><br></pre></td></tr></table></figure>
+<p><strong>手动启动</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs cluster start --all</span></span><br></pre></td></tr></table></figure>
+<p>注： --all启动所有的节点，否则启动单节点</p>
+<p><strong>查看集群状态</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># pcs cluster status</span></span><br></pre></td></tr></table></figure>
+<h2 id="隔离代理配置"><a class="header-anchor" href="#隔离代理配置"></a><a href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/ch-fencing-haar" target="_blank" rel="noopener">隔离代理配置</a></h2>
+<blockquote>
+<p>以下使用iscsi设备充当stonith设备<br>
+<strong>创建隔离代理</strong></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs stonith create scsi-shooter fence_scsi devices=/dev/disk/by-id/wwn-0x6001405189b893893594dffb3a2cb3e9 pcmk_monitor_action=metadata pcmk_reboot_action=off pcmk_host_list="node1 node2" meta provides=unfencing</span></span><br></pre></td></tr></table></figure>
+<p>注：scsi-shooter 为资源名称，fence_scsi 为fence设备类型，详情列表: <code>pcs stonith list</code><br>
+provides=unfencing 主要用在基于存储的 FENCE 设备，如果仅仅希望stonith资源是开启的，则可以添加配置项 pcmk_monitor_action=metadata，此操作不会检测stonith设备是否存在直接返回成功。</p>
+<p><strong>查看隔离配置</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs stonith show scsi-shooter</span></span><br><span class="line"> scsi-shooter	(stonith:fence_scsi):	Started node1</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<p><a href="https://access.redhat.com/documentation/zh-tw/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index" target="_blank" rel="noopener">HIGH AVAILABILITY 外掛程式管理</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/12/31/NFS安装及使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+      <meta itemprop="name" content="大脚丫子下的小蚂蚁">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/31/NFS安装及使用/" class="post-title-link" itemprop="url">NFS安装及使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2018-12-31 20:34:47 / 修改时间：23:12:44" itemprop="dateCreated datePublished" datetime="2018-12-31T20:34:47+08:00">2018-12-31</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/12/31/NFS安装及使用/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/31/NFS安装及使用/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="环境准备"><a class="header-anchor" href="#环境准备"></a>环境准备</h2>
+<blockquote>
+<p>系统：CentOS 7.6 //目前最新发行版，2018年12月31日</p>
+<p>网络：可以连接互联网，用于下载必须的软件包</p>
+</blockquote>
+<h2 id="简介与说明"><a class="header-anchor" href="#简介与说明"></a>简介与说明</h2>
+<h3 id="rpcbind"><a class="header-anchor" href="#rpcbind"></a>rpcbind</h3>
+<p>用于将RPC程序编号映射到IP地址端口号组合, RPC进程在启动时通知rpcbind，注册他们正在侦听的端口以及他们希望服务的RPC程序编号。然后，客户端系统使用特定的RPC程序编号联系服务器上的rpcbind。 rpcbind服务将客户端重定向到正确的端口号，以便它可以与请求的服务进行通信。</p>
+<h3 id="nfs"><a class="header-anchor" href="#nfs"></a>NFS</h3>
+<p>网络文件系统（NFS）允许远程主机通过网络安装文件系统，并与这些文件系统进行交互，就好像它们是本地安装的一样。这使系统管理员能够将资源整合到网络上的集中式服务器上。</p>
+<p>NFS版本都依赖于客户端和服务器之间的远程过程调用（RPC）。 一般Linux发行版（Fedora、RHEL、CentOS）RPC服务由rpcbind服务控制。要共享或挂载NFS文件系统，以下服务可以协同工作，具体取决于实现的NFS版本</p>
+<h3 id="开始安装"><a class="header-anchor" href="#开始安装"></a>开始安装</h3>
+<p><strong>软件安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ yum -y install nfs-utils rpcbind</span><br></pre></td></tr></table></figure>
+<p><strong>配置</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ sudo vi /etc/exports</span><br><span class="line">/opt/share/ 192.168.0.0/24(rw,no_root_squash,no_all_squash,sync,anonuid=501,anongid=501) <span class="comment">#添加内容</span></span><br></pre></td></tr></table></figure>
+<p>简单说明</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/opt/share/           共享目录</span><br><span class="line"></span><br><span class="line">192.168.0.0/24、192.168.0.110、nfs.nfsdemo.org、*.nfsdemo.org    主持网段、IP、域名、通配符域名</span><br><span class="line"></span><br><span class="line">sync                  文件同时写入硬盘和内存；</span><br><span class="line"></span><br><span class="line">async                 文件暂存于内存，而不是直接写入内存；</span><br><span class="line"></span><br><span class="line">no_root_squash        NFS客户端连接服务端时如果使用的是root的话，那么对服务端分享的目录来说，也拥有root权限。显然开启这项是不安全的。</span><br><span class="line"></span><br><span class="line">root_squash           NFS客户端连接服务端时如果使用的是root的话，那么对服务端分享的目录来说，拥有匿名用户权限，通常他将使用nobody或nfsnobody身份；</span><br><span class="line"></span><br><span class="line">all_squash            不论NFS客户端连接服务端时使用什么用户，对服务端分享的目录来说都是拥有匿名用户权限；</span><br><span class="line"></span><br><span class="line">anonuid               匿名用户的UID值，可以在此处自行设定</span><br><span class="line"></span><br><span class="line">anongid               匿名用户的GID值</span><br></pre></td></tr></table></figure>
+<p>配置文件生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ sudo mkdir -p  /opt/share/ <span class="comment">#文件夹必须要存在</span></span><br><span class="line">[ocloud@centos-linux ~]$ sudo exportfs -r</span><br></pre></td></tr></table></figure>
+<h3 id="开启服务"><a class="header-anchor" href="#开启服务"></a>开启服务</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rpcbind</span></span><br><span class="line">[ocloud@centos-linux ~]$ sudo systemctl start rpcbind</span><br><span class="line">[sudo] ocloud 的密码：</span><br><span class="line">[ocloud@centos-linux ~]$ sudo systemctl status rpcbind</span><br><span class="line">● rpcbind.service - RPC <span class="built_in">bind</span> service</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/rpcbind.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: active (running) since 一 2018-12-31 21:33:15 CST; 7s ago</span><br><span class="line">  Process: 5966 ExecStart=/sbin/rpcbind -w <span class="variable">$RPCBIND_ARGS</span> (code=exited, status=0/SUCCESS)</span><br><span class="line"> Main PID: 5967 (rpcbind)</span><br><span class="line">   CGroup: /system.slice/rpcbind.service</span><br><span class="line">           └─5967 /sbin/rpcbind -w</span><br><span class="line"></span><br><span class="line">12月 31 21:33:15 centos-linux.shared systemd[1]: Starting RPC <span class="built_in">bind</span> service...</span><br><span class="line">12月 31 21:33:15 centos-linux.shared systemd[1]: Started RPC <span class="built_in">bind</span> service.</span><br><span class="line"></span><br><span class="line"><span class="comment"># nfs</span></span><br><span class="line">[ocloud@centos-linux ~]$ sudo systemctl start nfs</span><br><span class="line">[ocloud@centos-linux ~]$ sudo systemctl status nfs</span><br><span class="line">● nfs-server.service - NFS server and services</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/nfs-server.service; disabled; vendor preset: disabled)</span><br><span class="line">   Active: active (exited) since 一 2018-12-31 21:41:20 CST; 3s ago</span><br><span class="line">  Process: 6128 ExecStopPost=/usr/sbin/exportfs -f (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 6126 ExecStopPost=/usr/sbin/exportfs -au (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 6122 ExecStop=/usr/sbin/rpc.nfsd 0 (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 6167 ExecStartPost=/bin/sh -c <span class="keyword">if</span> systemctl -q is-active gssproxy; <span class="keyword">then</span> systemctl restart gssproxy ; <span class="keyword">fi</span> (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 6151 ExecStart=/usr/sbin/rpc.nfsd <span class="variable">$RPCNFSDARGS</span> (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 6149 ExecStartPre=/usr/sbin/exportfs -r (code=exited, status=0/SUCCESS)</span><br><span class="line"> Main PID: 6151 (code=exited, status=0/SUCCESS)</span><br><span class="line">   CGroup: /system.slice/nfs-server.service</span><br><span class="line"></span><br><span class="line">12月 31 21:41:20 centos-linux.shared systemd[1]: Starting NFS server and services...</span><br><span class="line">12月 31 21:41:20 centos-linux.shared systemd[1]: Started NFS server and services.</span><br></pre></td></tr></table></figure>
+<p><strong>设置开机自启动</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ sudo systemctl <span class="built_in">enable</span> rpcbind</span><br><span class="line">[ocloud@centos-linux ~]$ sudo systemctl <span class="built_in">enable</span> nfs</span><br></pre></td></tr></table></figure>
+<h4 id="查看已注册的rpc列表"><a class="header-anchor" href="#查看已注册的rpc列表"></a>查看已注册的RPC列表</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ rpcinfo -p</span><br><span class="line">   program vers proto   port  service</span><br><span class="line">    100000    4   tcp    111  portmapper</span><br><span class="line">    100000    3   tcp    111  portmapper</span><br><span class="line">    100000    2   tcp    111  portmapper</span><br><span class="line">    100000    4   udp    111  portmapper</span><br><span class="line">    100000    3   udp    111  portmapper</span><br><span class="line">    100000    2   udp    111  portmapper</span><br><span class="line">    100024    1   udp  48527  status</span><br><span class="line">    100024    1   tcp  39724  status</span><br><span class="line">    100005    1   udp  20048  mountd</span><br><span class="line">    100005    1   tcp  20048  mountd</span><br><span class="line">    100005    2   udp  20048  mountd</span><br><span class="line">    100005    2   tcp  20048  mountd</span><br><span class="line">    100005    3   udp  20048  mountd</span><br><span class="line">    100005    3   tcp  20048  mountd</span><br><span class="line">    100003    3   tcp   2049  nfs</span><br><span class="line">    100003    4   tcp   2049  nfs</span><br><span class="line">    100227    3   tcp   2049  nfs_acl</span><br><span class="line">    100003    3   udp   2049  nfs</span><br><span class="line">    100003    4   udp   2049  nfs</span><br><span class="line">    100227    3   udp   2049  nfs_acl</span><br><span class="line">    100021    1   udp  43200  nlockmgr</span><br><span class="line">    100021    3   udp  43200  nlockmgr</span><br><span class="line">    100021    4   udp  43200  nlockmgr</span><br><span class="line">    100021    1   tcp  46330  nlockmgr</span><br><span class="line">    100021    3   tcp  46330  nlockmgr</span><br><span class="line">    100021    4   tcp  46330  nlockmgr</span><br></pre></td></tr></table></figure>
+<p>可以看到nfs相关rpc服务已注册</p>
+<h2 id="防火墙设置"><a class="header-anchor" href="#防火墙设置"></a>防火墙设置</h2>
+<p>如果需要外部主机进行远程访问，则必须将nfs服务开发的端口添加至防火墙</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ sudo firewall-cmd --permanent --zone=public --add-service=nfs</span><br><span class="line">[ocloud@centos-linux ~]$ sudo firewall-cmd --permanent --zone=public --add-service=mountd</span><br><span class="line">[ocloud@centos-linux ~]$ sudo firewall-cmd --permanent --zone=public --add-service=rpc-bind</span><br><span class="line">[ocloud@centos-linux ~]$ sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<h2 id="客户端进行挂载"><a class="header-anchor" href="#客户端进行挂载"></a>客户端进行挂载</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ showmount -e 192.168.0.110            <span class="comment">#查看可挂载</span></span><br><span class="line">Export list <span class="keyword">for</span> 192.168.0.110 :</span><br><span class="line">/opt/share 192.168.0.0/24</span><br><span class="line">[ocloud@centos-linux ~]$ mount -t nfs 192.168.0.110:/opt/share /mnt -o nolock <span class="comment">#不提示即为成功</span></span><br><span class="line"><span class="comment"># nfs默认数据传输使用UDP，可以指定传输协议</span></span><br><span class="line">mount -t nfs 192.168.0.110:/opt/share /mnt -o proto=tcp -o nolock</span><br></pre></td></tr></table></figure>
+<p><strong>永久生效设置</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ vi /etc/fstab <span class="comment">#添加如下的一行内容</span></span><br><span class="line">...</span><br><span class="line">192.168.0.110:/opt/share /mnt                        nfs     defaults        0 0</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">#第五列</span></span><br><span class="line"><span class="comment">#当其值设置为1时，将允许dump备份程序备份；设置为0时，忽略备份操作</span></span><br><span class="line"><span class="comment">#第六列</span></span><br><span class="line"><span class="comment">#其值是一个顺序。当其值为0时，永远不检查；而 / 根目录分区永远都为1。其它分区从2开始，数字越小越先检查，如果两个分区的数字相同，则同时检查</span></span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<p><a href="https://www.wikiwand.com/en/Network_File_System" target="_blank" rel="noopener">Network File System</a></p>
+<p><a href="https://docs.fedoraproject.org/en-US/Fedora/14/html/Storage_Administration_Guide/ch-nfs.html#ftn.fn-portmap2rpcbind" target="_blank" rel="noopener">Chapter 9.  Network File System (NFS)</a></p>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.4/html/administration_guide/nfs" target="_blank" rel="noopener">6.2. NFS</a></p>
+<p>祝：所有的有理想、有梦想的程序员们，新的一年bug消消乐，码上生花，也希望社会更加宽容…等等</p>
+<p>早日活出真实的自己</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/12/22/通过kickstart定制Centos7系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+      <meta itemprop="name" content="大脚丫子下的小蚂蚁">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/22/通过kickstart定制Centos7系统/" class="post-title-link" itemprop="url">通过kickstart定制Centos7系统</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-22 08:36:39" itemprop="dateCreated datePublished" datetime="2018-12-22T08:36:39+08:00">2018-12-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-26 10:19:52" itemprop="dateModified" datetime="2020-07-26T10:19:52+08:00">2020-07-26</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/12/22/通过kickstart定制Centos7系统/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/22/通过kickstart定制Centos7系统/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="环境准备"><a class="header-anchor" href="#环境准备"></a>环境准备</h2>
+<ul>
+<li>
+<p>CentOS 环境一个</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ uname -a</span><br><span class="line">Linux centos-linux.shared 3.10.0-957.1.3.el7.x86_64 <span class="comment">#1 SMP Thu Nov 29 14:49:43 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>CentOS7 镜像一个</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CentOS-7-x86_64-DVD-1810.iso</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="开始制作"><a class="header-anchor" href="#开始制作"></a>开始制作</h2>
+<ol>
+<li><strong>安装需要的工具</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ sudo yum -y install createrepo mkisofs dosfstools syslinux</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>挂载<code>CentOS-7-x86_64-DVD-1810.iso</code> 到目录</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ lsblk //查看磁盘设备，选择对应的光驱设备</span><br><span class="line">NAME                 MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT</span><br><span class="line">sda                    8:0    0    64G  0 disk</span><br><span class="line">├─sda1                 8:1    0   500M  0 part /boot</span><br><span class="line">└─sda2                 8:2    0  63.5G  0 part</span><br><span class="line">  ├─VolGroup-lv_root 253:0    0    50G  0 lvm  /</span><br><span class="line">  ├─VolGroup-lv_swap 253:1    0     2G  0 lvm  [SWAP]</span><br><span class="line">  └─VolGroup-lv_home 253:2    0  11.6G  0 lvm  /home</span><br><span class="line">sr0                   11:0    1 122.5M  0 rom</span><br><span class="line">sr1                   11:1    1   4.3G  0 rom //这个即为挂载的CentOS-7-x86_64-DVD-1810.iso</span><br><span class="line"></span><br><span class="line">[ocloud@centos-linux ~]$ mkdir ~/originISO</span><br><span class="line">[ocloud@centos-linux ~]$ sudo mount /dev/sr1 ~/originISO</span><br><span class="line">[sudo] ocloud 的密码：</span><br><span class="line">mount: /dev/sr1 写保护，将以只读方式挂载</span><br><span class="line"></span><br><span class="line"><span class="comment">#如果不是通过光驱加载，则执行以下操作即可,和上面是同样的效果</span></span><br><span class="line">[ocloud@centos-linux ~]$ sudo mount ~/CentOS-7-x86_64-DVD-1810.iso ~/originISO</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><strong>将镜像内容拷贝到即将制作镜像的文件夹</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ mkdir ~/customISO</span><br><span class="line">[ocloud@centos-linux ~]$ sudo cp -ar ~/originISO/* customISO/</span><br><span class="line">[ocloud@centos-linux customISO]$ ls</span><br><span class="line">CentOS_BuildTag  EFI  EULA  GPL  images  isolinux  LiveOS  Packages  repodata  RPM-GPG-KEY-CentOS-7  RPM-GPG-KEY-CentOS-Testing-7  TRANS.TBL</span><br><span class="line"></span><br><span class="line"><span class="comment">#Packages目录是用来放rpm安装包</span></span><br><span class="line"><span class="comment">#isolinux 目录包含了启动相关的配置文件</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>准备我们需要的<code>rpm</code>包, 具体操作如下</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rpm安装有许多的依赖问题，但是我们可以通过yum获取到相关的依赖包</span></span><br><span class="line">[ocloud@centos-linux ~]$ yum -h</span><br><span class="line">  ...</span><br><span class="line">  --downloadonly        仅下载而不更新</span><br><span class="line">  --downloaddir=DLDIR   指定一个其他文件夹用于保存软件包</span><br><span class="line">  ...</span><br><span class="line">  </span><br><span class="line"> <span class="comment">#比如下载qemu-kvm相关的包</span></span><br><span class="line"> [ocloud@centos-linux ~]$ sudo yum -y --downloadonly --downloaddir=<span class="string">"~/customISO/Packages"</span> qemu-kvm qemu-kvm-tools qemu-img gpxe-roms-qemu qemu-guest-agent <span class="comment">#这里直接包相关联的包下载到我们制作镜像的单独放rpm包的文件夹中</span></span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>
+<p><strong>更新软件组的关联信息</strong></p>
+<blockquote>
+<p>由于我们添加了新的rpm包，因此需要更新软件组的关联信息，每次更新了rpm包就需要更新软件组的信息</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ <span class="built_in">cd</span> ~/customISO</span><br><span class="line">[ocloud@centos-linux customISO]$ mv repodata/*comps.xml repodata/comps.xml <span class="comment">#备份软件组的配置文件，其中包含了软件组元数据</span></span><br><span class="line">[ocloud@centos-linux customISO]$ <span class="built_in">cd</span> repodata/</span><br><span class="line">[ocloud@centos-linux repodata]$ ls | grep -v comps.xml$|xargs rm <span class="comment">#删除其他文件</span></span><br><span class="line">[ocloud@centos-linux repodata]$ <span class="built_in">cd</span> ../</span><br><span class="line">[ocloud@centos-linux customISO] createrepo -g repodata/comps.xml /home/ocloud/customISO <span class="comment">#重新生成软件组的数据信息</span></span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>
+<p><strong>准备kickstart文件</strong></p>
+<blockquote>
+<p>推荐用来生成 Kickstart 文件的方法是在系统中首先执行一次手动安装。安装完成后，安装程序中的所有选择都会保存到名为 <code>anaconda-ks.cfg</code> 的文件中，该文件位于所安装系统的 <code>/root/</code> 目录下。然后可以复制这个文件，根据需要进行修改，并在以后的安装中使用得到的配置文件。 —来自redhat官网内容</p>
+</blockquote>
+</li>
+</ol>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这个文件是一个示例</span></span><br><span class="line">install <span class="comment">#表示是安装系统</span></span><br><span class="line">cdrom <span class="comment">#安装方式，这里是通过光驱</span></span><br><span class="line">lang en_US.UTF-8 <span class="comment">#设置语言</span></span><br><span class="line">keyboard us  <span class="comment">#设置键盘</span></span><br><span class="line">network --device eth0 --bootproto dhcp  <span class="comment">#设置网络</span></span><br><span class="line">rootpw 4a7YAZQ1nvUHI --iscrypted  <span class="comment">#设置root密码，--iscrypted代表加密 --plaintext代表明文</span></span><br><span class="line">firewall --service=ssh <span class="comment">#指定ssh服务可以通过防火墙</span></span><br><span class="line">authconfig --enableshadow --passalgo=sha512 --enablefingerprint <span class="comment">#系统设置认证选项</span></span><br><span class="line">selinux --enforcing <span class="comment">#开启selinux</span></span><br><span class="line">timezone --utc Asia/Shanghai <span class="comment">#设置时区</span></span><br><span class="line">bootloader --location=mbr --driveorder=sda --append=<span class="string">"crashkernel=auto rhgb quiet"</span> <span class="comment">#引导装载程序</span></span><br><span class="line">zerombr <span class="comment">#在使用之前初始化的磁盘的系统中执行自动安装时需要这个命令。</span></span><br><span class="line"><span class="comment">#磁盘分区</span></span><br><span class="line">clearpart --all --drives=sda</span><br><span class="line"><span class="comment">#EFIpart /boot/efi --fstype=efi --grow --maxsize=200 --size=20</span></span><br><span class="line">part /boot --fstype=ext4 --size=500</span><br><span class="line">part pv.raid01 --grow --size=1</span><br><span class="line">volgroup VolGroup --pesize=4096 pv.raid01</span><br><span class="line">logvol /home --fstype=ext4 --name=lv_home --vgname=VolGroup --grow --size=100</span><br><span class="line">logvol / --fstype=ext4 --name=lv_root --vgname=VolGroup --grow --size=1024 --maxsize=51200</span><br><span class="line">logvol swap --name=lv_swap --vgname=VolGroup --grow --size=1008 --maxsize=2016</span><br><span class="line">text</span><br><span class="line">reboot</span><br><span class="line"><span class="comment">#EFIbootloader --location=partition</span></span><br><span class="line"><span class="comment">#OPT-6key --skip</span></span><br><span class="line">user --name=ocloud --password=4a7YAZQ1nvUHI --iscrypted --groups=wheel <span class="comment">#添加用户</span></span><br><span class="line">xconfig --startxonboot</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装所需要的软件包，把自定义的安装包添加进去即可在安装系统时自定义的软件</span></span><br><span class="line">%packages --ignoremissing</span><br><span class="line">@base</span><br><span class="line">@core</span><br><span class="line">@debugging</span><br><span class="line">@basic-desktop</span><br><span class="line">@gnome-desktop</span><br><span class="line">@desktop-debugging</span><br><span class="line">@desktop-platform</span><br><span class="line">@directory-client</span><br><span class="line">@fonts</span><br><span class="line">@general-desktop</span><br><span class="line">@graphical-admin-tools</span><br><span class="line">@graphics</span><br><span class="line">@input-methods</span><br><span class="line">@java-platform</span><br><span class="line">@legacy-x</span><br><span class="line">@network-file-system-client</span><br><span class="line">@performance</span><br><span class="line">@perl-runtime</span><br><span class="line">@<span class="built_in">print</span>-client</span><br><span class="line">@remote-desktop-clients</span><br><span class="line">@server-platform</span><br><span class="line">@virtualization</span><br><span class="line">@virtualization-client</span><br><span class="line">@virtualization-platform</span><br><span class="line">@x11</span><br><span class="line">authconfig</span><br><span class="line">system-config-firewall-base</span><br><span class="line">mtools</span><br><span class="line">pax</span><br><span class="line">python-dmidecode</span><br><span class="line">oddjob</span><br><span class="line">sgpio</span><br><span class="line">genisoimage</span><br><span class="line">wodim</span><br><span class="line">abrt-gui</span><br><span class="line">certmonger</span><br><span class="line">pam_krb5</span><br><span class="line">krb5-workstation</span><br><span class="line">nscd</span><br><span class="line">pam_ldap</span><br><span class="line">nss-pam-ldapd</span><br><span class="line">libXmu</span><br><span class="line">perl-DBD-SQLite</span><br><span class="line">python</span><br><span class="line">gcc</span><br><span class="line">make</span><br><span class="line">kernel-devel</span><br><span class="line">checkpolicy</span><br><span class="line">selinux-policy-devel</span><br><span class="line">%end</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装完系统后，需要做什么事情请写在%post里面</span></span><br><span class="line">%post</span><br><span class="line"><span class="comment"># Get interface up</span></span><br><span class="line">ifdown eth0</span><br><span class="line">ifup eth0</span><br><span class="line">/usr/bin/chfn -f <span class="string">'demo'</span> demo</span><br><span class="line">umount /dev/sr0</span><br><span class="line">[ -e /tmp/sepolicy-devel.temp ] &amp;&amp; rm /tmp/sepolicy-devel.temp</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"..."</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"setting network for openvswitch"</span></span><br><span class="line">scriptsUrl=<span class="string">"/etc/sysconfig/network-scripts"</span></span><br><span class="line"><span class="keyword">if</span> [ -e <span class="variable">$scriptsUrl</span>/ifcfg-eth0 ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">    <span class="comment"># disable NetworkManager</span></span><br><span class="line">    systemctl <span class="built_in">disable</span> NetworkManager</span><br><span class="line"></span><br><span class="line">    <span class="comment"># copy device  eth0 configure to ovs-br0</span></span><br><span class="line">    cp <span class="variable">$scriptsUrl</span>/ifcfg-eth0 <span class="variable">$scriptsUrl</span>/ifcfg-br0</span><br><span class="line"></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"device eth0 configure isn't exist,please check it!"</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">sleep 2</span><br><span class="line">reboot</span><br><span class="line">%end</span><br></pre></td></tr></table></figure>
+<p>将kickstart文件保存为<code>ks.cfg</code>文件到~/customISO</p>
+<ol start="7">
+<li><strong>修改安装启动信息</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux customISO]$ vi isolinux/isolinux.cfg <span class="comment"># BIOS引导</span></span><br><span class="line">...</span><br><span class="line">  append initrd=initrd.img inst.stage2=hd:LABEL=CentOS\x207\x20x86_64 quiet</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">#将以上多处相同的内容调整为为以下内容,光驱进行安装</span></span><br><span class="line">...</span><br><span class="line">  append initrd=initrd.img inst.ks=cdrom:/ks.cfg quiet</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">#使用硬盘进行安装修改为以下内容</span></span><br><span class="line">...</span><br><span class="line">  append initrd=initrd.img inst.ks=hd:LABEL=CentOS\x207\x20x86_64:/ks.cfg inst.stage2=hd:LABEL=CentOS\x207\x20x86_64:/ks.cfg quiet</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">[ocloud@centos-linux customISO]$ vi EFI/BOOT/grub.cfg <span class="comment"># EFI引导</span></span><br><span class="line">...</span><br><span class="line">  linuxefi /images/pxeboot/vmlinuz inst.stage2=hd:LABEL=CentOS\x207\x20x86_64 quiet</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">#将以上多处相同的内容调整为为以下内容,光驱进行安装</span></span><br><span class="line">...</span><br><span class="line">  linuxefi /images/pxeboot/vmlinuz inst.ks=cdrom:/ks.cfg quiet</span><br><span class="line">...</span><br><span class="line"><span class="comment">#使用硬盘进行安装修改为以下内容</span></span><br><span class="line">...</span><br><span class="line">  linuxefi /images/pxeboot/vmlinuz inst.ks=hd:LABEL=CentOS\x207\x20x86_64:/ks.cfg inst.stage2=hd:LABEL=CentOS\x207\x20x86_64:/ks.cfg quiet</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>因为ks.cfg中指定安装方式为cdrom, 如果通过硬盘安装则发现不了系统映像，因此添加 <code>inst.stage2</code> 指定要载入的安装程序运行时映像位置, 在这里引导参数 <code>inst.ks</code> 和 <code>inst.stage2</code>都会被读取, 如果只希望写一个<code>inst.ks</code>则只需要将ks.cfg中的cdrom调整为 url --url hd:LABEL=CentOS\x207\x20x86_64 即可</p>
+</blockquote>
+<ol>
+<li><strong>制作CentOS7镜像文件</strong></li>
+</ol>
+<blockquote>
+<p>本文出现的<code>CentOS\x207\x20x86_64</code> 即为 <code>CentOS 7 x86_64</code> 的URI编码, 可通过mkisofs命令的参数-V指定</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux customISO] mkisofs -o /tmp/CentOS-7-x86_64-demo.iso -b isolinux/isolinux.bin -c isolinux/boot.cat --no-emul-boot --boot-load-size 4 --boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot -T -J -R -V <span class="string">"CentOS 7 x86_64"</span> .</span><br><span class="line">[ocloud@centos-linux customISO] isohybrid /tmp/CentOS-7-x86_64-demo.iso <span class="comment">#使用mkisofs或genisoimage生成的ISO 9660镜像，以允许混合启动为CD-ROM或硬盘</span></span><br></pre></td></tr></table></figure>
+<h2 id="usb启动盘制作"><a class="header-anchor" href="#usb启动盘制作"></a>USB启动盘制作</h2>
+<blockquote>
+<p>将U盘插入系统</p>
+</blockquote>
+<p><strong>格式化U盘分区</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ lsblk</span><br><span class="line">NAME                 MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT</span><br><span class="line">...</span><br><span class="line">sdb                    8:16   1  14.3G  0 disk</span><br><span class="line">└─sdb4                 8:20   1  14.3G  0 part <span class="comment">#U盘分区</span></span><br><span class="line">...</span><br><span class="line">[ocloud@centos-linux ~]$ sudo mkfs.vfat -I /dev/sdb</span><br><span class="line">mkfs.fat 3.0.20 (12 Jun 2013)</span><br></pre></td></tr></table></figure>
+<p><strong>写入镜像</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ocloud@centos-linux ~]$ dd <span class="keyword">if</span>=/tmp/CentOS-7-x86_64-demo.iso of=/dev/sdb</span><br><span class="line">[ocloud@centos-linux ~]$ <span class="built_in">exit</span> <span class="comment">#退出后拔掉U盘即可</span></span><br></pre></td></tr></table></figure>
+<p>完成以上步骤后，即可生成一个自己定制的CentOS7的系统，更多详情请参考参考链接，如果本文有任何问题请发<a href="mailto:xiaoheng.zh@gmail.com" target="_blank" rel="noopener">Email</a>。</p>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<ol>
+<li><a href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/installation_guide/chap-anaconda-boot-options#list-boot-options-sources" target="_blank" rel="noopener">第 20 章 引导选项</a></li>
+<li><a href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/installation_guide/chap-kickstart-installations" target="_blank" rel="noopener">第 23 章 KICKSTART 安装</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/10/21/Vue-CLI-3-使用百度地图/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+      <meta itemprop="name" content="大脚丫子下的小蚂蚁">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/21/Vue-CLI-3-使用百度地图/" class="post-title-link" itemprop="url">Vue CLI 3 使用百度地图</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2018-10-21 09:44:12 / 修改时间：10:35:08" itemprop="dateCreated datePublished" datetime="2018-10-21T09:44:12+08:00">2018-10-21</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/10/21/Vue-CLI-3-使用百度地图/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/10/21/Vue-CLI-3-使用百度地图/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前提说明"><a class="header-anchor" href="#前提说明"></a>前提说明</h2>
+<p>Vue CLI 3 创建项目，目录大致如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">├── [ 512]  public</span><br><span class="line">│   ├── [2.2K]  favicon.ico</span><br><span class="line">│   └── [ 812]  index.html</span><br><span class="line">├── [ 512]  src</span><br><span class="line">│   ├── [ 709]  App.vue</span><br><span class="line">│   ├── [ 512]  assets</span><br><span class="line">│   ├── [ 512]  components</span><br><span class="line">│   ├── [ 277]  main.js</span><br><span class="line">│   ├── [1.2K]  router.js</span><br><span class="line">│   └── [ 512]  views</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>在项目根目录手动创建<code>vue.config.js webpack</code>配置文件,现在目录如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">├── [ 512]  public</span><br><span class="line">│   ├── [2.2K]  favicon.ico</span><br><span class="line">│   └── [ 812]  index.html</span><br><span class="line">├── [ 512]  src</span><br><span class="line">│   ├── [ 709]  App.vue</span><br><span class="line">│   ├── [ 512]  assets</span><br><span class="line">│   ├── [ 512]  components</span><br><span class="line">│   ├── [ 277]  main.js</span><br><span class="line">│   ├── [1.2K]  router.js</span><br><span class="line">│   └── [ 512]  views</span><br><span class="line">├── [1.6k]  vue.config.js</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><code>vue.config.js</code>内容大致如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  configureWebpack: &#123;</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// OR</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  configureWebpack: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="具体操作"><a class="header-anchor" href="#具体操作"></a>具体操作</h2>
+<p>在文件<code>@/public/index.html</code><sup>[1]</sup>中引入百度<code>javascript</code>文件，如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ... --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"https://api.map.baidu.com/api?v=2.0&amp;ak=您的秘钥"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>修改<code>vue.config.js</code>内容，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  configureWebpack: &#123;</span><br><span class="line">      externals: &#123;</span><br><span class="line">          <span class="string">"BMap"</span>: <span class="string">"BMap"</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// OR</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  configureWebpack: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">     config.externals = &#123;</span><br><span class="line">        <span class="string">"BMap"</span>: <span class="string">"BMap"</span></span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完成以上操作后，就可以在需要的地方引入<code>BMap</code>模块了，示例如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"map"</span> <span class="attr">class</span>=<span class="string">"map"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">import</span> BMap <span class="keyword">from</span> <span class="string">'BMap'</span> </span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">        methods: &#123;</span></span><br><span class="line"><span class="undefined">            initMap()&#123;</span></span><br><span class="line"><span class="javascript">                <span class="comment">// 百度地图API功能</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> map = <span class="keyword">new</span> BMap.Map(<span class="string">"map"</span>);          </span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> point = <span class="keyword">new</span> BMap.Point(<span class="number">118.750801</span>, <span class="number">31.944156</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">                map.centerAndZoom(point, 15);</span></span><br><span class="line"><span class="javascript">                map.enableScrollWheelZoom(<span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> marker = <span class="keyword">new</span> BMap.Marker(point); <span class="comment">// 创建标注    </span></span></span><br><span class="line"><span class="undefined">                map.addOverlay(marker);  </span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        mounted()&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">this</span>.initMap();</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"scss"</span> <span class="attr">scoped</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    // ...</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>[^1]: @代表项目根目录</p>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<p><a href="https://cli.vuejs.org/zh/guide/webpack.html" target="_blank" rel="noopener">Vue CLI 3 webpack 相关</a></p>
+<p><a href="https://webpack.js.org/configuration/externals/" target="_blank" rel="noopener">webpack externals</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/08/02/BasicSortingAlgorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+      <meta itemprop="name" content="大脚丫子下的小蚂蚁">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/08/02/BasicSortingAlgorithm/" class="post-title-link" itemprop="url">基本排序算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-08-02 09:28:56" itemprop="dateCreated datePublished" datetime="2018-08-02T09:28:56+08:00">2018-08-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-28 19:08:59" itemprop="dateModified" datetime="2020-07-28T19:08:59+08:00">2020-07-28</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/08/02/BasicSortingAlgorithm/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/08/02/BasicSortingAlgorithm/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<blockquote>
+<p>学习笔记,以下代码部分拷贝的维基百科，见链接</p>
+</blockquote>
+<h2 id="时间复杂度"><a class="header-anchor" href="#时间复杂度"></a>时间复杂度</h2>
+<blockquote>
+<p>    在计算机科学中，算法的<strong>时间复杂度</strong>是一个函数，它定性描述该算法的运行<strong>时间</strong>。 这是一个代表算法输入值的字符串的长度的函数。 <strong>时间复杂度</strong>常用大O符号表述，不包括这个函数的低阶项和首项系数。 使用这种方式时，<strong>时间复杂度</strong>可被称为是渐近的，亦即考察输入值大小趋近无穷时的情况。</p>
+</blockquote>
+<p><strong>公式：</strong><br>
+$$<br>
+\lim_{n\rightarrow+\infty} 	\frac{T(n)}{f(n)} = C(C为不为零的常数)<br>
+$$<br>
+C一般是算法中最大的语句频度，是最内层循环语句的执行次数。</p>
+<h2 id="基本排序算法"><a class="header-anchor" href="#基本排序算法"></a>基本排序算法</h2>
+<p><img data-src="https://upload-images.jianshu.io/upload_images/1156494-ab4cecff133d87b3.png" alt="sort"></p>
+<p>图片from: <a href="https://www.jianshu.com/p/7d037c332a9d" target="_blank" rel="noopener">数据结构常见的八大排序算法</a></p>
+<h3 id="直接插入排序"><a class="header-anchor" href="#直接插入排序"></a>直接插入排序</h3>
+<blockquote>
+<p>    是一种简单直观的<a href="https://www.wikiwand.com/zh-hans/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">排序算法</a>。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。插入排序在实现上，通常采用in-place排序（即只需用到**O(1)**的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//JavaScript</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">straightInsertSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; len; i++)&#123; <span class="comment">//第一个元素无需排序</span></span><br><span class="line">        <span class="keyword">let</span> j = i - <span class="number">1</span>,</span><br><span class="line">            value = arr[i];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(j&gt;=<span class="number">0</span> &amp;&amp; arr[j] &gt; value)&#123;</span><br><span class="line">            arr[j+<span class="number">1</span>] = arr[j];</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        arr[j+<span class="number">1</span>] = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="希尔算法"><a class="header-anchor" href="#希尔算法"></a>希尔算法</h3>
+<blockquote>
+<p>在插入直接排序的基础上使用分组</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//JavaScript</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shellSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> step = <span class="built_in">Math</span>.floor(len / <span class="number">2</span>); step &gt; <span class="number">0</span>; step = <span class="built_in">Math</span>.floor(step / <span class="number">2</span>))&#123;</span><br><span class="line">         <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">let</span> j = i - step,</span><br><span class="line">                value = arr[i];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(j&gt;=<span class="number">0</span> &amp;&amp; arr[j] &gt; value)&#123;</span><br><span class="line">                arr[j+step] = arr[j];</span><br><span class="line">                j -= step;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            arr[j+step] = value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="选择排序"><a class="header-anchor" href="#选择排序"></a>选择排序</h3>
+<blockquote>
+<p>    （Selection sort）是一种简单直观的<a href="https://www.wikiwand.com/zh-hans/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">排序算法</a>。它的工作原理如下。首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
+</blockquote>
+<p><strong>图示：</strong></p>
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Selection_sort_animation.gif" alt="selectsort"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//script</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="built_in">Array</span>.isArray(arr)) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; len - <span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">let</span> min = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; len; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[min] &gt; arr[j])</span><br><span class="line">                min = j;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">      <span class="keyword">let</span> temp = arr[min];</span><br><span class="line">		arr[min] = arr[i];</span><br><span class="line">		arr[i] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="堆排序"><a class="header-anchor" href="#堆排序"></a>堆排序</h3>
+<blockquote>
+<p>    <strong>堆排序</strong>（英语：Heapsort）是指利用<a href="https://www.wikiwand.com/zh-cn/%E5%A0%86_(%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)" target="_blank" rel="noopener">堆</a>这种数据结构所设计的一种<a href="https://www.wikiwand.com/zh-cn/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">排序算法</a>。堆积是一个近似<a href="https://www.wikiwand.com/zh-cn/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91" target="_blank" rel="noopener">完全二叉树</a>的结构，并同时满足<strong>堆积的性质</strong>：即子结点的键值或索引总是小于（或者大于）它的父节点。</p>
+</blockquote>
+<p><strong>图示：</strong></p>
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Sorting_heapsort_anim.gif" alt="img"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">heapSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> arr = arr.slice(<span class="number">0</span>);</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">swap</span>(<span class="params">i, j</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> tmp = arr[i];</span><br><span class="line">		arr[i] = arr[j];</span><br><span class="line">		arr[j] = tmp;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">max_heapify</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">		<span class="comment">//建立父節點指標和子節點指標</span></span><br><span class="line">		<span class="keyword">var</span> dad = start;</span><br><span class="line">		<span class="keyword">var</span> son = dad * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (son &gt;= end)<span class="comment">//若子節點指標超過範圍直接跳出函數</span></span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		<span class="keyword">if</span> (son + <span class="number">1</span> &lt; end &amp;&amp; arr[son] &lt; arr[son + <span class="number">1</span>])<span class="comment">//先比較兩個子節點大小，選擇最大的</span></span><br><span class="line">			son++;</span><br><span class="line">		<span class="keyword">if</span> (arr[dad] &lt;= arr[son]) &#123;<span class="comment">//如果父節點小於子節點時，交換父子內容再繼續子節點和孫節點比較</span></span><br><span class="line">			swap(dad, son);</span><br><span class="line">			max_heapify(son, end);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> len = arr.length;</span><br><span class="line">	<span class="comment">//初始化，i從最後一個父節點開始調整</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="built_in">Math</span>.floor(len / <span class="number">2</span>) - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">		max_heapify(i, len);</span><br><span class="line">	<span class="comment">//先將第一個元素和已排好元素前一位做交換，再從新調整，直到排序完畢</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = len - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">		swap(<span class="number">0</span>, i);</span><br><span class="line">		max_heapify(<span class="number">0</span>, i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="冒泡排序"><a class="header-anchor" href="#冒泡排序"></a>冒泡排序</h3>
+<blockquote>
+<p>    冒泡排序（英语：Bubble Sort）是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢「浮」到数列的顶端。</p>
+</blockquote>
+<p><strong>图示：</strong></p>
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/3/37/Bubble_sort_animation.gif" alt="bubblesort"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> i, j, temp,</span><br><span class="line">        length = arr.length;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; length - <span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; length - <span class="number">1</span> - i; j++)&#123;</span><br><span class="line">                        <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                temp = arr[j];</span><br><span class="line">                arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://jsbin.com/cewalig/edit?js,console" target="_blank" rel="noopener">运行源码</a></p>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<ol>
+<li><a href="https://www.wikiwand.com/zh-hans/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6" target="_blank" rel="noopener">时间复杂度wikiwand</a></li>
+<li><a href="https://www.wikiwand.com/zh-cn/%E5%A0%86%E6%8E%92%E5%BA%8F#/JavaScript" target="_blank" rel="noopener">堆排序</a></li>
+<li><a href="https://www.wikiwand.com/zh-hans/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F" target="_blank" rel="noopener">插入排序</a></li>
+<li><a href="https://www.wikiwand.com/zh-hans/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F" target="_blank" rel="noopener">选择排序</a></li>
+<li><a href="https://www.wikiwand.com/zh-cn/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F" target="_blank" rel="noopener">冒泡排序</a></li>
+<li><a href="http://www.docin.com/p-1285598520.html" target="_blank" rel="noopener">豆丁</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/07/06/onlyoffice/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+      <meta itemprop="name" content="大脚丫子下的小蚂蚁">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/06/onlyoffice/" class="post-title-link" itemprop="url">install onlyOffice in docker</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-07-06 10:46:11" itemprop="dateCreated datePublished" datetime="2018-07-06T10:46:11+08:00">2018-07-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-08-22 21:27:48" itemprop="dateModified" datetime="2018-08-22T21:27:48+08:00">2018-08-22</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/07/06/onlyoffice/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/07/06/onlyoffice/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<blockquote>
+<p>    本文主要记录onlyoffice安装的过程，在安装过程中可能不会遇到问题，但是也可能会遇到各种各样的问题，如果有错误，那肯定是你错了,下文中主要是集成安装，服务包含Mysql Server、Mail Server、Community Server以及Document Server,欢迎批评指正</p>
+</blockquote>
+<p>题外话：由于本人机器很菜，Mail Server使用Mysql Server时，没跑起来…</p>
+<h2 id="介绍-faq"><a class="header-anchor" href="#介绍-faq"></a>介绍 &amp;&amp; FAQ</h2>
+<h4 id="onlyoffice是什么？"><a class="header-anchor" href="#onlyoffice是什么？"></a><strong>onlyOffice是什么？</strong></h4>
+<p>    ONLYOFFICE是一个用于业务协作，文档和项目管理的多功能门户。它允许您组织业务任务和里程碑，存储和共享您的公司或个人文档，使用社交网络工具，如博客和论坛，以及通过公司IM与您的团队成员进行沟通。</p>
+<h4 id="onlyoffice适用于谁？"><a class="header-anchor" href="#onlyoffice适用于谁？"></a><strong>onlyOffice适用于谁？</strong></h4>
+<p>    ONLYOFFICE适用于寻求有效的业务流程管理平台的中小型公司。</p>
+<h4 id="在云中托管我的门户网站是否安全？"><a class="header-anchor" href="#在云中托管我的门户网站是否安全？"></a><strong>在云中托管我的门户网站是否安全？</strong></h4>
+<p>    您的门户网站由以下Web服务提供支持：Amazon EC2，Amazon S3和Amazon RDS。亚马逊网络服务（AWS）在全球数千名开发人员使用的云中提供可靠的基础架构。此外，您可以随时备份存储在门户网站上的数据。因此，您可以确保您的数据安全且受到保护。</p>
+<h4 id="我可以通过手机访问我的门户吗？"><a class="header-anchor" href="#我可以通过手机访问我的门户吗？"></a><strong>我可以通过手机访问我的门户吗？</strong></h4>
+<p>    目前正在开发位于.com域区域中的门户的移动应用程序。 .org域区域门户和服务器解决方案的移动版本不可用。 现在可以下载适用于iOS的移动ONLYOFFICE Documents应用程序。它允许您查看和编辑.com门户中存储的文本文档，创建新文档，管理和共享它们。</p>
+<h4 id="我们想自己维护onlyoffice-那可能吗？"><a class="header-anchor" href="#我们想自己维护onlyoffice-那可能吗？"></a><strong>我们想自己维护ONLYOFFICE。那可能吗？</strong></h4>
+<p>    是。可以下载和编译源代码。此后，您可以将其部署在您自己的服务器上。源代码在SourceForge上列出，并在GNU Affero通用公共许可条款下分发。有关更多详细信息，请参阅服务器版本常见问题部分。</p>
+<h4 id="我无法在门户网站的可用列表中找到我的语言-我该怎么做才能参与翻译？"><a class="header-anchor" href="#我无法在门户网站的可用列表中找到我的语言-我该怎么做才能参与翻译？"></a><strong>我无法在门户网站的可用列表中找到我的语言。我该怎么做才能参与翻译？</strong></h4>
+<p>    目前，门户网站的界面有21种语言版本，它也被翻译成二十多种语言，但如果您的母语尚未列出，您可以为ONLYOFFICE翻译做出贡献。请阅读如何成为ONLYOFFICE翻译？</p>
+<p>    发送您的请求并访问我们的ONLYOFFICE在线翻译系统的指南。 您也可以直接发送电子邮件至documentation@onlyoffice.com</p>
+<h4 id="我有一个问题-这里没有涉及-我该怎么联系你？"><a class="header-anchor" href="#我有一个问题-这里没有涉及-我该怎么联系你？"></a><strong>我有一个问题，这里没有涉及。我该怎么联系你？</strong></h4>
+<p>    我们不断改进ONLYOFFICE，为您的业务需求提供高效的解决方案。因此，欢迎您提供反馈和建议。请发送电子邮件至support@onlyoffice.com告诉我们ONLYOFFICE如何为您服务。</p>
+<p>注：以上为译文，详情请参考<a href="faq">FAQ</a></p>
+<h2 id="安装onlyoffice-in-docker"><a class="header-anchor" href="#安装onlyoffice-in-docker"></a>安装onlyOffice in Docker</h2>
+<h3 id="创建onlyoffice网络"><a class="header-anchor" href="#创建onlyoffice网络"></a>创建onlyoffice网络</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker network create --driver bridge onlyoffice</span><br></pre></td></tr></table></figure>
+<h3 id="安装mysql数据库"><a class="header-anchor" href="#安装mysql数据库"></a>安装MySQL数据库</h3>
+<p><strong>创建外部挂目录[可选]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/mysql/conf.d"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/mysql/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/mysql/initdb"</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>创建MySQL服务器Docker容器。创建配置文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"[mysqld]</span></span><br><span class="line"><span class="string">sql_mode = 'NO_ENGINE_SUBSTITUTION'</span></span><br><span class="line"><span class="string">max_connections = 1000</span></span><br><span class="line"><span class="string">max_allowed_packet = 1048576000</span></span><br><span class="line"><span class="string">group_concat_max_len = 2048</span></span><br><span class="line"><span class="string">log-error = /var/log/mysql/error.log"</span> &gt; /app/onlyoffice/mysql/conf.d/onlyoffice.cnf</span><br></pre></td></tr></table></figure>
+<p><strong>创建SQL脚本用于生成用户以及赋予对应的权限。 ONLYOFFICE社区服务器需要onlyoffice_user，ONLYOFFICE邮件服务器需要mail_admin</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"CREATE USER 'onlyoffice_user'@'localhost' IDENTIFIED BY 'onlyoffice_pass';</span></span><br><span class="line"><span class="string">CREATE USER 'mail_admin'@'localhost' IDENTIFIED BY 'Isadmin123';</span></span><br><span class="line"><span class="string">GRANT ALL PRIVILEGES ON * . * TO 'root'@'%' IDENTIFIED BY 'my-secret-pw';</span></span><br><span class="line"><span class="string">GRANT ALL PRIVILEGES ON * . * TO 'onlyoffice_user'@'%' IDENTIFIED BY 'onlyoffice_pass';</span></span><br><span class="line"><span class="string">GRANT ALL PRIVILEGES ON * . * TO 'mail_admin'@'%' IDENTIFIED BY 'Isadmin123';</span></span><br><span class="line"><span class="string">FLUSH PRIVILEGES;"</span> &gt; /app/onlyoffice/mysql/initdb/setup.sql</span><br></pre></td></tr></table></figure>
+<p>注：为了方面安装，直接使用了默认密码，以上密码是可修改的，以及指定可访问数据库的主机</p>
+<h4 id="创建mysql容器设置mysql版本到5-7"><a class="header-anchor" href="#创建mysql容器设置mysql版本到5-7"></a><strong>创建MySQL容器设置MySQL版本到5.7</strong></h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --net onlyoffice -i -t -d --restart=always --name onlyoffice-mysql-server \</span><br><span class="line"> -v /app/onlyoffice/mysql/conf.d:/etc/mysql/conf.d \</span><br><span class="line"> -v /app/onlyoffice/mysql/data:/var/lib/mysql \</span><br><span class="line"> -v /app/onlyoffice/mysql/initdb:/docker-entrypoint-initdb.d \</span><br><span class="line"> -e MYSQL_ROOT_PASSWORD=my-secret-pw \</span><br><span class="line"> -e MYSQL_DATABASE=onlyoffice \</span><br><span class="line"> mysql:5.7</span><br></pre></td></tr></table></figure>
+<p>-v: 挂载本地目录</p>
+<p>-e: 设置环境变量</p>
+<p><strong>可挂载目录[volumes]：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">    - ./config/mysql/conf.d:/etc/mysql/conf.d </span><br><span class="line">    - ./config/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d</span><br><span class="line">    - mysql_data:/var/lib/mysql</span><br></pre></td></tr></table></figure>
+<h3 id="安装document-server"><a class="header-anchor" href="#安装document-server"></a>安装Document Server</h3>
+<p><strong>创建外部挂目录[可选]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/logs"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/lib"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/DocumentServer/db"</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --net onlyoffice -i -t -d --restart=always --name onlyoffice-document-server \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/logs:/var/<span class="built_in">log</span>/onlyoffice  \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data  \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/lib:/var/lib/onlyoffice \</span><br><span class="line">    -v /app/onlyoffice/DocumentServer/db:/var/lib/postgresql \</span><br><span class="line">    onlyoffice/documentserver</span><br></pre></td></tr></table></figure>
+<p><strong>可挂载目录：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">volumes:</span><br><span class="line">    - document_data:/var/www/onlyoffice/Data</span><br><span class="line">    - document_log:/var/<span class="built_in">log</span>/onlyoffice</span><br><span class="line">    - ./document_fonts:/usr/share/fonts/truetype/custom</span><br><span class="line">    - document_forgotten:/var/lib/onlyoffice/documentserver/App_Data/cache/files/forgotten</span><br></pre></td></tr></table></figure>
+<h3 id="安装mail-server"><a class="header-anchor" href="#安装mail-server"></a>安装Mail Server</h3>
+<p><strong>创建外部挂目录[可选]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/MailServer/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/MailServer/data/certs"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/MailServer/logs"</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --init --net onlyoffice --privileged -i -t -d --restart=always --name onlyoffice-mail-server -p 25:25 -p 143:143 -p 587:587 \</span><br><span class="line"> -v /app/onlyoffice/MailServer/data:/var/vmail \</span><br><span class="line"> -v /app/onlyoffice/MailServer/data/certs:/etc/pki/tls/mailserver \</span><br><span class="line"> -v /app/onlyoffice/MailServer/logs:/var/<span class="built_in">log</span> \</span><br><span class="line"> -h yourdomain.com \</span><br><span class="line"> onlyoffice/mailserver</span><br></pre></td></tr></table></figure>
+<p>指定数据库, 添加如下参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-e MYSQL_SERVER=onlyoffice-mysql-server \</span><br><span class="line">-e MYSQL_SERVER_PORT=3306 \</span><br><span class="line">-e MYSQL_ROOT_USER=root \</span><br><span class="line">-e MYSQL_ROOT_PASSWD=my-secret-pw \</span><br><span class="line">-e MYSQL_SERVER_DB_NAME=onlyoffice_mailserver \</span><br></pre></td></tr></table></figure>
+<p>注：<a href="http://yourdomain.com" target="_blank" rel="noopener">yourdomain.com</a> 更换您的Mail Server的域名</p>
+<p><strong>可选参数：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">    - MYSQL_SERVER=onlyoffice-mysql-server</span><br><span class="line">    - MYSQL_SERVER_PORT=3306</span><br><span class="line">    - MYSQL_ROOT_USER=onlyoffice_mailserver_user</span><br><span class="line">    - MYSQL_ROOT_PASSWD=onlyoffice_mailserver_user_pass</span><br><span class="line">    - MYSQL_SERVER_DB_NAME=onlyoffice_mailserver</span><br></pre></td></tr></table></figure>
+<h3 id="安装community-server"><a class="header-anchor" href="#安装community-server"></a>安装Community Server</h3>
+<p><strong>创建外部挂目录[可选]</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/CommunityServer/data"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/CommunityServer/mysql"</span>;</span><br><span class="line">sudo mkdir -p <span class="string">"/app/onlyoffice/CommunityServer/logs"</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --net onlyoffice -i -t -d --restart=always --name onlyoffice-community-server -p 80:80 -p 443:443 -p 5222:5222 \</span><br><span class="line"> -e MYSQL_SERVER_ROOT_PASSWORD=my-secret-pw \</span><br><span class="line"> -e MYSQL_SERVER_DB_NAME=onlyoffice \</span><br><span class="line"> -e MYSQL_SERVER_HOST=onlyoffice-mysql-server \</span><br><span class="line"> -e MYSQL_SERVER_USER=onlyoffice_user \</span><br><span class="line"> -e MYSQL_SERVER_PASS=onlyoffice_pass \</span><br><span class="line"> -e DOCUMENT_SERVER_PORT_80_TCP_ADDR=onlyoffice-document-server \</span><br><span class="line"> -e MAIL_SERVER_DB_HOST=onlyoffice-mail-server \</span><br><span class="line"> -v /app/onlyoffice/CommunityServer/data:/var/www/onlyoffice/Data \</span><br><span class="line"> -v /app/onlyoffice/CommunityServer/logs:/var/<span class="built_in">log</span>/onlyoffice \</span><br><span class="line"> -v /app/onlyoffice/CommunityServer/mysql:/var/lib/mysql \</span><br><span class="line"> onlyoffice/communityserver</span><br></pre></td></tr></table></figure>
+<p>-p: 指定端口映射</p>
+<p>上面使用的时默认的邮箱安装，否则需指定邮箱服务器的数据库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --net onlyoffice -i -t -d --restart=always --name onlyoffice-community-server -p 80:80 -p 443:443 -p 5222:5222 \</span><br><span class="line"> -e MYSQL_SERVER_ROOT_PASSWORD=my-secret-pw \</span><br><span class="line"> -e MYSQL_SERVER_DB_NAME=onlyoffice \</span><br><span class="line"> -e MYSQL_SERVER_HOST=onlyoffice-mysql-server \</span><br><span class="line"> -e MYSQL_SERVER_USER=onlyoffice_user \</span><br><span class="line"> -e MYSQL_SERVER_PASS=onlyoffice_pass \</span><br><span class="line"> </span><br><span class="line"> -e DOCUMENT_SERVER_PORT_80_TCP_ADDR=onlyoffice-document-server \</span><br><span class="line"> </span><br><span class="line"> -e MAIL_SERVER_API_HOST=<span class="variable">$&#123;MAIL_SERVER_IP&#125;</span> \</span><br><span class="line"> -e MAIL_SERVER_DB_HOST=onlyoffice-mysql-server \</span><br><span class="line"> -e MAIL_SERVER_DB_NAME=onlyoffice_mailserver \</span><br><span class="line"> -e MAIL_SERVER_DB_PORT=3306 \</span><br><span class="line"> -e MAIL_SERVER_DB_USER=root \</span><br><span class="line"> -e MAIL_SERVER_DB_PASS=my-secret-pw \</span><br><span class="line"> </span><br><span class="line"> -v /app/onlyoffice/CommunityServer/data:/var/www/onlyoffice/Data \</span><br><span class="line"> -v /app/onlyoffice/CommunityServer/logs:/var/<span class="built_in">log</span>/onlyoffice \</span><br><span class="line"> onlyoffice/communityserver</span><br></pre></td></tr></table></figure>
+<p><strong>可选参数：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">    - DOCUMENT_SERVER_PORT_80_TCP_ADDR=onlyoffice-document-server</span><br><span class="line">    - MYSQL_SERVER_ROOT_PASSWORD=my-secret-pw</span><br><span class="line">    - MYSQL_SERVER_DB_NAME=onlyoffice </span><br><span class="line">    - MYSQL_SERVER_HOST=onlyoffice-mysql-server </span><br><span class="line">    - MYSQL_SERVER_USER=onlyoffice_user</span><br><span class="line">    - MYSQL_SERVER_PASS=onlyoffice_pass </span><br><span class="line">    - MAIL_SERVER_API_PORT=8081</span><br><span class="line">    - MAIL_SERVER_API_HOST=onlyoffice-mail-server</span><br><span class="line">    - MAIL_SERVER_DB_HOST=onlyoffice-mysql-server</span><br><span class="line">    - MAIL_SERVER_DB_PORT=3306</span><br><span class="line">    - MAIL_SERVER_DB_NAME=onlyoffice_mailserver</span><br><span class="line">    - MAIL_SERVER_DB_USER=onlyoffice_mailserver_user</span><br><span class="line">    - MAIL_SERVER_DB_PASS=onlyoffice_mailserver_user_pass</span><br></pre></td></tr></table></figure>
+<p><strong>依赖服务：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">depends_on:</span><br><span class="line">    - onlyoffice-mysql-server</span><br><span class="line">    - onlyoffice-document-server</span><br><span class="line">    - onlyoffice-mail-server</span><br></pre></td></tr></table></figure>
+<p><strong>挂载目录：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">volumes:</span><br><span class="line">    - community_data:/var/www/onlyoffice/Data</span><br><span class="line">    - community_log:/var/<span class="built_in">log</span>/onlyoffice</span><br><span class="line">    - document_data:/var/www/onlyoffice/DocumentServerData</span><br><span class="line">    - ./certs:/var/www/onlyoffice/Data/certs</span><br></pre></td></tr></table></figure>
+<p>通过下面的命令获取对应服务器的ip地址，如：获取<strong>Mail Server</strong>ip地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect -f <span class="string">'&#123;&#123;range .NetworkSettings.Networks&#125;&#125;&#123;&#123;.IPAddress&#125;&#125;&#123;&#123;end&#125;&#125;'</span> onlyoffice-mail-server</span><br></pre></td></tr></table></figure>
+<p>以上步骤正确完成之后，就可以开始您的onlyOffice之旅了， <a href="https//localhost">点击开始</a></p>
+<p>注： 如果不指定数据库则使用自身的数据库</p>
+<h3 id="备份"><a class="header-anchor" href="#备份"></a>备份</h3>
+<p>请阅读 <a href="https://helpcenter.onlyoffice.com/tipstricks/data-backup-restore.aspx" target="_blank" rel="noopener">Data backup</a>，付费用户享有的权利🙃, 当然也可以手动备份</p>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<p><a href="https://github.com/ONLYOFFICE/Docker-CommunityServer" target="_blank" rel="noopener">Docker-CommunityServer</a></p>
+<p><a href="https://helpcenter.onlyoffice.com/server/docker/community/install-integrated.aspx" target="_blank" rel="noopener">Installing all three servers (Community Server, Document Server, Mail Server) integrated</a></p>
+<p><a id="faq"><a href="https://helpcenter.onlyoffice.com/faq/faq.aspx" target="_blank" rel="noopener">General Questions FAQ</a></a></p>
+<p><a href="http://yishidian.net/%E5%A6%82%E4%BD%95%E5%9C%A8ubuntu-1404%E4%B8%8A%E5%AE%89%E8%A3%9Donlyoffice%E7%B5%84%E7%B9%94%E6%82%A8%E7%9A%84%E5%9C%98%E9%9A%8A%E5%90%88%E4%BD%9C" target="_blank" rel="noopener">如何在Ubuntu 14.04上安裝ONLYOFFICE組織您的團隊合作</a></p>
+<p><a href="https://github.com/ONLYOFFICE/Docker-CommunityServer/blob/master/docker-compose.yml#L26" target="_blank" rel="noopener">docker-compose.yml</a></p>
+<p><a href="https://dev.mysql.com/doc/refman/5.7/en/communication-errors.html" target="_blank" rel="noopener">abort connection</a></p>
+<p><a href="https://bugs.mysql.com/bug.php?id=76661" target="_blank" rel="noopener">Mysql bug #76661</a></p>
+<p><a href="https://bugs.mysql.com/bug.php?id=81899" target="_blank" rel="noopener">Mysql #81899</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2018/06/23/prototype-chain/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+      <meta itemprop="name" content="大脚丫子下的小蚂蚁">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/06/23/prototype-chain/" class="post-title-link" itemprop="url">简单了解原型链</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-06-23 08:23:41" itemprop="dateCreated datePublished" datetime="2018-06-23T08:23:41+08:00">2018-06-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-07-08 18:00:54" itemprop="dateModified" datetime="2019-07-08T18:00:54+08:00">2019-07-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/06/23/prototype-chain/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/06/23/prototype-chain/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>不要慨叹生活的痛苦！慨叹是弱者。——高尔基</p>
+</blockquote>
+<h4 id="温故知新"><a class="header-anchor" href="#温故知新"></a>温故知新</h4>
+<ul>
+<li>构造函数才有原型<code>prototype</code></li>
+<li>原型也是对象，由<code>Object</code>创建</li>
+<li>每个对象都有<code>__proto__</code>属性，指向创建它的构造函数的原型对象<code>prototype</code></li>
+<li><code>Object</code>的原型对象的<code>__proto__</code>指向<code>null</code></li>
+<li>构造函数也是对象</li>
+<li>所有的构造函数都是<code>Function</code>创建的</li>
+<li>原型对象中的构造函数(<code>constructor</code>)指向当前构造函数</li>
+</ul>
+<p>注：<code>null</code>对象除外</p>
+<h4 id="图解"><a class="header-anchor" href="#图解"></a>图解</h4>
+<ol>
+<li><strong>简单的继承原型链图</strong></li>
+</ol>
+<p><img data-src="https://wx4.sinaimg.cn/large/7ed42f5cly1fqguw4y1zej20ge0e8wes.jpg" alt="继承与原型链"></p>
+<ol start="2">
+<li>
+<p><strong>经典原型链图</strong></p>
+<p><img data-src="http://zencode.in/imgs/2/1.jpg" alt=""></p>
+</li>
+</ol>
+<h4 id="拆解图"><a class="header-anchor" href="#拆解图"></a>拆解图</h4>
+<p><img data-src="https://docs.google.com/drawings/d/e/2PACX-1vSzUFGozCQizNXU8FkI4Q9ooA4s1uVY4EfDzDDLqhTtKGbNG7n5ZlMx8BVDc6tBnGAXdDqBJbSgzYDk/pub?w=801&amp;h=649" alt="原型链拆解图"></p>
+<p>声明：文中图片均来自网络，如有错误烦请邮件告知小弟</p>
+<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/proto" target="_blank" rel="noopener">Object</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain" target="_blank" rel="noopener">继承与原型链</a></p>
+<p><a href="https://alanstorm.com/tracing-javascripts-prototype-chain/" target="_blank" rel="noopener">Tracing Javascript’s Prototype Chain</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="大脚丫子下的小蚂蚁"
+      src="/images/custom/ava.jpg">
+  <p class="site-author-name" itemprop="name">大脚丫子下的小蚂蚁</p>
+  <div class="site-description" itemprop="description">一名不知所措的IT从业者</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zzhtom" title="GitHub → https://github.com/zzhtom" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xiaoheng.zh@gmail.com" title="E-Mail → mailto:xiaoheng.zh@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/113809036652138215181" title="Google → https://plus.google.com/113809036652138215181" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/xiaoheng_zhang" title="Twitter → https://twitter.com/xiaoheng_zhang" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/tom.zhang.313371" title="FB Page → https://www.facebook.com/tom.zhang.313371" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i>FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/9628832/xiaoheng-zhang" title="StackOverflow → https://stackoverflow.com/users/9628832/xiaoheng-zhang" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">大脚丫子下的小蚂蚁</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://www.zhangxiaoheng.cn/',]
+      });
+      });
+  </script>
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://zhangxiaoheng.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+</body>
+</html>
