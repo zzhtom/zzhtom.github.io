@@ -23,19 +23,20 @@
     var CONFIG = {"hostname":"www.zhangxiaoheng.cn","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="一名不知所措的IT从业者">
-<meta name="keywords" content="html,js,jquery,node.js,fibjs,开发者,编程,运维,运维开发">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Change The World">
-<meta property="og:url" content="http://www.zhangxiaoheng.cn/tags/linxu/index.html">
+  <meta name="description" content="基本目标 在主机(Ubuntu)CPU架构为x86_64上编译出可以在CPU架构为armv7l主机(Debian)上运行的二进制文件 环境基本信息    名称 信息 备注     ubuntu-16-04 Intel® Xeon® Silver 4114 CPU @ 2.20GHz(4 core) / 4G 无    环境搭建 构建Debian模拟文件系统 见参考1 注：构建系统时架构需要设置为a">
+<meta name="keywords" content="ubuntu,Qt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="交叉编译Qt5.8.0">
+<meta property="og:url" content="http://www.zhangxiaoheng.cn/2021/12/30/交叉编译Qt5-8-0/index.html">
 <meta property="og:site_name" content="Change The World">
-<meta property="og:description" content="一名不知所措的IT从业者">
+<meta property="og:description" content="基本目标 在主机(Ubuntu)CPU架构为x86_64上编译出可以在CPU架构为armv7l主机(Debian)上运行的二进制文件 环境基本信息    名称 信息 备注     ubuntu-16-04 Intel® Xeon® Silver 4114 CPU @ 2.20GHz(4 core) / 4G 无    环境搭建 构建Debian模拟文件系统 见参考1 注：构建系统时架构需要设置为a">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-12-30T03:24:02.765Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Change The World">
-<meta name="twitter:description" content="一名不知所措的IT从业者">
+<meta name="twitter:title" content="交叉编译Qt5.8.0">
+<meta name="twitter:description" content="基本目标 在主机(Ubuntu)CPU架构为x86_64上编译出可以在CPU架构为armv7l主机(Debian)上运行的二进制文件 环境基本信息    名称 信息 备注     ubuntu-16-04 Intel® Xeon® Silver 4114 CPU @ 2.20GHz(4 core) / 4G 无    环境搭建 构建Debian模拟文件系统 见参考1 注：构建系统时架构需要设置为a">
 
-<link rel="canonical" href="http://www.zhangxiaoheng.cn/tags/linxu/">
+<link rel="canonical" href="http://www.zhangxiaoheng.cn/2021/12/30/交叉编译Qt5-8-0/">
 
 
 <script id="page-configurations">
@@ -43,12 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: linxu | Change The World</title>
+  <title>交叉编译Qt5.8.0 | Change The World</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121888655-1"></script>
     <script>
@@ -173,57 +174,176 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangxiaoheng.cn/2021/12/30/交叉编译Qt5-8-0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/custom/ava.jpg">
+      <meta itemprop="name" content="大脚丫子下的小蚂蚁">
+      <meta itemprop="description" content="一名不知所措的IT从业者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Change The World">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          交叉编译Qt5.8.0
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-30 10:07:08 / 修改时间：11:24:02" itemprop="dateCreated datePublished" datetime="2021-12-30T10:07:08+08:00">2021-12-30</time>
+            </span>
+
+          
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">linxu
-          <small>标签</small>
-        </h2>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2021/12/30/交叉编译Qt5-8-0/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/30/交叉编译Qt5-8-0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2018</span>
+        <h2 id="基本目标"><a class="header-anchor" href="#基本目标"></a>基本目标</h2>
+<p>在主机(<strong>Ubuntu</strong>)CPU架构为x86_64上编译出可以在CPU架构为armv7l主机(<strong>Debian</strong>)上运行的二进制文件</p>
+<h2 id="环境基本信息"><a class="header-anchor" href="#环境基本信息"></a>环境基本信息</h2>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>信息</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ubuntu-16-04</td>
+<td>Intel® Xeon® Silver 4114 CPU @ 2.20GHz(4 core) / 4G</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<h2 id="环境搭建"><a class="header-anchor" href="#环境搭建"></a>环境搭建</h2>
+<h3 id="构建debian模拟文件系统"><a class="header-anchor" href="#构建debian模拟文件系统"></a>构建Debian模拟文件系统</h3>
+<p>见<a href="#c1">参考1</a></p>
+<p>注：构建系统时架构需要设置为<span style="color: red;">armhf</span></p>
+<p>通过以上操作后，假设我们的文件系统路径如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/demo/workplace/linux-rootfs-armhf</span><br></pre></td></tr></table></figure>
+<p>安装依赖库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chroot /demo/workplace/linux-rootfs-armhf</span><br><span class="line">$ sudo apt install libgles2-mesa-dev bison build-essential gperf flex ruby python libasound2-dev \</span><br><span class="line">       libbz2-dev libcap-dev libcups2-dev libdrm-dev libegl1-mesa-dev libgcrypt11-dev libnss3-dev \ </span><br><span class="line">       libpci-dev libpulse-dev libudev-dev libxtst-dev gyp ninja-build libglu1-mesa-dev \</span><br><span class="line">       libfontconfig1-dev libx11-xcb-dev libicu-dev libgl1-mesa-dev libglu1-mesa-dev libssl1.0-dev</span><br></pre></td></tr></table></figure>
+<h3 id="安装交叉编译器"><a class="header-anchor" href="#安装交叉编译器"></a>安装交叉编译器</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install binutils-arm-linux-gnueabihf \</span><br><span class="line">       gcc-arm-linux-gnueabihf cpp-arm-linux-gnueabihf g++-arm-linux-gnueabihf</span><br></pre></td></tr></table></figure>
+<h2 id="编译qt5-8-0"><a class="header-anchor" href="#编译qt5-8-0"></a>编译Qt5.8.0</h2>
+<p>下载Qt5.8.0源码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  wget https://download.qt.io/new_archive/qt/5.8/5.8.0/single/qt-everywhere-opensource-src-5.8.0.tar.xz</span><br></pre></td></tr></table></figure>
+<p>解压Qt5.8.0源码包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  tar xvf https://download.qt.io/new_archive/qt/5.8/5.8.0/single/qt-everywhere-opensource-src-5.8.0.tar.xz</span><br></pre></td></tr></table></figure>
+<p>修改源码中存在的bug</p>
+<ol>
+<li>缺少头文件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> qt-everywhere-opensource-src-5.8.0</span><br><span class="line">$ vim qtserialbus/src/plugins/canbus/socketcan/socketcanbackend.cpp </span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">#include &lt;QtCore/qdebug.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;QtCore/qdatastream.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;QtCore/qsocketnotifier.h&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#include &lt;linux/can/error.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;linux/can/raw.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;errno.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;unistd.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;net/if.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;sys/ioctl.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;sys/time.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;linux/sockios.h&gt; // 添加该头文件</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><a href="https://codereview.qt-project.org/c/qt/qtwayland/+/187132" target="_blank" rel="noopener">Fix build when xkbcommon is disabled</a></li>
+</ol>
+<p>开始编译</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ ./configure -release -device linux-arm-generic-g++  -sysroot /demo/workplace/linux-rootfs-armhf -prefix /usr/<span class="built_in">local</span>/Qt-5.8.0 -xplatform linux-arm-gnueabihf-g++ -opensource -confirm-license -nomake tests</span><br><span class="line"></span><br><span class="line">$ make  &amp;&amp; make instal</span><br><span class="line"></span><br><span class="line"><span class="comment"># 由于编译时间较长可以将编译放入后台执行</span></span><br><span class="line"><span class="comment"># 比如写一个build.sh 脚本内容如 </span></span><br><span class="line"><span class="comment"># #!/bin/bash</span></span><br><span class="line"><span class="comment"># make  &amp;&amp; make install</span></span><br><span class="line"></span><br><span class="line">$ nohup ./build.sh 2&gt; make-err.log | tee make-out.log &amp;</span><br></pre></td></tr></table></figure>
+<p style="color: red">注：编译时间较长请耐心等待</p>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<ol>
+<li><a id="c1"><a href="https://blog.csdn.net/qq_36956154/article/details/100606619" target="_blank" rel="noopener">debootstrap 制作arm64位根文件系统</a></a></li>
+</ol>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-12-31T20:34:47+08:00"
-              content="2018-12-31">
-          12-31
-        </time>
+    
+    
+    
+        <div class="reward-container">
+  <div>不如请我吃根冰棒吧</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/custom/wechat.png" alt="大脚丫子下的小蚂蚁 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/custom/alipay.jpg" alt="大脚丫子下的小蚂蚁 支付宝">
+        <p>支付宝</p>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2018/12/31/NFS安装及使用/" itemprop="url">
-            <span itemprop="name">NFS安装及使用</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-    </div>
   </div>
-  
-  
-  
+</div>
 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
+              <a href="/tags/Qt/" rel="tag"># Qt</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/20/登高-望远/" rel="prev" title="登高,望远">
+      <i class="fa fa-chevron-left"></i> 登高,望远
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
 
           </div>
           
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -270,6 +390,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本目标"><span class="nav-number">1.</span> <span class="nav-text">基本目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境基本信息"><span class="nav-number">2.</span> <span class="nav-text">环境基本信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境搭建"><span class="nav-number">3.</span> <span class="nav-text">环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构建debian模拟文件系统"><span class="nav-number">3.1.</span> <span class="nav-text">构建Debian模拟文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装交叉编译器"><span class="nav-number">3.2.</span> <span class="nav-text">安装交叉编译器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译qt5-8-0"><span class="nav-number">4.</span> <span class="nav-text">编译Qt5.8.0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -464,7 +585,7 @@
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'http://www.zhangxiaoheng.cn/tags/linxu/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://www.zhangxiaoheng.cn/2021/12/30/交叉编译Qt5-8-0/',]
       });
       });
   </script>
@@ -478,6 +599,26 @@
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://www.zhangxiaoheng.cn/2021/12/30/交叉编译Qt5-8-0/";
+    this.page.identifier = "2021/12/30/交叉编译Qt5-8-0/";
+    this.page.title = "交叉编译Qt5.8.0";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://zhangxiaoheng.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
 </body>
