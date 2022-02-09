@@ -31,7 +31,7 @@
 <meta property="og:site_name" content="Change The World">
 <meta property="og:description" content="基本目标 在主机(Ubuntu)CPU架构为x86_64上编译出可以在CPU架构为armv7l主机(Debian)上运行的Qt 环境基本信息    名称 信息 备注     ubuntu-16-04 Intel® Xeon® Silver 4114 CPU @ 2.20GHz(4 core) / 4G 无    环境搭建 构建Debian模拟文件系统 见参考1 注：构建系统时架构需要设置为armh">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-12-30T06:28:39.542Z">
+<meta property="og:updated_time" content="2022-02-09T11:58:08.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="交叉编译Qt5.8.0">
 <meta name="twitter:description" content="基本目标 在主机(Ubuntu)CPU架构为x86_64上编译出可以在CPU架构为armv7l主机(Debian)上运行的Qt 环境基本信息    名称 信息 备注     ubuntu-16-04 Intel® Xeon® Silver 4114 CPU @ 2.20GHz(4 core) / 4G 无    环境搭建 构建Debian模拟文件系统 见参考1 注：构建系统时架构需要设置为armh">
@@ -203,10 +203,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-12-30 10:07:08 / 修改时间：14:28:39" itemprop="dateCreated datePublished" datetime="2021-12-30T10:07:08+08:00">2021-12-30</time>
+              <time title="创建时间：2021-12-30 10:07:08" itemprop="dateCreated datePublished" datetime="2021-12-30T10:07:08+08:00">2021-12-30</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-09 19:58:08" itemprop="dateModified" datetime="2022-02-09T19:58:08+08:00">2022-02-09</time>
+              </span>
 
           
   
@@ -275,6 +281,9 @@
 <ol start="2">
 <li><a href="https://codereview.qt-project.org/c/qt/qtwayland/+/187132" target="_blank" rel="noopener">Fix build when xkbcommon is disabled</a></li>
 </ol>
+<p>添加arm-gnueabihf-g++编译器配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> qt-everywhere-opensource-src-5.8.0</span><br><span class="line">$ cp -a qtbase/mkspecs/linux-arm-gnueabi-g++ qtbase/mkspecs/linux-arm-gnueabihf-g++</span><br><span class="line">$ sed -i <span class="string">'s#linux-arm-gnueabi#linux-arm-gnueabihf#g'</span> qtbase/mkspecs/linux-arm-gnueabihf-g++/qmake.conf</span><br></pre></td></tr></table></figure>
+<h3 id="none"><a class="header-anchor" href="#none"></a></h3>
 <p>开始编译</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ ./configure -release -device linux-arm-generic-g++  -sysroot /demo/workplace/linux-rootfs-armhf -prefix /usr/<span class="built_in">local</span>/Qt-5.8.0 -xplatform linux-arm-gnueabihf-g++ -opensource -confirm-license -nomake tests</span><br><span class="line"></span><br><span class="line">$ make  &amp;&amp; make instal</span><br><span class="line"></span><br><span class="line"><span class="comment"># 由于编译时间较长可以将编译放入后台执行</span></span><br><span class="line"><span class="comment"># 比如写一个build.sh 脚本内容如 </span></span><br><span class="line"><span class="comment"># #!/bin/bash</span></span><br><span class="line"><span class="comment"># make  &amp;&amp; make install</span></span><br><span class="line"></span><br><span class="line">$ nohup ./build.sh 2&gt; make-err.log | tee make-out.log &amp;</span><br></pre></td></tr></table></figure>
 <p style="color: red">注：编译时间较长请耐心等待</p>
@@ -390,7 +399,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本目标"><span class="nav-number">1.</span> <span class="nav-text">基本目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境基本信息"><span class="nav-number">2.</span> <span class="nav-text">环境基本信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境搭建"><span class="nav-number">3.</span> <span class="nav-text">环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构建debian模拟文件系统"><span class="nav-number">3.1.</span> <span class="nav-text">构建Debian模拟文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装交叉编译器"><span class="nav-number">3.2.</span> <span class="nav-text">安装交叉编译器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译qt5-8-0"><span class="nav-number">4.</span> <span class="nav-text">编译Qt5.8.0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本目标"><span class="nav-number">1.</span> <span class="nav-text">基本目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境基本信息"><span class="nav-number">2.</span> <span class="nav-text">环境基本信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境搭建"><span class="nav-number">3.</span> <span class="nav-text">环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构建debian模拟文件系统"><span class="nav-number">3.1.</span> <span class="nav-text">构建Debian模拟文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装交叉编译器"><span class="nav-number">3.2.</span> <span class="nav-text">安装交叉编译器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译qt5-8-0"><span class="nav-number">4.</span> <span class="nav-text">编译Qt5.8.0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#none"><span class="nav-number">4.1.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -466,7 +475,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
